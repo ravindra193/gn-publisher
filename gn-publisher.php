@@ -80,3 +80,10 @@ gnpub_feed_bootstrap();
 function gnpub_load_textdomain() {
 	load_plugin_textdomain( 'gn-publisher', false, basename( dirname( GNPUB_PLUGIN_FILE ) ) . '/languages/' );
 }
+
+function gnpub_admin_style() {
+  wp_enqueue_style('admin-styles', GNPUB_URL .'/admin.css');
+}
+add_action('admin_enqueue_scripts', 'gnpub_admin_style');
+
+
