@@ -295,30 +295,48 @@
 }
 
 .gn-flex-container-services{
-  display: flex;
-  justify-content: space-around;
-  /* flex-direction: column; */
-  gap:20px;
-  margin:25px 0;
+    /* display: flex; */
+    justify-content: space-around;
+    /* flex-direction: column; */
+    gap: 20px;
+    margin: 25px 0;
   
 }
 
 .gn-service-card{
   display: flex;
   align-items: center;
-  background-color: #fbdbe1;
-  padding: 10px;
+  background-color: #fff0f3;
+  padding: 30px 20px 30px 20px;
   cursor: pointer;
+  margin: 10px 10px 30px 10px;
+  border-radius: 11px;
 }
 
-.gn-service-card-right{
-  padding:0 10px;
+.gn-service-card-right {
+  padding: 0 10px 0 20px;
 }
 #gn_query_message{
   width:auto;
 }
 
 .gn-service-heading{
-  font-size: 17px;
+  font-size: 24px;
   line-height: 20px;
+  color: #e93557;
+  margin: 0;
+  font-weight: 600;
+}
+.gn-service-card-left img {
+  width: 100px;
+  height: 100%;
+}
+.gn-service-card .gn-btn , .gn-service-card .gn-btn:active , .gn-service-card .gn-btn:focus , .gn-service-card .gn-btn:hover{
+  color: #e93557;
+  border-color: #e93557;
+}
+.gn-service-card .gn-btn-primary,.gn-service-card .gn-btn-primary:active,.gn-service-card .gn-btn-primary:hover,.gn-service-card .gn-btn-primary:focus{
+  margin-right: 10px;
+    background: #e93557;
+    border-color: #e93557;
 }

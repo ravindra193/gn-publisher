@@ -301,6 +301,7 @@ if ( ! defined( 'ABSPATH' ) ) {
   <div class="gn-service-card-right">
     <h3 class="gn-service-heading">Google News Setup & Audit</h3>
   <p>You can get thousands of clicks to your site from Google News. We can set up Google news for your website and perform regular audits.</p>
+  <button class="gn-btn-primary button button-primary">View Pricing</button><button class="gn-btn button">Learn More</button>
   </div>
   </div>
   <div class="gn-service-card" data-url="https://gnpublisher.com/services/dedicated-developer-for-website-search-console-maintenance-service/">
@@ -310,6 +311,7 @@ if ( ! defined( 'ABSPATH' ) ) {
   <div class="gn-service-card-right">
     <h3 class="gn-service-heading">Dedicated Developer for Website</h3>
   <p>Our dedicated developers will continuously monitor your website and make sure its up and running without any issue.</p>
+  <button class="gn-btn-primary button button-primary">View Pricing</button><button class="gn-btn button">Learn More</button>
   </div>
   </div>
   
@@ -321,6 +323,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <h3 class="gn-service-heading">Search Console
 Maintenance</h3>
 <p>  We will manage your all Google Search Console problems because even after a webpage gets indexed, issues can happen.</p>
+<button class="gn-btn-primary button button-primary">View Pricing</button><button class="gn-btn button">Learn More</button>
   </div>
   </div>
  
