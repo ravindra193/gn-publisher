@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="wrap">
 	<div class="gn-container">
   
-		<h1><img  class="gn-logo" src=<?php echo GNPUB_URL . '/assets/images/logo.png' ?> title="<?php _e( '<b>GN</b> Publisher', 'gn-publisher' ); ?>"/></h1>
+		<h1><a herf="https://gnpublisher.com/" target="_blank"><img  class="gn-logo" src=<?php echo GNPUB_URL . '/assets/images/logo.png' ?> title="<?php _e( '<b>GN</b> Publisher', 'gn-publisher' ); ?>"/></a></h1>
 	</div>
 <?php // don't think we need this anymore, let's test without, but leave in code for now in case
 	//it needs to be reenabled - ca (11/29/2020)
