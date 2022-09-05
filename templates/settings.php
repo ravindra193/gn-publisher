@@ -7,8 +7,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div class="wrap">
 	<div class="gn-container">
-		<img  class="gn-logo" src=<?php echo GNPUB_URL . '/icon.png' ?> />
-		<h1><?php _e( '<b>GN</b> Publisher', 'gn-publisher' ); ?></h1>
+  
+		<h1><img  class="gn-logo" src=<?php echo GNPUB_URL . '/assets/images/logo.png' ?> title="<?php _e( '<b>GN</b> Publisher', 'gn-publisher' ); ?>"/></h1>
 	</div>
 <?php // don't think we need this anymore, let's test without, but leave in code for now in case
 	//it needs to be reenabled - ca (11/29/2020)
@@ -35,28 +35,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	</form>
 */ ?>
-	<div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'Intro')" id="defaultOpen">Intro</button>
-  <button class="tablinks" onclick="openCity(event, 'google_feed')">Google News Feed</button>
-  <button class="tablinks" onclick="openCity(event, 'Troubleshooting')">Troubleshooting</button>
-  <button class="tablinks" onclick="openCity(event, 'Help')">Help</button>
+	<div class="gn-tab">
+  <button class="gn-tablinks" onclick="openTab(event, 'gn-intro')" id="defaultOpen">Dashboard</button>
+  <button class="gn-tablinks" onclick="openTab(event, 'gn-google-feed')">Google News Feed Setup</button>
+  <button class="gn-tablinks" onclick="openTab(event, 'gn-troubleshooting')">Troubleshooting</button>
+  <button class="gn-tablinks" onclick="openTab(event, 'gn-help')">Help &amp; Support</button>
+  <button class="gn-tablinks" onclick="openTab(event, 'gn-services')">Services</button>
   
 </div>
 
-<div id="Intro" class="tabcontent">
+<div id="gn-intro" class="gn-tabcontent">
    
   <p><?php
 			printf(
-				__( 'Hi,</p><p style="font-size:110%%;"> I\'m Chris Andrews, a Platinum Level Product Expert on the <a href="%1$s">Google News Publisher Help forum</a>, the creator of <a href="%2$s">GN Publisher</a>, and the owner of <a href="%3$s">Andrews Consulting</a>.</p>', 'gn-publisher' ),
-				'https://support.google.com/news/publisher-center/community?hl=en',
-				'https://wordpress.org/plugins/gn-publisher/',
-				'https://andrews.com'
+				__( '<p style="font-size:110%;"> This plugin was created by Chris Andrews, a Platinum Level Product Expert on the Google News Publisher Help forum, the original creator of <a href="%1$s" target="_blank">GN Publisher</a>.</p>', 'gn-publisher' ),
+				'https://gnpublisher.com/'
 			);
 	?></p>
 
 	<p><?php
 			printf(
-				__( 'GN Publisher is a WordPress plugin designed to output RSS feeds that comply with the <a href="%1$s">Google News RSS Feed Technical Requirements</a> for inclusion in the <a href="%2$s">Google News Publisher Center</a>.', 'gn-publisher' ),
+				__( 'GN Publisher is a WordPress plugin designed to output RSS feeds that comply with the <a href="%1$s" target="_blank">Google News RSS Feed Technical Requirements</a> for inclusion in the <a href="%2$s" target="_blank">Google News Publisher Center</a>.', 'gn-publisher' ),
 				'https://support.google.com/news/publisher-center/answer/9545420?hl=en',
 				'https://publishercenter.google.com/'
 			);
@@ -75,23 +74,36 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</ul>
 </div>
 
-<div id="google_feed" class="tabcontent">
+<div id="gn-google-feed" class="gn-tabcontent">
    
    <p><?php _e( 'Once installed and activated, you can find your GN Publisher RSS feeds at:', 'gn-publisher' ); ?></p>
 
-		<ul style="padding-left:40px">
+		<ul>
  		<?php 
 
 	/////// display feed urls, @since 1.0.2 -ca ///////////////////
 			$permalinks_enabled = ! empty( get_option( 'permalink_structure' ) );
-
-			echo '<li>' . esc_url( $permalinks_enabled ? trailingslashit( site_url() ) . 'feed/gn' : add_query_arg( 'feed', 'gn', site_url() ) ) . '</li>';
+      $feed_url=esc_url( $permalinks_enabled ? trailingslashit( site_url() ) . 'feed/gn' : add_query_arg( 'feed', 'gn', site_url() ) );
+			echo '<li><input type="text" class="gn-input" value="'.$feed_url.'" id="gn-feed" size="60" readonly>
+      <div class="gn-tooltip">
+      <button class="gn-btn" onclick="gn_copy('."'gn-feed'".')" onmouseout="gn_out('."'gn-feed'".')">
+        <span class="gn-tooltiptext" id="gn-feed-tooltip">Copy URL</span>
+        Copy
+        </button>
+      </div></li>';
 			
 			$categories = get_categories(); 
 			foreach( $categories as $category ) {
 				$gn_category_link = get_category_link( $category->term_id );
 				$gn_category_link = $permalinks_enabled ? trailingslashit( $gn_category_link ) . 'feed/gn' : add_query_arg( 'feed', 'gn', $gn_category_link );
-				echo '<li>' . esc_url( $gn_category_link ) . '</li>';
+        echo '<li><input type="text" class="gn-input" value="'.esc_url( $gn_category_link ).'" id="gn-feed-'.$category->term_id.'" size="60" readonly>
+      <div class="gn-tooltip">
+      <button class="gn-btn" onclick="gn_copy('."'gn-feed-".$category->term_id."'".')" onmouseout="gn_out('."'gn-feed-".$category->term_id."'".')">
+        <span class="gn-tooltiptext" id="gn-feed-'.$category->term_id.'-tooltip">Copy URL</span>
+        Copy
+        </button>
+      </div></li>';
+			
 			} 
  		?>
 		</ul>
@@ -106,14 +118,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 </div>
 
-<div id="Troubleshooting" class="tabcontent">
+<div id="gn-troubleshooting" class="gn-tabcontent">
 
-<div class="menu">
-    <div class="question">
-      <input type="checkbox" id="type1" class="accordion">
+<div class="gn-menu">
+    <div class="gn-question">
+      <input type="checkbox" id="type1" class="gn-accordion">
       <label for="type1">
         There are no articles in this section
-        <div id="icon">
+        <div class="gn-icon">
           <span aria-hidden="true"></span>
         </div>
       </label>
@@ -124,11 +136,11 @@ if ( ! defined( 'ABSPATH' ) ) {
         </li>
       </ul>
     </div>
-    <div class="question">
-      <input type="checkbox" id="type2" class="accordion">
+    <div class="gn-question">
+      <input type="checkbox" id="type2" class="gn-accordion">
       <label for="type2">
         Refreshed the page but again the same result
-        <div id="icon">
+        <div class="gn-icon">
           <span aria-hidden="true"></span>
         </div>
       </label>
@@ -139,11 +151,11 @@ if ( ! defined( 'ABSPATH' ) ) {
         </li>
       </ul>
     </div>
-    <div class="question">
-      <input type="checkbox" id="type3" class="accordion">
+    <div class="gn-question">
+      <input type="checkbox" id="type3" class="gn-accordion">
       <label for="type3">
         If the url works then what to do
-        <div id="icon">
+        <div class="gn-icon">
           <span aria-hidden="true"></span>
         </div>
       </label>
@@ -155,11 +167,11 @@ if ( ! defined( 'ABSPATH' ) ) {
         </li>
       </ul>
     </div>
-    <div class="question">
-      <input type="checkbox" id="type4" class="accordion">
+    <div class="gn-question">
+      <input type="checkbox" id="type4" class="gn-accordion">
       <label for="type4">
         How to run RSS Feed Validator
-        <div id="icon">
+        <div class="gn-icon">
           <span aria-hidden="true"></span>
         </div>
       </label>
@@ -172,11 +184,11 @@ if ( ! defined( 'ABSPATH' ) ) {
         </li>
       </ul>
     </div>
-    <div class="question">
-      <input type="checkbox" id="type5" class="accordion">
+    <div class="gn-question">
+      <input type="checkbox" id="type5" class="gn-accordion">
       <label for="type5">
         Missing Images 
-        <div id="icon">
+        <div class="gn-icon">
           <span aria-hidden="true"></span>
         </div>
       </label>
@@ -189,11 +201,11 @@ if ( ! defined( 'ABSPATH' ) ) {
         </li>
       </ul>
     </div>
-    <div class="question">
-      <input type="checkbox" id="type6" class="accordion">
+    <div class="gn-question">
+      <input type="checkbox" id="type6" class="gn-accordion">
       <label for="type6">
         Missing Media
-        <div id="icon">
+        <div class="gn-icon">
           <span aria-hidden="true"></span>
         </div>
       </label>
@@ -204,11 +216,11 @@ if ( ! defined( 'ABSPATH' ) ) {
         </li>
       </ul>
     </div>
-    <div class="question">
-      <input type="checkbox" id="type7" class="accordion">
+    <div class="gn-question">
+      <input type="checkbox" id="type7" class="gn-accordion">
       <label for="type7">
         General Info
-        <div id="icon">
+        <div class="gn-icon">
           <span aria-hidden="true"></span>
         </div>
       </label>
@@ -226,54 +238,92 @@ if ( ! defined( 'ABSPATH' ) ) {
       </ul>
     </div>
   </div>
+
+  <p>If the above information does not seems to help you can also contact us from  <a href="https://gnpublisher.com/contact-us/" target="_ blank">https://gnpublisher.com/contact-us</a></p>
 </div>
 
-<div id="Help" class="tabcontent">
-   
- <p style="font-size:15px;padding-left:10px;">&#8211;  <?php _e( 'Free', 'gn-publisher' ); ?></p>
+<div id="gn-help" class="gn-tabcontent ">
+<div class="gn-flex-container">
+<div class="gn-left-side">
+<p>We are dedicated to provide Technical support &amp; Help to our users. Use the below form for sending your questions. </p>
+<p>You can also contact us from <a href="https://gnpublisher.com/contact-us/" target="_blank">https://gnpublisher.com/contact-us/</a>.</p>
 
-		<p><?php
-			printf(
-				__( 'If you need help with the GN Publisher plugin or anything related to the RSS feeds that are created, please ask on the official <a href="%1$s">WordPress GN Publisher plugin support forum</a>.', 'gn-publisher' ),
-				'https://wordpress.org/support/plugin/gn-publisher/'
-			);
-		?></p>
-
-	<p><?php
-			printf(
-				__( 'If you need general help as a Google News publisher, or help with the Google News Publisher Center, please ask for help in the official <a href="%1$s">Google News Publisher Help Forum</a>. I or some of the other regulars on the forum will try to help.', 'gn-publisher' ),
-				'https://support.google.com/news/publisher-center/threads?hl=en'
-			);
-		?></p>
-
-	<p><?php
-			printf(
-				__( 'You can also find help on my <a href="%1$s">YouTube channel</a>.', 'gn-publisher' ),
-				'http://www.youtube.com/c/ChrisAndrews1'
-			);
-	?></p>
-
-		<p style="font-size:15px;padding-left:10px;">&#8211;  <?php _e( 'Private Consulting', 'gn-publisher' ); ?></p>
-
-	<p><?php _e( 'I work with a small number of news publishers on a year-round basis. My consulting focuses on discoverability and optimization for surfacing on Google News, Newsstand, Top Stories, Discover, Articles for You, and other Google related (and emerging) properties. Consultations include regular technical SEO audits, advice on content and readership development, a quarterly newsletter with advice, recommendations and updates on what\'s going on with Google News and related properties and how to best use them to gain more exposure.', 'gn-publisher' ); ?></p>
+<div class="gn_support_div_form" id="technical-form">
+            <ul>
+                <li>
+                  <label class="gn-support-label">Email<span class="gn-star-mark">*</span></label>
+                   <div class="support-input">
+                   		
+                   		<input type="text" id="gn_query_email" name="gn_query_email" size="47" placeholder="Enter your Email" required="">
+                   </div>
+                </li>
+                
+                <li>
+                    <label class="gn-support-label">Query<span class="gn-star-mark">*</span></label>                    
+                   
+                    <div class="support-input"><textarea rows="5" cols="50" id="gn_query_message" name="gn_query_message" placeholder="Write your query"></textarea>
+                    </div>
+                
+                  
+                </li>
+                
+                <li><button class="button button-primary gn-send-query">Send Support Request</button></li>
+            </ul>            
+                
+             
+            <div class="clear"> </div>
+                    <span class="gn-query-success gn-result gn-hide">Message sent successfully, Please wait we will get back to you shortly</span>
+                    <span class="gn-query-error gn-result gn-hide">Message not sent. please check your network connection</span>
+            </div>
 </div>
 
-<script>
-function openCity(evt, cityName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
+<div class="gn-right-side">
+<div class="gn-bio-box" id="gn_Bio">
+                <h1>Vision &amp; Mission</h1>
+                <p class="gn-p">We strive to provide the Google News Publisher in the world.</p>
+              <p class="gn_boxdesk"> Delivering a good user experience means a lot to us, so we try our best to reply each and every question.</p>
+           </div>
+</div>
 
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-</script>
+
+  </div>
+ 
+  
+
+	
+</div>
+<div id="gn-services" class="gn-tabcontent">
+<div class="gn-flex-container-services">
+  <div class="gn-service-card" data-url="https://gnpublisher.com/services/google-news-setup-audit-service/">
+    <div class="gn-service-card-left">
+    <img src="<?php echo GNPUB_URL . '/assets/images/google-news.png'?>" width="128px" height="128px">
+  </div>
+  <div class="gn-service-card-right">
+    <h3 class="gn-service-heading">Google News Setup & Audit</h3>
+  <p>You can get thousands of clicks to your site from Google News. We can set up Google news for your website and perform regular audits.</p>
+  </div>
+  </div>
+  <div class="gn-service-card" data-url="https://gnpublisher.com/services/dedicated-developer-for-website-search-console-maintenance-service/">
+  <div class="gn-service-card-left">
+  <img src="<?php echo GNPUB_URL . '/assets/images/support.png'?>" width="128px" height="128px">
+  </div>
+  <div class="gn-service-card-right">
+    <h3 class="gn-service-heading">Dedicated Developer for Website</h3>
+  <p>Our dedicated developers will continuously monitor your website and make sure its up and running without any issue.</p>
+  </div>
+  </div>
+  
+  <div class="gn-service-card" data-url="https://gnpublisher.com/services/search-console-maintenance-service/">
+  <div class="gn-service-card-left">
+  <img src="<?php echo GNPUB_URL . '/assets/images/google.png'?>" width="128px" height="128px">
+  </div>
+  <div class="gn-service-card-right">
+    <h3 class="gn-service-heading">Search Console
+Maintenance</h3>
+<p>  We will manage your all Google Search Console problems because even after a webpage gets indexed, issues can happen.</p>
+  </div>
+  </div>
+ 
+  </div>
+  </div>
 </div>
