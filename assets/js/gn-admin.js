@@ -31,7 +31,7 @@ function gn_copy(id) {
 
   jQuery(document).ready(function($) {
   var btn_click=false;
-  $('.gn-service-card-left,.gn-service-heading,gn-service-card-right p  ').click(function(){
+  $('.gn-service-card-left,.gn-service-heading,.gn-service-card-right p  ').click(function(){
     var url=$(this).parent().parent().data('url');
     if(url)
     {
