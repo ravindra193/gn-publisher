@@ -30,14 +30,15 @@ function gn_copy(id) {
   document.getElementById("defaultOpen").click();
 
   jQuery(document).ready(function($) {
-
-  $('.gn-service-card').click(function(){
-    var url=$(this).data('url');
+  var btn_click=false;
+  $('.gn-service-card-left,.gn-service-heading,gn-service-card-right p  ').click(function(){
+    var url=$(this).parent().parent().data('url');
     if(url)
     {
         window.open(url, '_blank');
     }
   });  
+ 
   $(".gn-send-query").on("click", function(e){
     e.preventDefault();   
     var message     = $("#gn_query_message").val();  

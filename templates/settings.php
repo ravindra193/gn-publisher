@@ -323,7 +323,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <h3 class="gn-service-heading">Search Console
 Maintenance</h3>
 <p>  We will manage your all Google Search Console problems because even after a webpage gets indexed, issues can happen.</p>
-<button class="gn-btn-primary button button-primary">View Pricing</button><button class="gn-btn button">Learn More</button>
+<a target="_blank" href="https://gnpublisher.com/services/search-console-maintenance-service/#pricing" class="gn-btn-primary button button-primary">View Pricing</a><a href="https://gnpublisher.com/services/search-console-maintenance-service/" target="_blank" class="gn-btn gn-btn-learnmore button">Learn More</a>
   </div>
   </div>
  
