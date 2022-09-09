@@ -1,10 +1,10 @@
 === GN Publisher: Google News Compatible RSS Feeds ===
-Contributors: Christopheran,jarred-kennedy
+Contributors: gnpublisher
 Tags: google news, google, news, publisher center, rss, feed, feeds
 Requires at least: 3.5
 Tested up to: 6.0.1
 Requires PHP: 5.4
-Stable tag: 1.3
+Stable tag: 1.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -24,7 +24,11 @@ The plugin addresses common RSS compatiblity issues publishers experience when u
 -  Cached RSS feeds causing slow updating
 -  Delayed crawling by Google
 
-After installing, click on the *'Settings & Tips'* link under GN Publisher on your plugins page for additional information about applying and troubleshooting issues related to the Google News Publisher Center.
+After installing, click on the *'Dashboard'* under GN Publisher on your plugins page for additional information about applying and troubleshooting issues related to the Google News Publisher Center.
+
+**New in 1.4**
+
+Refreshed UI and improved assets usage . Added Support Form .
 
 **New in 1.0.9**
 
@@ -58,41 +62,56 @@ GN Publisher may also be downloaded to your computer and uploaded, installed, an
 
 == Changelog ==
 
+= 1.4 - 2022-09-09 =
+* UI Improvements
+* Added Help &amp; support form
+* Improved assets and readme
+
 = 1.3 - 2021-04-15 =
-Removed Freemius
-Reverted a redirect change
+* Removed Freemius
+* Reverted a redirect change
+
 = 1.2 - 2021-03-18 =
-Optimize image replacement feature
-Update for PHP 8 compatability
+* Optimize image replacement feature
+* Update for PHP 8 compatability
+
 = 1.1 - 2020-11-29 =
-Fix for some doubled images not being caught
-Fix for some permalink examples on info page
-Added Freemius opt in
+* Fix for some doubled images not being caught
+* Fix for some permalink examples on info page
+* Added Freemius opt in
+
 = 1.0.9 - 2020-08-24 =
-Added timestamp for most recent ping
-Added timestamp for most recent fetch
-Bug fix for pubdate timezone
-Expanded troubleshooting section
-Added refresh (cached) Pub Center articles upon activation
+* Added timestamp for most recent ping
+* Added timestamp for most recent fetch
+* Bug fix for pubdate timezone
+* Expanded troubleshooting section
+* Added refresh (cached) Pub Center articles upon activation
+
 = 1.0.8 - 2020-05-25 =
-bug fix for pre 5.3 versions of WP
-fix for Yoast compatiblity
-fix for Monster Insight compatability
-Bug fix for Instagram embeds
-Removed time restriction on posts incld in feeds
+* bug fix for pre 5.3 versions of WP
+* fix for Yoast compatiblity
+* fix for Monster Insight compatability
+* Bug fix for Instagram embeds
+* Removed time restriction on posts incld in feeds
+
 = 1.0.7 - 2020-04-23 =
-Bug fixes affecting pre 5.3 versions of WP
+* Bug fixes affecting pre 5.3 versions of WP
+
 = 1.0.6 - 2020-04-23 =	
-Added google websub notification
+* Added google websub notification
+
 = 1.0.4 - 2020-04-06 =
-Syncing up version info
+* Syncing up version info
+
 = 1.0.3 - 2020-04-06 =
-Disabled select rss plugins from altering this feed
+* Disabled select rss plugins from altering this feed
+
 = 1.0.2 - 2020-04-02 =
-Adjustments to featured image handling
-Added cache disabling
-Added GN Publisher to generator tag
-Removed default feed option in settings
-Added explicit feed urls on settings page
+* Adjustments to featured image handling
+* Added cache disabling
+* Added GN Publisher to generator tag
+* Removed default feed option in settings
+* Added explicit feed urls on settings page
+
 = 1.0.0 - 2020-03-10 =
-This is the first release of GN Publisher
+* This is the first release of GN Publisher

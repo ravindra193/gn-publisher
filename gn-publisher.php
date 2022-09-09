@@ -5,11 +5,11 @@
  * @copyright 2020 Chris Andrews
  * 
  * Plugin Name: GN Publisher
- * Plugin URI: https://andrews.com/gn-publisher
+ * Plugin URI: https://gnpublisher.com/
  * Description: GN Publisher: The easy way to make Google News Publisher compatible RSS feeds.
- * Version: 1.3
+ * Version: 1.4
  * Author: Chris Andrews
- * Author URI: https://andrews.com
+ * Author URI: https://gnpublisher.com/
  * Text Domain: gn-publisher
  * Domain Path: /languages
  * License: GPL v3 or later
@@ -40,7 +40,7 @@ function gnpub_feed_bootstrap() {
 		return;
 	}
 
-	define( 'GNPUB_VERSION', '1.3' );
+	define( 'GNPUB_VERSION', '1.4' );
 	define( 'GNPUB_PATH', plugin_dir_path( __FILE__ ) );
     define( 'GNPUB_URL', plugins_url( '', __FILE__) );
 	define( 'GNPUB_PLUGIN_FILE', __FILE__ );
@@ -63,9 +63,11 @@ function gnpub_feed_bootstrap() {
 		require_once GNPUB_PATH . 'class-gnpub-notices.php';
 		require_once GNPUB_PATH . 'controllers/admin/class-gnpub-menu.php';
 		require_once GNPUB_PATH . 'controllers/admin/class-gnpub-settings.php';
+		require_once GNPUB_PATH . 'includes/mb-helper-function.php';
 
 		register_activation_hook( __FILE__, array( 'GNPUB_Installer', 'install' ) );
 		register_deactivation_hook( __FILE__, array( 'GNPUB_Installer', 'uninstall' ) );
+		add_action('wp_ajax_gn_send_query_message', 'gn_send_query_message');
 
 		$admin_notices = new GNPUB_Notices();
 
@@ -80,3 +82,21 @@ gnpub_feed_bootstrap();
 function gnpub_load_textdomain() {
 	load_plugin_textdomain( 'gn-publisher', false, basename( dirname( GNPUB_PLUGIN_FILE ) ) . '/languages/' );
 }
+
+function gnpub_admin_style() {
+	global $pagenow , $typenow;
+	$current_page=isset($_GET['page'])?$_GET['page']:'';
+	if($pagenow=='options-general.php' && isset($current_page) && $current_page=="gn-publisher-settings")
+	{
+		wp_enqueue_style('gn-admin-styles', GNPUB_URL .'/assets/css/gn-admin.css', array(),GNPUB_VERSION);
+		wp_enqueue_script('gn-admin-script', GNPUB_URL . '/assets/js/gn-admin.js', array('jquery'), GNPUB_VERSION, 'true' );
+		wp_localize_script('gn-admin-script', 'gn_script_vars', array(
+			'nonce' => wp_create_nonce( 'gn-admin-nonce' ),
+		)
+	);
+	}
+  
+}
+add_action('admin_enqueue_scripts', 'gnpub_admin_style');
+
+

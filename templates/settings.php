@@ -6,8 +6,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 <div class="wrap">
-	<h1><?php _e( 'GN Publisher Info and Tips', 'gn-publisher' ); ?></h1>
-
+	<div class="gn-container">
+  
+		<h1><a href="https://gnpublisher.com/" target="_blank"><img  class="gn-logo" src=<?php echo GNPUB_URL . '/assets/images/logo.png' ?> title="<?php _e( '<b>GN</b> Publisher', 'gn-publisher' ); ?>"/></a></h1>
+	</div>
 <?php // don't think we need this anymore, let's test without, but leave in code for now in case
 	//it needs to be reenabled - ca (11/29/2020)
 /*
@@ -33,66 +35,34 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	</form>
 */ ?>
-	<div class="information" style="font-weight:bold;background-color:#dedede;padding:30px;">
+	<div class="gn-tab">
+  <button class="gn-tablinks" onclick="openTab(event, 'gn-intro')" id="defaultOpen">Dashboard</button>
+  <button class="gn-tablinks" onclick="openTab(event, 'gn-google-feed')">Google News Feed Setup</button>
+  <button class="gn-tablinks" onclick="openTab(event, 'gn-troubleshooting')">Troubleshooting</button>
+  <button class="gn-tablinks" onclick="openTab(event, 'gn-help')">Help &amp; Support</button>
+  <button class="gn-tablinks" onclick="openTab(event, 'gn-services')">Services</button>
+  
+</div>
 
-	<p><?php
+<div id="gn-intro" class="gn-tabcontent">
+   
+  <p><?php
 			printf(
-				__( 'Hi,</p><p style="font-size:110%%;"> I\'m Chris Andrews, a Platinum Level Product Expert on the <a href="%1$s">Google News Publisher Help forum</a>, the creator of <a href="%2$s">GN Publisher</a>, and the owner of <a href="%3$s">Andrews Consulting</a>.</p>', 'gn-publisher' ),
-				'https://support.google.com/news/publisher-center/community?hl=en',
-				'https://wordpress.org/plugins/gn-publisher/',
-				'https://andrews.com'
+				__( '<p style="font-size:110%;"> This plugin was created by Chris Andrews, a Platinum Level Product Expert on the Google News Publisher Help forum, the original creator of <a href="%1$s" target="_blank">GN Publisher</a>.</p>', 'gn-publisher' ),
+				'https://gnpublisher.com/'
 			);
 	?></p>
 
 	<p><?php
 			printf(
-				__( 'GN Publisher is a WordPress plugin designed to output RSS feeds that comply with the <a href="%1$s">Google News RSS Feed Technical Requirements</a> for inclusion in the <a href="%2$s">Google News Publisher Center</a>.', 'gn-publisher' ),
+				__( 'GN Publisher is a WordPress plugin designed to output RSS feeds that comply with the <a href="%1$s" target="_blank">Google News RSS Feed Technical Requirements</a> for inclusion in the <a href="%2$s" target="_blank">Google News Publisher Center</a>.', 'gn-publisher' ),
 				'https://support.google.com/news/publisher-center/answer/9545420?hl=en',
 				'https://publishercenter.google.com/'
 			);
 	?></p>
 
 	<p><?php _e( 'The plugin addresses common issues publishers experience when using the Google News Publisher Center, including:', 'gn-publisher' ); ?></p>
-		
-		   <div style="max-width:500px;min-width:300px;float:right;">
-    
-    <fieldset style="background-color: #eeeeee;border:2px solid;margin:14px;padding:12px;"><legend style="font-size:110%;color:red;">Beta-Tester Invite</legend>
-    <?php
-			printf(
-				__( '<p>Yes, it\'s finally here!</p>
-
-<p>I\'m thrilled to introduce you to <a href="%1$s">Accountable Press</a>.</p>
-
-<p>My goal with Accountable Press is to:</p>
-
-<ul style="list-style-type:disc;padding-left:20px;"><li>Help you build your site\'s trust, authority and credibility</li>
-
-<li>Fight against content theft and vouch for accountable publishers</li>
-
-<li>And lobby search engines and news aggregators on behalf of publishers like yourself</li></ul>
-
-By becoming a Certified Accountable Press publisher, you\'ll be telling your readers, search engines, and news aggregators that you have:
-
-<ul style="list-style-type:disc;padding-left:20px;"><li>A verified physical address</li>
-
-<li>Successfully completed our course on original reporting, attribution, accountability, and responsible journalism</li>
-
-<li>Pledged to be responsible and accountable for what you publish, maintain accurate physical and online contact information, strive to publish honest, accurate, reporting, and to stand against plagiarism and copyright infringement.</li></ul>
-
-<p>As a Certified Accountable Press Publisher, you\'ll be able to display the Certified Accountable Press Seal on your site (optional) and you\'ll have a public profile page on Accountable Press.</p>
-
-<p>Become a Certified Accountable Press Publisher today!</p>
-
-<p>For complete details, please read my blog post here: <a href="%2$s">Accountable Press – open for beta-testing!</a></p>
-', 'gn-publisher' ),
-				'https://accountable.press',
-				'https://accountable.press/accountable-press-open-for-beta-testing/'
-			);
-	?></fieldset>
-    
-    </div>
-    
-
+ 
 		<ul style="list-style-type:circle;padding-left: 40px;">
 			<li><?php _e( 'Incomplete articles', 'gn-publisher' ); ?></li>
 			<li><?php _e( 'Duplicate images', 'gn-publisher' ); ?></li>
@@ -102,24 +72,38 @@ By becoming a Certified Accountable Press publisher, you\'ll be telling your rea
 			<li><?php _e( 'Cached RSS feeds causing slow updating', 'gn-publisher' ); ?></li>
 			<li><?php _e( 'Delayed crawling by Google', 'gn-publisher' ); ?></li>
 		</ul>
+</div>
 
-		<p style="font-size:18px;padding-left: 20px;padding-top:15px;"><u><em><?php _e( 'Feed URLs', 'gn-publisher' ); ?></em></u></p>
+<div id="gn-google-feed" class="gn-tabcontent">
+   
+   <p><?php _e( 'Once installed and activated, you can find your GN Publisher RSS feeds at:', 'gn-publisher' ); ?></p>
 
-	<p><?php _e( 'Once installed and activated, you can find your GN Publisher RSS feeds at:', 'gn-publisher' ); ?></p>
-
-		<ul style="padding-left:40px">
+		<ul>
  		<?php 
 
 	/////// display feed urls, @since 1.0.2 -ca ///////////////////
 			$permalinks_enabled = ! empty( get_option( 'permalink_structure' ) );
-
-			echo '<li>' . esc_url( $permalinks_enabled ? trailingslashit( site_url() ) . 'feed/gn' : add_query_arg( 'feed', 'gn', site_url() ) ) . '</li>';
+      $feed_url=esc_url( $permalinks_enabled ? trailingslashit( site_url() ) . 'feed/gn' : add_query_arg( 'feed', 'gn', site_url() ) );
+			echo '<li><input type="text" class="gn-input" value="'.$feed_url.'" id="gn-feed" size="60" readonly>
+      <div class="gn-tooltip">
+      <button class="gn-btn" onclick="gn_copy('."'gn-feed'".')" onmouseout="gn_out('."'gn-feed'".')">
+        <span class="gn-tooltiptext" id="gn-feed-tooltip">Copy URL</span>
+        Copy
+        </button>
+      </div></li>';
 			
 			$categories = get_categories(); 
 			foreach( $categories as $category ) {
 				$gn_category_link = get_category_link( $category->term_id );
 				$gn_category_link = $permalinks_enabled ? trailingslashit( $gn_category_link ) . 'feed/gn' : add_query_arg( 'feed', 'gn', $gn_category_link );
-				echo '<li>' . esc_url( $gn_category_link ) . '</li>';
+        echo '<li><input type="text" class="gn-input" value="'.esc_url( $gn_category_link ).'" id="gn-feed-'.$category->term_id.'" size="60" readonly>
+      <div class="gn-tooltip">
+      <button class="gn-btn" onclick="gn_copy('."'gn-feed-".$category->term_id."'".')" onmouseout="gn_out('."'gn-feed-".$category->term_id."'".')">
+        <span class="gn-tooltiptext" id="gn-feed-'.$category->term_id.'-tooltip">Copy URL</span>
+        Copy
+        </button>
+      </div></li>';
+			
 			} 
  		?>
 		</ul>
@@ -132,180 +116,217 @@ By becoming a Certified Accountable Press publisher, you\'ll be telling your rea
 
 	<p><?php _e( 'After the initial setup, GN Publisher will ping Google with an alert each time your feed is updated.', 'gn-publisher' ); ?></p>
 
-<?php //hold this and remove if all goes ok with removing the featured image setting
-/*
+</div>
 
-		<p style="font-size:18px;padding-left: 20px;padding-top:15px;"><u><em><?php _e( 'GN Publisher Settings', 'gn-publisher' ); ?></em></u></p>
+<div id="gn-troubleshooting" class="gn-tabcontent">
 
-		<p style="font-size:15px;padding-left:10px;">&#8211;  <?php _e( 'Include featured image', 'gn-publisher' ); ?></p>
+<div class="gn-menu">
+    <div class="gn-question">
+      <input type="checkbox" id="type1" class="gn-accordion">
+      <label for="type1">
+        There are no articles in this section
+        <div class="gn-icon">
+          <span aria-hidden="true"></span>
+        </div>
+      </label>
+      <ul id="links1">
+        <li>
+          <p><?php _e( 'If you are getting the dreaded "There are no articles in this section" message in the Publisher Center:', 'gn-publisher' ); ?></p>
+           <p><?php _e( 'Refresh the section in the Publisher Center. Wait 10 to 15 minutes, then reload the entire page using your browser\'s "reload" button and recheck to see if articles appear.', 'gn-publisher' ); ?></p>
+        </li>
+      </ul>
+    </div>
+    <div class="gn-question">
+      <input type="checkbox" id="type2" class="gn-accordion">
+      <label for="type2">
+        Refreshed the page but again the same result
+        <div class="gn-icon">
+          <span aria-hidden="true"></span>
+        </div>
+      </label>
+      <ul id="links2">
+        <li>
+          <p><?php _e( 'If you\'ve refreshed the page in the Publisher Center and continue to get the same results, visit the URL you entered for the section and make sure there are articles included in the feed.', 'gn-publisher' ); ?></p>
+           <p><?php _e( 'If you get a 404 or "missing" page when visiting the feed url, please review the notes in the "feed urls" section above and If there are no articles in the feed, please make sure there are articles published in that section (category) within the last 30 days.', 'gn-publisher' ); ?></p>
+        </li>
+      </ul>
+    </div>
+    <div class="gn-question">
+      <input type="checkbox" id="type3" class="gn-accordion">
+      <label for="type3">
+        If the url works then what to do
+        <div class="gn-icon">
+          <span aria-hidden="true"></span>
+        </div>
+      </label>
+      <ul id="links3">
+        <li>
+         <p><?php _e( '➔ Most Recent Feedfetcher Fetch: None recorded. (if testing, refresh this page for most recent fetch time)<br/>&#8226; If the "Most Recent Feedfetcher fetch" is "None recorded" or the date is more than 24 hours old, it\'s likely that your host or firewall is blocking Google\'s feed crawler, Feedfetcher. Because Feedfetcher is not a well-known bot and doesn\'t follow some of the standard crawler procedures, it is often mistakenly blocked by hosting companies and firewalls. Ask your hosting company or server administrator to whitelist the user-agent "Feedfetcher-Google". Note: If you are using AWS Cloudfront, Amazon does not pass the user-agent through to GN Publisher, so the "Most Recent Feedfetcher Fetch" timestamp will not work for you.', 'gn-publisher' ); ?></p>
+<p><?php _e( '➔ Most Recent Update Ping Sent: None recorded. (if testing, refresh this page for most recent ping time)<br/>&#8226; When you publish or update a post, GN Publisher pings Google to let them know there is an update to one of your feeds. The "Most Recent Update Ping" indicates when the most recent ping was sent. Google normally fetches the feed soon thereafter (often within a minute).
+', 'gn-publisher' ); ?></p>
+        </li>
+      </ul>
+    </div>
+    <div class="gn-question">
+      <input type="checkbox" id="type4" class="gn-accordion">
+      <label for="type4">
+        How to run RSS Feed Validator
+        <div class="gn-icon">
+          <span aria-hidden="true"></span>
+        </div>
+      </label>
+      <ul id="links4">
+        <li>
+          <p><?php _e( '➔ The validator may validate but warn about iframe and script tags - those are okay for our purposes.<br/>
+➔ If the validator does not validate, or validates but warns of "invalid html" (for example, a "missing p tag"), those issues can cause the crawler to not accept the feed. These errors are sometimes caused by poorly coded themes or plugins and require further investigation to correct. The p tag issue is a common one that is often caused by a figure tag or blockquote tag (or other block level element) being inside a paragraph, which is not valid html.<br/>
+➔ If some Publisher Center sections are being fetched okay and others are reporting "no articles" - it\'s likely an html error that is included in an article on the specific feed that isn\'t loading properly in the Publisher Center.', 'gn-publisher' ); ?></p>
+           
+        </li>
+      </ul>
+    </div>
+    <div class="gn-question">
+      <input type="checkbox" id="type5" class="gn-accordion">
+      <label for="type5">
+        Missing Images 
+        <div class="gn-icon">
+          <span aria-hidden="true"></span>
+        </div>
+      </label>
+      <ul id="links5">
+        <li>
+          <p><?php _e( 'The Publisher Center requires that large images be used as the featured image - at least 800px on the shortest side. GN Publisher will try to use your original image, which is generally the largest. If you upload a featured image that is smaller than 800px on its shortest side, it might not appear with the article in the Publisher Center.<br/>Note - the Publisher Center preview pane can only display .jpg and .png image files. If you are using a CDN like CloudFlare or KeyCDN, even if you have the images set up correctly, the CDN may serve them as WebP files. That will cause the images to not be displayed, or be displayed inconsistently, in the preview pane. If you are experiencing this, go the the "Review and Publish" tab in the Publisher Center, subscribe to your publication if you haven\'t already, and then click on link for your publication and make sure the images are displayed correctly there. If they are displayed on your publication in Google News, you can ignore them not being in the preview pane.
 
-	<p><?php _e( 'Enabled by default. If you see your featured image twice in your articles in the Publisher Center, disable this setting and save.', 'gn-publisher' ); ?></p>
-		
-*/ ?>
-		<p style="font-size:18px;padding-left: 20px;padding-top:15px;"><u><em><?php _e( 'Publisher Center Troubleshooting', 'gn-publisher' ); ?></em></u></p>
+', 'gn-publisher' ); ?></p>
+           
+        </li>
+      </ul>
+    </div>
+    <div class="gn-question">
+      <input type="checkbox" id="type6" class="gn-accordion">
+      <label for="type6">
+        Missing Media
+        <div class="gn-icon">
+          <span aria-hidden="true"></span>
+        </div>
+      </label>
+      <ul id="links6">
+        <li>
+          <p><?php _e( 'Social media embeds that are included in your articles should also appear as part of the article in your Publisher Center. GN Publisher is designed to properly adjust the embeds for use in the Publisher Center. If your embeds don\'t appear as they should, please contact me through the GN Publisher support forum on WordPress.org', 'gn-publisher' ); ?></p>
+           
+        </li>
+      </ul>
+    </div>
+    <div class="gn-question">
+      <input type="checkbox" id="type7" class="gn-accordion">
+      <label for="type7">
+        General Info
+        <div class="gn-icon">
+          <span aria-hidden="true"></span>
+        </div>
+      </label>
+      <ul id="links7">
+        <li>
+          <p><?php _e( '➔ Be aware that Google has certain Content Policies for sites included on Google News properties. More information about applying is available on the Google News Publisher Help Center.<br/>
 
-<p style="font-size:15px;padding-left:10px;">&#8211;  <?php _e( 'Publisher Center says "There are no articles in this section"', 'gn-publisher' ); ?></p>
+➔ You\'ll need to meet additional requirements in the Publisher Center, such as verifying your domain, selecting an appropriate publication name, and setting up your logos correctly.<br/>
 
-	<p><?php _e( 'If you are getting the dreaded "There are no articles in this section" message in the Publisher Center:', 'gn-publisher' ); ?></p>
+➔ Because of the huge number of ways that publishers, plugins, and themes can manipulate WordPress posts, I can\'t guarantee that this plugin will result in the technical requirements being met.
 
-<ol>
+', 'gn-publisher' ); ?></p>
+           
+        </li>
+      </ul>
+    </div>
+  </div>
 
-<li style="margin: 15px 0;">
-<?php _e( 'Refresh the section in the Publisher Center. Wait 10 to 15 minutes, then reload the entire page using your browser\'s "reload" button and recheck to see if articles appear.' ); ?>
-</li>
+  <p>If the above information does not seems to help you can also contact us from  <a href="https://gnpublisher.com/contact-us/" target="_ blank">https://gnpublisher.com/contact-us</a></p>
+</div>
 
-	<li style="margin: 15px 0;">
-<?php _e( 'If you\'ve refreshed the page in the Publisher Center and continue to get the same results, visit the URL you entered for the section and make sure there are articles included in the feed.' ); ?>
+<div id="gn-help" class="gn-tabcontent ">
+<div class="gn-flex-container">
+<div class="gn-left-side">
+<p>We are dedicated to provide Technical support &amp; Help to our users. Use the below form for sending your questions. </p>
+<p>You can also contact us from <a href="https://gnpublisher.com/contact-us/" target="_blank">https://gnpublisher.com/contact-us/</a>.</p>
+
+<div class="gn_support_div_form" id="technical-form">
+            <ul>
+                <li>
+                  <label class="gn-support-label">Email<span class="gn-star-mark">*</span></label>
+                   <div class="support-input">
+                   		
+                   		<input type="text" id="gn_query_email" name="gn_query_email" size="47" placeholder="Enter your Email" required="">
+                   </div>
+                </li>
+                
+                <li>
+                    <label class="gn-support-label">Query<span class="gn-star-mark">*</span></label>                    
+                   
+                    <div class="support-input"><textarea rows="5" cols="50" id="gn_query_message" name="gn_query_message" placeholder="Write your query"></textarea>
+                    </div>
+                
+                  
+                </li>
+                
+                <li><button class="button button-primary gn-send-query">Send Support Request</button></li>
+            </ul>            
+                
+             
+            <div class="clear"> </div>
+                    <span class="gn-query-success gn-result gn-hide">Message sent successfully, Please wait we will get back to you shortly</span>
+                    <span class="gn-query-error gn-result gn-hide">Message not sent. please check your network connection</span>
+            </div>
+</div>
+
+<div class="gn-right-side">
+<div class="gn-bio-box" id="gn_Bio">
+                <h1>Vision &amp; Mission</h1>
+                <p class="gn-p">We strive to provide the Google News Publisher in the world.</p>
+              <p class="gn_boxdesk"> Delivering a good user experience means a lot to us, so we try our best to reply each and every question.</p>
+           </div>
+</div>
+
+
+  </div>
+ 
+  
+
 	
-<ul style="list-style-type: circle;padding-left:20px;">
-	<li style="margin: 10px 0;">
-<?php _e( 'If you get a 404 or "missing" page when visiting the feed url, please review the notes in the "feed urls" section above.' ); ?>
-	</li>
-
-	<li style="margin: 10px 0;">
-<?php _e( 'If there are no articles in the feed, please make sure there are articles published in that section (category) within the last 30 days.' ); ?>
-	</li>
-</ul>
-
-</li>
-
-
-<li style="margin: 15px 0;">
-<?php _e( 'If the url works and there are articles, check the "Most Recent Feedfetcher Fetch" below:' ); ?>
-
-		<ul style="padding-left:30px;">
-
-		<li style="margin: 10px 0;font-size:110%;">
-<?php echo '&#10132; '; ?>
-<?php _e( 'Most Recent Feedfetcher Fetch: ', 'gn-publisher' ); ?>
-<span style="color: MidnightBlue;"><?php echo ( is_null( $last_google_fetch ) ) ? __( 'None recorded.', 'gn-publisher' ) : $last_google_fetch; ?></span> <span style="font-weight:500;"><?php _e( '(if testing, refresh this page for most recent fetch time)', 'gn-publisher' ); ?></span>
-		</li>
-		</ul>
-
-		<ul style="list-style-type: circle;padding-left:60px;">
-
-		<li style="margin: 10px 0;">
-
-<?php _e( 'If the "Most Recent Feedfetcher fetch" is "None recorded" or the date is more than 24 hours old, it\'s likely that your host or firewall is blocking Google\'s feed crawler, Feedfetcher. Because Feedfetcher is not a well-known bot and doesn\'t follow some of the standard crawler procedures, it is often mistakenly blocked by hosting companies and firewalls. Ask your hosting company or server administrator to whitelist the user-agent "Feedfetcher-Google". Note: If you are using AWS Cloudfront, Amazon does not pass the user-agent through to GN Publisher, so the "Most Recent Feedfetcher Fetch" timestamp will not work for you.' ); ?>
-
-		</ul>
-
-
-		<ul style="padding-left:30px;">
-
- 		<li style="margin: 10px 0;font-size:110%;">
-<?php echo '&#10132; '; ?>
-<?php _e( 'Most Recent Update Ping Sent: ', 'gn-publisher' ); ?>
-<span style="color: MidnightBlue;"><?php echo ( is_null( $last_websub_ping ) ) ? __( 'None recorded.', 'gn-publisher' ) : $last_websub_ping; ?></span> <span style="font-weight:500;"><?php _e( '(if testing, refresh this page for most recent ping time)', 'gn-publisher' ); ?></span>
-		</li>
-		</ul>
-
-		<ul style="list-style-type: circle;padding-left:60px;">
-
-		<li style="margin: 10px 0;">
-<?php _e( 'When you publish or update a post, GN Publisher pings Google to let them know there is an update to one of your feeds. The "Most Recent Update Ping" indicates when the most recent ping was sent. Google normally fetches the feed soon thereafter (often within a minute).' ); ?>
-		</li>
-		</ul>
-
-</li>
-
-
-
-</li>
-
-<li style="margin: 15px 0;">
-<?php printf(
-				__( 'If there are articles and the feed is being fetched, try running your url through the <a href="%1$s">RSS Feed Validator</a>. The feed will need to successfully validate with no html errors.', 'gn-publisher' ),
-				'https://validator.w3.org/feed/'
-			);
-		?>
-
-
-		<ul style="list-style-type: circle;padding-left:40px;">
-
-		<li style="margin: 10px 0;">
-<?php _e( 'The validator may validate but warn about iframe and script tags - those are okay for our purposes.' ); ?>
-		</li>
-
-
-		<li style="margin: 10px 0;">
-<?php _e( 'If the validator does not validate, or validates but warns of "invalid html" (for example, a "missing &lt;p&gt; tag"), those issues can cause the crawler to not accept the feed. These errors are sometimes caused by poorly coded themes or plugins and require further investigation to correct. The &lt;p&gt; tag issue is a common one that is often caused by a &lt;figure&gt; or &lt;blockquote&gt; (or other block level element) being inside a paragraph, which is not valid html.' ); ?>
-		</li>
-
-		<li style="margin: 10px 0;">
-<?php _e( 'If some Publisher Center sections are being fetched okay and others are reporting "no articles" - it\'s likely an html error that is included in an article on the specific feed that isn\'t loading properly in the Publisher Center.' ); ?>
-		</li>
-		</ul>
-
-</li>
-</ol>
-
-		<p style="font-size:15px;padding-left:10px;">&#8211;  <?php _e( '"Missing Images"', 'gn-publisher' ); ?></p>
-
-
-	<p><?php _e( 'The Publisher Center requires that large images be used as the featured image - at least 800px on the shortest side. GN Publisher will try to use your original image, which is generally the largest. If you upload a featured image that is smaller than 800px on its shortest side, it might not appear with the article in the Publisher Center.', 'gn-publisher' ); ?></p>
-
-	<p><?php _e( 'Note - the Publisher Center preview pane can only display .jpg and .png image files. If you are using a CDN like CloudFlare or KeyCDN, even if you have the images set up correctly, the CDN may serve them as WebP files. That will cause the images to not be displayed, or be displayed inconsistently, in the preview pane. If you are experiencing this, go the the "Review and Publish" tab in the Publisher Center, subscribe to your publication if you haven\'t already, and then click on link for your publication and make sure the images are displayed correctly there. If they are displayed on your publication in Google News, you can ignore them not being in the preview pane.', 'gn-publisher' ); ?></p>
-
-
-		<p style="font-size:15px;padding-left:10px;">&#8211;  <?php _e( '"Missing Media"', 'gn-publisher' ); ?></p>
-
-
-	<p><?php _e( 'Social media embeds that are included in your articles should also appear as part of the article in your Publisher Center. GN Publisher is designed to properly adjust the embeds for use in the Publisher Center. If your embeds don\'t appear as they should, please contact me through the GN Publisher support forum on WordPress.org', 'gn-publisher' ); ?></p>
-
-
-
-	<p>
-<?php _e( '<br />If you continue to have trouble, please see the "Where to get help!" section below.' ); ?>
-	</p>
-
-
-		<p style="font-size:18px;padding-left: 20px;padding-top:15px;"><u><em><?php _e( 'General Info', 'gn-publisher' ); ?></em></u></p>
-
-	
-	<p><?php
-			printf(
-				__( 'Be aware that Google has certain <a href="%1$s">Content Policies</a> for sites included on Google News properties. More information about applying is available on the <a href="%2$s">Google News Publisher Help Center</a>.', 'gn-publisher' ),
-				'https://support.google.com/news/publisher-center/answer/6204050',
-				'https://support.google.com/news/publisher-center/'
-			);
-		?></p>
-
-<p><?php _e( 'You\'ll need to meet additional requirements in the Publisher Center, such as verifying your domain, selecting an appropriate publication name, and setting up your logos correctly.', 'gn-publisher' ); ?></p>
-
-	<p><?php _e( 'Because of the huge number of ways that publishers, plugins, and themes can manipulate WordPress posts, I can\'t guarantee that this plugin will result in the technical requirements being met.', 'gn-publisher' ); ?></p>
-		
-
-		<p style="font-size:18px;padding-left: 20px;padding-top:15px;"><u><em><?php _e( 'Where to get help!', 'gn-publisher' ); ?></em></u></p>
-
-		<p style="font-size:15px;padding-left:10px;">&#8211;  <?php _e( 'Free', 'gn-publisher' ); ?></p>
-
-		<p><?php
-			printf(
-				__( 'If you need help with the GN Publisher plugin or anything related to the RSS feeds that are created, please ask on the official <a href="%1$s">WordPress GN Publisher plugin support forum</a>.', 'gn-publisher' ),
-				'https://wordpress.org/support/plugin/gn-publisher/'
-			);
-		?></p>
-
-	<p><?php
-			printf(
-				__( 'If you need general help as a Google News publisher, or help with the Google News Publisher Center, please ask for help in the official <a href="%1$s">Google News Publisher Help Forum</a>. I or some of the other regulars on the forum will try to help.', 'gn-publisher' ),
-				'https://support.google.com/news/publisher-center/threads?hl=en'
-			);
-		?></p>
-
-	<p><?php
-			printf(
-				__( 'You can also find help on my <a href="%1$s">YouTube channel</a>.', 'gn-publisher' ),
-				'http://www.youtube.com/c/ChrisAndrews1'
-			);
-	?></p>
-
-		<p style="font-size:15px;padding-left:10px;">&#8211;  <?php _e( 'Private Consulting', 'gn-publisher' ); ?></p>
-
-	<p><?php _e( 'I work with a small number of news publishers on a year-round basis. My consulting focuses on discoverability and optimization for surfacing on Google News, Newsstand, Top Stories, Discover, Articles for You, and other Google related (and emerging) properties. Consultations include regular technical SEO audits, advice on content and readership development, a quarterly newsletter with advice, recommendations and updates on what\'s going on with Google News and related properties and how to best use them to gain more exposure.', 'gn-publisher' ); ?></p>
-
-		<p><?php _e( 'Want to optimize your site and grow your visibility on Google? Contact me at <a href="mailto:chris@andrews.com">chris@andrews.com</a> for more information.', 'gn-publisher' ); ?></p>
-
-		</div>
+</div>
+<div id="gn-services" class="gn-tabcontent">
+<div class="gn-flex-container-services">
+  <div class="gn-service-card" data-url="https://gnpublisher.com/services/google-news-setup-audit-service/">
+    <div class="gn-service-card-left">
+    <img src="<?php echo GNPUB_URL . '/assets/images/google-news.png'?>" width="128px" height="128px">
+  </div>
+  <div class="gn-service-card-right">
+    <h3 class="gn-service-heading">Google News Setup & Audit</h3>
+  <p>You can get thousands of clicks to your site from Google News. We can set up Google news for your website and perform regular audits.</p>
+  <a target="_blank" href="https://gnpublisher.com/services/google-news-setup-audit-service/#pricing" class="gn-btn-primary button button-primary">View Pricing</a><a href="https://gnpublisher.com/services/google-news-setup-audit-service/" target="_blank" class="gn-btn gn-btn-learnmore button">Learn More</a>
+  </div>
+  </div>
+  <div class="gn-service-card" data-url="https://gnpublisher.com/services/dedicated-developer-for-website-search-console-maintenance-service/">
+  <div class="gn-service-card-left">
+  <img src="<?php echo GNPUB_URL . '/assets/images/support.png'?>" width="128px" height="128px">
+  </div>
+  <div class="gn-service-card-right">
+    <h3 class="gn-service-heading">Dedicated Developer for Website</h3>
+  <p>Our dedicated developers will continuously monitor your website and make sure its up and running without any issue.</p>
+  <a target="_blank" href="https://gnpublisher.com/services/dedicated-developer-for-website-search-console-maintenance-service/#pricing" class="gn-btn-primary button button-primary">View Pricing</a><a href="https://gnpublisher.com/services/dedicated-developer-for-website-search-console-maintenance-service/" target="_blank" class="gn-btn gn-btn-learnmore button">Learn More</a>
+  </div>
+  </div>
+  
+  <div class="gn-service-card" data-url="https://gnpublisher.com/services/search-console-maintenance-service/">
+  <div class="gn-service-card-left">
+  <img src="<?php echo GNPUB_URL . '/assets/images/google.png'?>" width="128px" height="128px">
+  </div>
+  <div class="gn-service-card-right">
+    <h3 class="gn-service-heading">Search Console
+Maintenance</h3>
+<p>  We will manage your all Google Search Console problems because even after a webpage gets indexed, issues can happen.</p>
+<a target="_blank" href="https://gnpublisher.com/services/search-console-maintenance-service/#pricing" class="gn-btn-primary button button-primary">View Pricing</a><a href="https://gnpublisher.com/services/search-console-maintenance-service/" target="_blank" class="gn-btn gn-btn-learnmore button">Learn More</a>
+  </div>
+  </div>
+ 
+  </div>
+  </div>
 </div>
