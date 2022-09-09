@@ -4,7 +4,7 @@ Tags: google news, google, news, publisher center, rss, feed, feeds
 Requires at least: 3.5
 Tested up to: 6.0.1
 Requires PHP: 5.4
-Stable tag: 1.4
+Stable tag: 1.4.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -61,6 +61,10 @@ GN Publisher may also be downloaded to your computer and uploaded, installed, an
 * This plugin is compatible with all MySQL versions supported by WordPress
 
 == Changelog ==
+
+= 1.4.1 - 2022-09-09 =
+* Fix for fatal erros on php 8+ on setting page
+* Fix for tabs not working
 
 = 1.4 - 2022-09-09 =
 * UI Improvements
