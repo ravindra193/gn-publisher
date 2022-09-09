@@ -48,7 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) {
    
   <p><?php
 			printf(
-				__( '<p style="font-size:110%;"> This plugin was created by Chris Andrews, a Platinum Level Product Expert on the Google News Publisher Help forum, the original creator of <a href="%1$s" target="_blank">GN Publisher</a>.</p>', 'gn-publisher' ),
+				__( '<p> This plugin was created by Chris Andrews, a Platinum Level Product Expert on the Google News Publisher Help forum, the original creator of <a href="%1$s" target="_blank">GN Publisher</a>.</p>', 'gn-publisher' ),
 				'https://gnpublisher.com/'
 			);
 	?></p>
