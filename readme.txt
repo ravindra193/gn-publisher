@@ -28,7 +28,7 @@ After installing, click on the *'Dashboard'* under GN Publisher on your plugins 
 
 **New in 1.4**
 
-Refreshed UI and improved assets usage . Added Support Form
+Refreshed UI and improved assets usage . Added Support Form .
 
 **New in 1.0.9**
 
@@ -62,7 +62,7 @@ GN Publisher may also be downloaded to your computer and uploaded, installed, an
 
 == Changelog ==
 
-= 1.4 - 2022-09-05 =
+= 1.4 - 2022-09-09 =
 * UI Improvements
 * Added Help &amp; support form
 * Improved assets and readme
