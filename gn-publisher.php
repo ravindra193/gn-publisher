@@ -7,7 +7,7 @@
  * Plugin Name: GN Publisher
  * Plugin URI: https://gnpublisher.com/
  * Description: GN Publisher: The easy way to make Google News Publisher compatible RSS feeds.
- * Version: 1.4.2
+ * Version: 1.4.3
  * Author: Chris Andrews
  * Author URI: https://gnpublisher.com/
  * Text Domain: gn-publisher
@@ -40,7 +40,7 @@ function gnpub_feed_bootstrap() {
 		return;
 	}
 
-	define( 'GNPUB_VERSION', '1.4.2' );
+	define( 'GNPUB_VERSION', '1.4.3' );
 	define( 'GNPUB_PATH', plugin_dir_path( __FILE__ ) );
     define( 'GNPUB_URL', plugins_url( '', __FILE__) );
 	define( 'GNPUB_PLUGIN_FILE', __FILE__ );
@@ -84,19 +84,20 @@ function gnpub_load_textdomain() {
 }
 
 function gnpub_admin_style() {
-	//global $pagenow , $typenow;
-	//$current_page=isset($_GET['page'])?$_GET['page']:'';
-	//if($pagenow=='options-general.php' && isset($current_page) && $current_page=="gn-publisher-settings")
-	//{
+	$current_screen = get_current_screen();
+	if($current_screen && $current_screen->base=="settings_page_gn-publisher-settings")
+	{
 		wp_enqueue_style('gn-admin-styles', GNPUB_URL .'/assets/css/gn-admin.css', array(),GNPUB_VERSION);
 		wp_enqueue_script('gn-admin-script', GNPUB_URL . '/assets/js/gn-admin.js', array('jquery'), GNPUB_VERSION, 'true' );
 		wp_localize_script('gn-admin-script', 'gn_script_vars', array(
 			'nonce' => wp_create_nonce( 'gn-admin-nonce' ),
 		)
-	);
-	//}
-  
+		);
+	}
 }
-add_action('admin_enqueue_scripts', 'gnpub_admin_style');
+
+
+	add_action('admin_enqueue_scripts', 'gnpub_admin_style');
+
 
 
