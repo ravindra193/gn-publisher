@@ -39,6 +39,7 @@ function gn_copy(id) {
     }
   });  
  
+ 
   $(".gn-send-query").on("click", function(e){
     e.preventDefault();   
     var message     = $("#gn_query_message").val();  
@@ -85,12 +86,28 @@ function gn_copy(id) {
 
 });
 
+check_for_copy_checkbox();
 
   });
 
   function gnIsEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(email);
+}
+
+ document.getElementById('gnpub_enable_copy_protection').addEventListener('click', event => {
+  check_for_copy_checkbox();
+});
+
+function check_for_copy_checkbox()
+{
+  var checkBox = document.getElementById('gnpub_enable_copy_protection');
+  if(checkBox.checked) {
+    document.getElementById('gnpub_val_tr').style.display="table-row";
+}
+else{
+  document.getElementById('gnpub_val_tr').style.display="none";
+}
 }
 
 

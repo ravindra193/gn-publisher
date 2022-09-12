@@ -34,7 +34,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</p>
 
 	</form>
-*/ ?>
+*/ 
+?>
 	<div class="gn-tab">
   <button class="gn-tablinks" onclick="openTab(event, 'gn-intro')" id="defaultOpen">Dashboard</button>
   <button class="gn-tablinks" onclick="openTab(event, 'gn-google-feed')">Google News Feed Setup</button>
@@ -108,7 +109,41 @@ if ( ! defined( 'ABSPATH' ) ) {
  		?>
 		</ul>
 
-	<p><?php _e( 'You are not required to use all of the feeds listed above. Just use the ones you want to include in your Publisher Center. Each feed will contain the thirty most recently updated articles in its category.', 'gn-publisher' ); ?></p>
+	
+
+  <p>	<form action="" method="post">
+
+<table class="form-table">
+
+  <tr>
+    <th><?php _e( 'Feed Content Protection', 'gn-publisher' ); ?></th>
+    <td>
+      <input type="checkbox" name="gnpub_enable_copy_protection" id="gnpub_enable_copy_protection" <?php checked( $enable_copy_protection, true ); ?> value="1" />
+      <label for="gnpub_enable_copy_protection"><?php _e( 'Stop people from stealing your whole content. <b><i>Only Google and Wordpress Admin can see the actuall full feed.</i></b>', 'gn-publisher' ); ?></label>
+    </td>
+  </tr>
+  <tr id="gnpub_val_tr" style="display:none">
+    <th><?php _e( 'Show Content upto', 'gn-publisher' ); ?></th>
+    <td>
+      <input type="number" name="gnpub_show_upto_value" id="gnpub_show_upto_value" value="<?php echo $show_upto_value?>" size="10">
+      <select name="gnpub_show_upto_unit" id="gnpub_show_upto_unit">
+      <option value="paragraph"<?php if($show_upto_unit=='paragraph') { echo 'selected';} ?> >Paragraph</option>
+      <option value="word" <?php if($show_upto_unit=='word') { echo 'selected';} ?>>Words</option>  
+      <option value="character"  <?php if($show_upto_unit=='character') { echo 'selected';} ?>>Character</option>  
+      </select>
+    </td>
+  </tr>
+
+</table>
+
+<p class="submit">
+  <?php wp_nonce_field( 'save_gnpub_settings', '_wpnonce' ); ?>
+  <input type="submit" name="save_gnpub_settings" id="submit" class="button button-primary" value="<?php _e( 'Save Changes', 'gn-publisher' ); ?>" />
+</p>
+
+</form></p>
+
+<p><?php _e( 'You are not required to use all of the feeds listed above. Just use the ones you want to include in your Publisher Center. Each feed will contain the thirty most recently updated articles in its category.', 'gn-publisher' ); ?></p>
 
 	<p><?php _e( 'When setting up a new section in the Publisher Center, I recommend setting it up as a "Feed". For the "Feed options", select "Generate articles from feed". Under "Rendering preference", select "Use website or AMP". If you have AMP on your site, the Publisher Center will render the AMP version. If you do not have AMP available, the Publisher Center will usually generate your articles from the feed.', 'gn-publisher' ); ?></p>
 

@@ -48,6 +48,15 @@ class GNPUB_Menu {
 		$custom_permalinks_enabled = ! empty( get_option( 'permalink_structure' ) );
 
 		$include_featured_image = boolval( get_option( 'gnpub_include_featured_image', true ) );
+
+		$default_options=array('gnpub_enable_copy_protection'=>false,'gnpub_show_upto_value'=>1,'gnpub_show_upto_unit'=>'paragraph');
+
+		$gnpub_options = get_option( 'gnpub_new_options', $default_options );
+
+		$enable_copy_protection = $gnpub_options['gnpub_enable_copy_protection'];
+		$show_upto_value = $gnpub_options['gnpub_show_upto_value'];
+		$show_upto_unit = $gnpub_options['gnpub_show_upto_unit'];
+
 		$is_default_feed = boolval( get_option( 'gnpub_is_default_feed', false ) );
 
 		$last_websub_ping = get_option( 'gnpub_websub_last_ping', null );

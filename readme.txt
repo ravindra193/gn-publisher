@@ -4,7 +4,7 @@ Tags: google news, google, news, publisher center, rss, feed, feeds
 Requires at least: 3.5
 Tested up to: 6.0.1
 Requires PHP: 5.4
-Stable tag: 1.4.3
+Stable tag: 1.5
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -25,6 +25,10 @@ The plugin addresses common RSS compatiblity issues publishers experience when u
 -  Delayed crawling by Google
 
 After installing, click on the *'Dashboard'* under GN Publisher on your plugins page for additional information about applying and troubleshooting issues related to the Google News Publisher Center.
+
+**New in 1.5**
+
+Added New feature for protection of the feed content.
 
 **New in 1.4**
 
@@ -62,9 +66,11 @@ GN Publisher may also be downloaded to your computer and uploaded, installed, an
 
 == Changelog ==
 
-= 1.4.3 - 2022-09-12 =
+= 1.5 - 2022-09-12 =
+* Added feature for stopping people from Stealing content from publishers #4
 * Fix for Feed URL contains subdirectory in path #7
-* Fix for Loading script on all admin dashboard pages
+* Fix for Loading script on all admin dashboard pages #9
+
 
 = 1.4.2 - 2022-09-09 =
 * Fix for "Most Recent Update Ping Sent" always "None recorded"
