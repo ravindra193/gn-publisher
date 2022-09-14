@@ -38,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 	<div class="gn-tab">
   <button class="gn-tablinks" onclick="openTab(event, 'gn-intro')" id="defaultOpen">Dashboard</button>
-  <button class="gn-tablinks" onclick="openTab(event, 'gn-google-feed')">Google News Feed Setup</button>
+  <button class="gn-tablinks" onclick="openTab(event, 'gn-google-feed')" id="gn-feed">Google News Feed Setup</button>
   <button class="gn-tablinks" onclick="openTab(event, 'gn-troubleshooting')">Troubleshooting</button>
   <button class="gn-tablinks" onclick="openTab(event, 'gn-help')">Help &amp; Support</button>
   <button class="gn-tablinks" onclick="openTab(event, 'gn-services')">Services</button>

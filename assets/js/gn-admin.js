@@ -1,4 +1,4 @@
-var gnpub_pro_checkbox=document.getElementById('gnpub_enable_copy_protection');
+
 
 function gn_copy(id) {
     var copyText = document.getElementById(id);
@@ -88,31 +88,9 @@ function gn_copy(id) {
 
 });
 
-check_for_copy_checkbox();
-
   });
 
   function gnIsEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(email);
-}
-if(gnpub_pro_checkbox)
-{
-  gnpub_pro_checkbox.addEventListener('click', event => {
-    check_for_copy_checkbox();
-  });
-}
-
-
-function check_for_copy_checkbox()
-{
-  if(gnpub_pro_checkbox)
-  {
-  if(gnpub_pro_checkbox.checked) {
-    document.getElementById('gnpub_val_tr').style.display="table-row";
-}
-else{
-  document.getElementById('gnpub_val_tr').style.display="none";
-}
-  }
 }

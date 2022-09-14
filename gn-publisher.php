@@ -83,9 +83,8 @@ function gnpub_load_textdomain() {
 	load_plugin_textdomain( 'gn-publisher', false, basename( dirname( GNPUB_PLUGIN_FILE ) ) . '/languages/' );
 }
 
-function gnpub_admin_style() {
-	$current_screen = get_current_screen();
-	if($current_screen && $current_screen->base=="settings_page_gn-publisher-settings")
+function gnpub_admin_style($hook_suffix ) {
+	if($hook_suffix=="settings_page_gn-publisher-settings")
 	{
 		wp_enqueue_style('gn-admin-styles', GNPUB_URL .'/assets/css/gn-admin.css', array(),GNPUB_VERSION);
 		wp_enqueue_script('gn-admin-script', GNPUB_URL . '/assets/js/gn-admin.js', array('jquery'), GNPUB_VERSION, 'true' );
