@@ -109,39 +109,23 @@ if ( ! defined( 'ABSPATH' ) ) {
  		?>
 		</ul>
 
-	
+	<?php if(!defined('GNPUB_PRO_VERSION')){ ?>
+    <p>
+    <table class="form-table">
+      <tr>
+        <th><?php _e( 'Feed Content Protection', 'gn-publisher' ); ?></th>
+        <td>
+        <a class="gn-publisher-pro-btn " href="https://gnpublisher.com/#upgrade_to_premium">Upgrade to Premium</a>
+        </td>
+      </tr>
+      </table>
+      </p>
+  <?php } else { 
+     do_action('gnpub_pro_setup_form');
+    
+    } ?>
 
-  <p>	<form action="" method="post">
 
-<table class="form-table">
-
-  <tr>
-    <th><?php _e( 'Feed Content Protection', 'gn-publisher' ); ?></th>
-    <td>
-      <input type="checkbox" name="gnpub_enable_copy_protection" id="gnpub_enable_copy_protection" <?php checked( $enable_copy_protection, true ); ?> value="1" />
-      <label for="gnpub_enable_copy_protection"><?php _e( 'Stop people from stealing your whole content. <b><i>Only Google and Wordpress Admin can see the actuall full feed.</i></b>', 'gn-publisher' ); ?></label>
-    </td>
-  </tr>
-  <tr id="gnpub_val_tr" style="display:none">
-    <th><?php _e( 'Show Content upto', 'gn-publisher' ); ?></th>
-    <td>
-      <input type="number" name="gnpub_show_upto_value" id="gnpub_show_upto_value" value="<?php echo $show_upto_value?>" size="10">
-      <select name="gnpub_show_upto_unit" id="gnpub_show_upto_unit">
-      <option value="paragraph"<?php if($show_upto_unit=='paragraph') { echo 'selected';} ?> >Paragraph</option>
-      <option value="word" <?php if($show_upto_unit=='word') { echo 'selected';} ?>>Words</option>  
-      <option value="character"  <?php if($show_upto_unit=='character') { echo 'selected';} ?>>Character</option>  
-      </select>
-    </td>
-  </tr>
-
-</table>
-
-<p class="submit">
-  <?php wp_nonce_field( 'save_gnpub_settings', '_wpnonce' ); ?>
-  <input type="submit" name="save_gnpub_settings" id="submit" class="button button-primary" value="<?php _e( 'Save Changes', 'gn-publisher' ); ?>" />
-</p>
-
-</form></p>
 
 <p><?php _e( 'You are not required to use all of the feeds listed above. Just use the ones you want to include in your Publisher Center. Each feed will contain the thirty most recently updated articles in its category.', 'gn-publisher' ); ?></p>
 

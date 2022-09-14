@@ -340,3 +340,15 @@
     background: #e93557;
     border-color: #e93557;
 }
+.gn-publisher-pro-btn {
+    font-size: 13px !important;
+    padding: 6px 12px;
+    border-radius: 60px;
+    background: -webkit-linear-gradient(to right, #eb3349, #f45c43);
+    background: linear-gradient(to right, #eb3349, #f45c43);
+    color: #fff !important;
+    box-shadow: 0em 0.15em 0.65em 0em rgb(0 0 0 / 25%);
+    margin: 0 auto 0 23px;
+    text-decoration: none;
+    font-weight: 500;
+}

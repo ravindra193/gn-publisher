@@ -52,7 +52,6 @@ function gnpub_feed_bootstrap() {
 	require_once GNPUB_PATH . 'controllers/class-gnpub-posts.php';
 	require_once GNPUB_PATH . 'controllers/class-gnpub-websub.php';
 	require_once GNPUB_PATH . 'class-gnpub-compat.php';
-	require_once GNPUB_PATH . 'includes/content-protection-helper.php';
 
 	new GNPUB_Feed();
 	new GNPUB_Posts();
