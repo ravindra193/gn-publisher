@@ -115,7 +115,7 @@ if ( ! defined( 'ABSPATH' ) ) {
       <tr>
         <th><?php _e( 'Feed Content Protection', 'gn-publisher' ); ?></th>
         <td>
-        <a class="gn-publisher-pro-btn " href="https://gnpublisher.com/#upgrade_to_premium">Upgrade to Premium</a>
+        <a class="gn-publisher-pro-btn "  target="_blank" href="https://gnpublisher.com/downloads/gnpublisher-pro/">Upgrade to Premium</a>
         </td>
       </tr>
       </table>
