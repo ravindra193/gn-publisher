@@ -85,10 +85,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	/////// display feed urls, @since 1.0.2 -ca ///////////////////
 			$permalinks_enabled = ! empty( get_option( 'permalink_structure' ) );
       $feed_url=esc_url( $permalinks_enabled ? trailingslashit( home_url() ) . 'feed/gn' : add_query_arg( 'feed', 'gn', home_url() ) );
-			echo '<li><input type="text" class="gn-input" value="'.$feed_url.'" id="gn-feed" size="60" readonly>
+			echo '<li><input type="text" class="gn-input" value="'.$feed_url.'" id="gn-feed-0" size="60" readonly>
       <div class="gn-tooltip">
-      <button class="gn-btn" onclick="gn_copy('."'gn-feed'".')" onmouseout="gn_out('."'gn-feed'".')">
-        <span class="gn-tooltiptext" id="gn-feed-tooltip">Copy URL</span>
+      <button class="gn-btn" onclick="gn_copy('."'gn-feed-0'".')" onmouseout="gn_out('."'gn-feed-0'".')">
+        <span class="gn-tooltiptext" id="gn-feed-0-tooltip">Copy URL</span>
         Copy
         </button>
       </div></li>';
