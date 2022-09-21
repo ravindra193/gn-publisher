@@ -346,11 +346,17 @@
 }
 
 .gn-tab .gnpub-upgrade {
-  background-color: #e93557;
+  background: linear-gradient(to right, #ff512f, #dd2476);
+  color: #fff;
+  float: right;
 }
 
 .gn-tab .gnpub-upgrade a {
   color: #fff;
   text-decoration: none;
-  border-bottom: 2px solid #e93557;
+}
+
+#gnpub_show_upto_unit
+{
+  vertical-align: unset;
 }

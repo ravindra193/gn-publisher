@@ -46,7 +46,7 @@ if ( ! defined( 'ABSPATH' ) ) {
   <?php if(defined('GNPUB_PRO_VERSION')){ ?>
   <button class="gn-tablinks" onclick="openTab(event, 'gn-license')">License</button>
   <?php } else { ?>
-    <button class="gn-tablinks gnpub-upgrade"><a href="https://gnpublisher.com/pricing/#pricing">Upgrade to PRO</a></button>
+    <button class="gn-tablinks gnpub-upgrade"><a target="_blank" href="https://gnpublisher.com/pricing/#pricing">Upgrade to PRO</a></button>
     <?php } ?>
   
 </div>
