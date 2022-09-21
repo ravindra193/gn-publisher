@@ -148,8 +148,11 @@ class GNPUB_Feed {
 		if ( $feed_type !== self::FEED_ID ) {
 			return $content;
 		}
-
+		if(!$content){ 
+			return $content; 
+		}
 		$content = preg_replace( '/srcset=[\'|"].*?[\'|"]/i', '', $content );
+		
 
 		return $content;
 	}
@@ -167,6 +170,10 @@ class GNPUB_Feed {
 	public function remove_duplicate_images( $content, $feed_type ) {
 		$occurances = array();
 		$images = array();
+		if(!$content)
+		{
+			return $content;
+		}
 		preg_match_all( '/<img[^>]* src=[\"|\']([^\"]*)[\"|\'][^>]*>/i', $content, $images );
 
 		foreach ( $images[0] as $index => $image_tag ) {

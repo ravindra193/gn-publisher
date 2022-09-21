@@ -48,6 +48,7 @@ class GNPUB_Menu {
 		$custom_permalinks_enabled = ! empty( get_option( 'permalink_structure' ) );
 
 		$include_featured_image = boolval( get_option( 'gnpub_include_featured_image', true ) );
+
 		$is_default_feed = boolval( get_option( 'gnpub_is_default_feed', false ) );
 
 		$last_websub_ping = get_option( 'gnpub_websub_last_ping', null );

@@ -98,7 +98,7 @@ do_action( 'rss_tag_pre', 'rss2' );
 			<dc:creator><![CDATA[<?php the_author(); ?>]]></dc:creator>
 			<guid isPermaLink="false"><?php the_guid(); ?></guid>
 <?php $content = get_the_content_feed( GNPUB_Feed::FEED_ID ); 
- if ( strlen( $content ) > 0 ) : 
+ if ( $content && strlen( $content ) > 0 ) : 
 ?>
 			<description><![CDATA[<?php echo wp_trim_words($content,15,'...');?>]]></description>
 

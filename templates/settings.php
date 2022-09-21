@@ -34,10 +34,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</p>
 
 	</form>
-*/ ?>
+*/ 
+?>
 	<div class="gn-tab">
   <button class="gn-tablinks" onclick="openTab(event, 'gn-intro')" id="defaultOpen">Dashboard</button>
-  <button class="gn-tablinks" onclick="openTab(event, 'gn-google-feed')">Google News Feed Setup</button>
+  <button class="gn-tablinks" onclick="openTab(event, 'gn-google-feed')" id="gn-feed">Google News Feed Setup</button>
   <button class="gn-tablinks" onclick="openTab(event, 'gn-troubleshooting')">Troubleshooting</button>
   <button class="gn-tablinks" onclick="openTab(event, 'gn-help')">Help &amp; Support</button>
   <button class="gn-tablinks" onclick="openTab(event, 'gn-services')">Services</button>
@@ -83,11 +84,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	/////// display feed urls, @since 1.0.2 -ca ///////////////////
 			$permalinks_enabled = ! empty( get_option( 'permalink_structure' ) );
-      $feed_url=esc_url( $permalinks_enabled ? trailingslashit( site_url() ) . 'feed/gn' : add_query_arg( 'feed', 'gn', site_url() ) );
-			echo '<li><input type="text" class="gn-input" value="'.$feed_url.'" id="gn-feed" size="60" readonly>
+      $feed_url=esc_url( $permalinks_enabled ? trailingslashit( home_url() ) . 'feed/gn' : add_query_arg( 'feed', 'gn', home_url() ) );
+			echo '<li><input type="text" class="gn-input" value="'.$feed_url.'" id="gn-feed-0" size="60" readonly>
       <div class="gn-tooltip">
-      <button class="gn-btn" onclick="gn_copy('."'gn-feed'".')" onmouseout="gn_out('."'gn-feed'".')">
-        <span class="gn-tooltiptext" id="gn-feed-tooltip">Copy URL</span>
+      <button class="gn-btn" onclick="gn_copy('."'gn-feed-0'".')" onmouseout="gn_out('."'gn-feed-0'".')">
+        <span class="gn-tooltiptext" id="gn-feed-0-tooltip">Copy URL</span>
         Copy
         </button>
       </div></li>';
@@ -108,7 +109,26 @@ if ( ! defined( 'ABSPATH' ) ) {
  		?>
 		</ul>
 
-	<p><?php _e( 'You are not required to use all of the feeds listed above. Just use the ones you want to include in your Publisher Center. Each feed will contain the thirty most recently updated articles in its category.', 'gn-publisher' ); ?></p>
+	<?php if(!defined('GNPUB_PRO_VERSION')){ ?>
+    <!--
+      <p>
+    <table class="form-table">
+      <tr>
+        <th><?php _e( 'Feed Content Protection', 'gn-publisher' ); ?></th>
+        <td>
+        <a class="gn-publisher-pro-btn "  target="_blank" href="https://gnpublisher.com/downloads/gnpublisher-pro/">Upgrade to Premium</a>
+        </td>
+      </tr>
+      </table>
+      </p> -->
+  <?php } else { 
+     do_action('gnpub_pro_setup_form');
+    
+    } ?>
+
+
+
+<p><?php _e( 'You are not required to use all of the feeds listed above. Just use the ones you want to include in your Publisher Center. Each feed will contain the thirty most recently updated articles in its category.', 'gn-publisher' ); ?></p>
 
 	<p><?php _e( 'When setting up a new section in the Publisher Center, I recommend setting it up as a "Feed". For the "Feed options", select "Generate articles from feed". Under "Rendering preference", select "Use website or AMP". If you have AMP on your site, the Publisher Center will render the AMP version. If you do not have AMP available, the Publisher Center will usually generate your articles from the feed.', 'gn-publisher' ); ?></p>
 

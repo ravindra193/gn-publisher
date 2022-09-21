@@ -1,3 +1,5 @@
+
+
 function gn_copy(id) {
     var copyText = document.getElementById(id);
     copyText.select();
@@ -38,6 +40,7 @@ function gn_copy(id) {
         window.open(url, '_blank');
     }
   });  
+ 
  
   $(".gn-send-query").on("click", function(e){
     e.preventDefault();   
@@ -85,12 +88,9 @@ function gn_copy(id) {
 
 });
 
-
   });
 
   function gnIsEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(email);
 }
-
-
