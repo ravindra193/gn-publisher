@@ -67,7 +67,6 @@ GN Publisher may also be downloaded to your computer and uploaded, installed, an
 == Changelog ==
 
 = 1.5 - 2022-09-12 =
-* Added feature for stopping people from Stealing content from publishers #4
 * Fix for Feed URL contains subdirectory in path #7
 * Fix for Loading script on all admin dashboard pages #9
 

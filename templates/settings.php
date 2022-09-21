@@ -110,7 +110,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</ul>
 
 	<?php if(!defined('GNPUB_PRO_VERSION')){ ?>
-    <p>
+    <!--
+      <p>
     <table class="form-table">
       <tr>
         <th><?php _e( 'Feed Content Protection', 'gn-publisher' ); ?></th>
@@ -119,7 +120,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         </td>
       </tr>
       </table>
-      </p>
+      </p> -->
   <?php } else { 
      do_action('gnpub_pro_setup_form');
     
