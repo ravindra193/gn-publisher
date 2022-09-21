@@ -344,3 +344,13 @@
     text-decoration: none;
     font-weight: 500;
 }
+
+.gn-tab .gnpub-upgrade {
+  background-color: #e93557;
+}
+
+.gn-tab .gnpub-upgrade a {
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 2px solid #e93557;
+}
