@@ -344,3 +344,19 @@
     text-decoration: none;
     font-weight: 500;
 }
+
+.gn-tab .gnpub-upgrade {
+  background: linear-gradient(to right, #ff512f, #dd2476);
+  color: #fff;
+  float: right;
+}
+
+.gn-tab .gnpub-upgrade a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#gnpub_show_upto_unit
+{
+  vertical-align: unset;
+}

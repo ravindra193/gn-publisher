@@ -39,9 +39,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<div class="gn-tab">
   <button class="gn-tablinks" onclick="openTab(event, 'gn-intro')" id="defaultOpen">Dashboard</button>
   <button class="gn-tablinks" onclick="openTab(event, 'gn-google-feed')" id="gn-feed">Google News Feed Setup</button>
+  <button class="gn-tablinks" onclick="openTab(event, 'gn-features')">Features</button>
   <button class="gn-tablinks" onclick="openTab(event, 'gn-troubleshooting')">Troubleshooting</button>
   <button class="gn-tablinks" onclick="openTab(event, 'gn-help')">Help &amp; Support</button>
   <button class="gn-tablinks" onclick="openTab(event, 'gn-services')">Services</button>
+  <?php if(defined('GNPUB_PRO_VERSION')){ ?>
+  <button class="gn-tablinks" onclick="openTab(event, 'gn-license')">License</button>
+  <?php } else { ?>
+    <button class="gn-tablinks gnpub-upgrade"><a target="_blank" href="https://gnpublisher.com/pricing/#pricing">Upgrade to PRO</a></button>
+    <?php } ?>
   
 </div>
 
@@ -109,28 +115,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  		?>
 		</ul>
 
-	<?php if(!defined('GNPUB_PRO_VERSION')){ ?>
-    <!--
-      <p>
-    <table class="form-table">
-      <tr>
-        <th><?php _e( 'Feed Content Protection', 'gn-publisher' ); ?></th>
-        <td>
-        <a class="gn-publisher-pro-btn "  target="_blank" href="https://gnpublisher.com/downloads/gnpublisher-pro/">Upgrade to Premium</a>
-        </td>
-      </tr>
-      </table>
-      </p> -->
-  <?php } else { 
-     do_action('gnpub_pro_setup_form');
-    
-    } ?>
-
-
-
 <p><?php _e( 'You are not required to use all of the feeds listed above. Just use the ones you want to include in your Publisher Center. Each feed will contain the thirty most recently updated articles in its category.', 'gn-publisher' ); ?></p>
 
-	<p><?php _e( 'When setting up a new section in the Publisher Center, I recommend setting it up as a "Feed". For the "Feed options", select "Generate articles from feed". Under "Rendering preference", select "Use website or AMP". If you have AMP on your site, the Publisher Center will render the AMP version. If you do not have AMP available, the Publisher Center will usually generate your articles from the feed.', 'gn-publisher' ); ?></p>
+<p><?php _e( 'If you have AMP on your site, the Publisher Center will render the AMP version. If you do not have AMP available, the Publisher Center will usually generate your articles from the feed.', 'gn-publisher' ); ?></p>
 
 	<p><?php _e( 'Be sure to click that blue "Save" button in the upper right hand corner of the Publisher Center to save your changes (it\'s surprisingly easy to miss). After saving, wait ten minutes for Google to fetch your feed and render your articles. Then reload the entire page using your browser\'s reload/refresh button before checking to see if your articles appear in the Publisher Center.', 'gn-publisher' ); ?></p>
 
@@ -265,7 +252,7 @@ if ( ! defined( 'ABSPATH' ) ) {
   <p>If the above information does not seems to help you can also contact us from  <a href="https://gnpublisher.com/contact-us/" target="_ blank">https://gnpublisher.com/contact-us</a></p>
 </div>
 
-<div id="gn-help" class="gn-tabcontent ">
+<div id="gn-help" class="gn-tabcontent">
 <div class="gn-flex-container">
 <div class="gn-left-side">
 <p>We are dedicated to provide Technical support &amp; Help to our users. Use the below form for sending your questions. </p>
@@ -316,6 +303,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	
 </div>
 <div id="gn-services" class="gn-tabcontent">
+
 <div class="gn-flex-container-services">
   <div class="gn-service-card" data-url="https://gnpublisher.com/services/google-news-setup-audit-service/">
     <div class="gn-service-card-left">
@@ -351,5 +339,30 @@ Maintenance</h3>
   </div>
  
   </div>
+</div>
+
+<div id="gn-features" class="gn-tabcontent">
+<?php if(!defined('GNPUB_PRO_VERSION')){ ?>
+      <p>
+    <table class="form-table">
+      <tr>
+        <th><?php _e( 'Feed Content Protection', 'gn-publisher' ); ?></th>
+        <td>
+        <a class="gn-publisher-pro-btn "  target="_blank" href="https://gnpublisher.com/pricing/#pricing">Upgrade to Premium</a>
+        </td>
+      </tr>
+      </table>
+      </p> 
+  <?php } else { 
+     do_action('gnpub_pro_setup_form');
+    
+    } ?>
+
+  </div>
+<div id="gn-license" class="gn-tabcontent">
+<?php if(defined('GNPUB_PRO_VERSION')){
+   do_action('gnpub_pro_license_form');
+ } 
+ ?>
   </div>
 </div>
