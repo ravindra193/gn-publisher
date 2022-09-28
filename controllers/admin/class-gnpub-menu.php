@@ -90,7 +90,7 @@ class GNPUB_Menu {
 	 */
 	public function add_settings_plugin_action( $actions, $plugin_file, $plugin_data, $context ) {
 		$plugin_actions['settings'] = sprintf(
-			'<a href="%s">' . _x( 'Dashboard', 'Text for GN Publisher plugin settings link', 'gn-publisher' ) . '</a>',
+			'<a href="%s">' . _x( 'Settings', 'Text for GN Publisher plugin settings link', 'gn-publisher' ) . '</a>',
 			admin_url( 'options-general.php?page=gn-publisher-settings' )
 		);
 		$plugin_actions['support'] = sprintf(
