@@ -46,7 +46,8 @@ if ( ! defined( 'ABSPATH' ) ) {
   <?php if(defined('GNPUB_PRO_VERSION')){ ?>
   <button class="gn-tablinks" onclick="openTab(event, 'gn-license')">License</button>
   <?php } else { ?>
-    <button class="gn-tablinks gnpub-upgrade"><a target="_blank" href="https://gnpublisher.com/pricing/#pricing">Upgrade to PRO</a></button>
+    <button class="gn-tablinks gnpub-upgrade <?php echo isset($_GET['tab']) ? $_GET['tab'] : ''; ?>" onclick="openTab(event, 'gn-upgrade')">Upgrade to PRO</button>
+    <!-- <button class="gn-tablinks gnpub-upgrade"><a target="_blank" href="https://gnpublisher.com/pricing/#pricing">Upgrade to PRO</a></button> -->
     <?php } ?>
   
 </div>
@@ -122,8 +123,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<p><?php _e( 'Be sure to click that blue "Save" button in the upper right hand corner of the Publisher Center to save your changes (it\'s surprisingly easy to miss). After saving, wait ten minutes for Google to fetch your feed and render your articles. Then reload the entire page using your browser\'s reload/refresh button before checking to see if your articles appear in the Publisher Center.', 'gn-publisher' ); ?></p>
 
 	<p><?php _e( 'After the initial setup, GN Publisher will ping Google with an alert each time your feed is updated.', 'gn-publisher' ); ?></p>
-
+  <div class="info" style="background-color: #ffffcc;
+  border-left: 6px solid #ffeb3b;padding: 5px 12px;">
+  <p><strong>Content Stolen?</strong> Try Premium.</p>
 </div>
+</div>
+
 
 <div id="gn-troubleshooting" class="gn-tabcontent">
 
@@ -307,13 +312,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="gn-flex-container-services">
   <div class="gn-service-card" data-url="https://gnpublisher.com/services/google-news-setup-audit-service/">
     <div class="gn-service-card-left">
-    <img src="<?php echo GNPUB_URL . '/assets/images/google-news.png'?>" width="128px" height="128px">
-  </div>
-  <div class="gn-service-card-right">
-    <h3 class="gn-service-heading">Google News Setup & Audit</h3>
-  <p>You can get thousands of clicks to your site from Google News. We can set up Google news for your website and perform regular audits.</p>
-  <a target="_blank" href="https://gnpublisher.com/services/google-news-setup-audit-service/#pricing" class="gn-btn-primary button button-primary">View Pricing</a><a href="https://gnpublisher.com/services/google-news-setup-audit-service/" target="_blank" class="gn-btn gn-btn-learnmore button">Learn More</a>
-  </div>
+      <img src="<?php echo GNPUB_URL . '/assets/images/google-news.png'?>" width="128px" height="128px">
+    </div>
+    <div class="gn-service-card-right">
+      <h3 class="gn-service-heading">Google News Setup & Audit</h3>
+    <p>You can get thousands of clicks to your site from Google News. We can set up Google news for your website and perform regular audits.</p>
+    <a target="_blank" href="https://gnpublisher.com/services/google-news-setup-audit-service/#pricing" class="gn-btn-primary button button-primary">View Pricing</a><a href="https://gnpublisher.com/services/google-news-setup-audit-service/" target="_blank" class="gn-btn gn-btn-learnmore button">Learn More</a>
+    </div>
   </div>
   <div class="gn-service-card" data-url="https://gnpublisher.com/services/dedicated-developer-for-website-search-console-maintenance-service/">
   <div class="gn-service-card-left">
@@ -341,6 +346,7 @@ Maintenance</h3>
   </div>
 </div>
 
+
 <div id="gn-features" class="gn-tabcontent">
 <?php if(!defined('GNPUB_PRO_VERSION')){ ?>
       <p>
@@ -353,6 +359,28 @@ Maintenance</h3>
       </tr>
       </table>
       </p> 
+  <?php } else { 
+     do_action('gnpub_pro_setup_form');
+    
+    } ?>
+
+  </div>
+  <div id="gn-upgrade" class="gn-tabcontent" style="text-align: center;">
+<?php if(!defined('GNPUB_PRO_VERSION')){ ?>
+  <p style="font-weight: bold;font-size: 30px;color: #000;"><?= _e( 'Thank YOU for using GNPublisher.', 'gn-publisher' ) ?></p>
+        <p style="font-size: 18px;padding: 0 10%;line-height: 1.7;color: #000;"><?= _e( 'We strive to create the best GNPublisher solution in WordPress. Our dedicated development team does continuous development and innovation to make sure we are able to meet your demand.', 'gn-publisher' ) ?></p>
+        <p style="font-size: 16px;font-weight: 600;color: #000;"><?= _e( 'Please support us by Upgrading to Premium version.', 'gn-publisher' ) ?></p>
+        <a target="_blank" href="https://gnpublisher.com/pricing/#pricing/">
+            <button class="button-gnp-ugrade" style="display: inline-block;font-size: 20px;">
+                <span><?= _e( 'YES! I want to Support by UPGRADING.', 'gn-publisher' ) ?></span></button>
+        </a>
+        <a href="<?php echo add_query_arg('page', 'gn-publisher-settings', admin_url('options-general.php')); ?>"
+           style="text-decoration: none;">
+            <button class="button-gnp-ugrade1"
+                    style="display: block;text-align: center;border: 0;margin: 0 auto;background: none;">
+                <span style="cursor: pointer;"><?= _e( 'No Thanks, I will stick with FREE version for now.', 'gn-publisher' ) ?></span>
+            </button>
+        </a>
   <?php } else { 
      do_action('gnpub_pro_setup_form');
     

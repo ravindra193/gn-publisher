@@ -26,19 +26,26 @@ function gn_copy(id) {
     }
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
+    console.log(evt.currentTarget.className);
   }
   
   // Get the element with id="defaultOpen" and click on it
   document.getElementById("defaultOpen").click();
 
   jQuery(document).ready(function($) {
-  var btn_click=false;
-  $('.gn-service-card-left,.gn-service-heading,.gn-service-card-right p  ').click(function(){
-    var url=$(this).parent().parent().data('url');
-    if(url)
-    {
-        window.open(url, '_blank');
-    }
+
+    //for active the pro tab on first time
+    $('.gnpub-upgrade.welcome').trigger('click');
+    $('.gn-tablinks.gnpub-upgrade').addClass('active');
+
+
+    var btn_click=false;
+    $('.gn-service-card-left,.gn-service-heading,.gn-service-card-right p  ').click(function(){
+      var url=$(this).parent().parent().data('url');
+      if(url)
+      {
+          window.open(url, '_blank');
+      }
   });  
  
  
