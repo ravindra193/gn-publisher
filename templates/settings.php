@@ -310,8 +310,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div id="gn-services" class="gn-tabcontent">
 
 <div class="gn-flex-container-services">
-  <div class="gn-service-card" data-url="https://gnpublisher.com/services/google-news-setup-audit-service/">
-    <div class="gn-service-card-left">
+  <div class="gn-service-card first">
+      <div class="gn-service-card-left">
       <img src="<?php echo GNPUB_URL . '/assets/images/google-news.png'?>" width="128px" height="128px">
     </div>
     <div class="gn-service-card-right">
@@ -320,25 +320,25 @@ if ( ! defined( 'ABSPATH' ) ) {
     <a target="_blank" href="https://gnpublisher.com/services/google-news-setup-audit-service/#pricing" class="gn-btn-primary button button-primary">View Pricing</a><a href="https://gnpublisher.com/services/google-news-setup-audit-service/" target="_blank" class="gn-btn gn-btn-learnmore button">Learn More</a>
     </div>
   </div>
-  <div class="gn-service-card" data-url="https://gnpublisher.com/services/dedicated-developer-for-website-search-console-maintenance-service/">
-  <div class="gn-service-card-left">
-  <img src="<?php echo GNPUB_URL . '/assets/images/support.png'?>" width="128px" height="128px">
+  <div class="gn-service-card second">
+  <div class="gn-service-card-left">  
+    <img src="<?php echo GNPUB_URL . '/assets/images/support.png'?>" width="128px" height="128px">  
   </div>
-  <div class="gn-service-card-right">
-    <h3 class="gn-service-heading">Dedicated Developer for Website</h3>
-  <p>Our dedicated developers will continuously monitor your website and make sure its up and running without any issue.</p>
+  <div class="gn-service-card-right">    
+  <h3 class="gn-service-heading">Dedicated Developer for Website</h3>
+  <p>Our dedicated developers will continuously monitor your website and make sure its up and running without any issue.</p>  
   <a target="_blank" href="https://gnpublisher.com/services/dedicated-developer-for-website-search-console-maintenance-service/#pricing" class="gn-btn-primary button button-primary">View Pricing</a><a href="https://gnpublisher.com/services/dedicated-developer-for-website-search-console-maintenance-service/" target="_blank" class="gn-btn gn-btn-learnmore button">Learn More</a>
   </div>
   </div>
   
-  <div class="gn-service-card" data-url="https://gnpublisher.com/services/search-console-maintenance-service/">
+  <div class="gn-service-card third">
   <div class="gn-service-card-left">
-  <img src="<?php echo GNPUB_URL . '/assets/images/google.png'?>" width="128px" height="128px">
+    <img src="<?php echo GNPUB_URL . '/assets/images/google.png'?>" width="128px" height="128px">
   </div>
   <div class="gn-service-card-right">
     <h3 class="gn-service-heading">Search Console
-Maintenance</h3>
-<p>  We will manage your all Google Search Console problems because even after a webpage gets indexed, issues can happen.</p>
+    Maintenance</h3>
+    <p>  We will manage your all Google Search Console problems because even after a webpage gets indexed, issues can happen.</p>
 <a target="_blank" href="https://gnpublisher.com/services/search-console-maintenance-service/#pricing" class="gn-btn-primary button button-primary">View Pricing</a><a href="https://gnpublisher.com/services/search-console-maintenance-service/" target="_blank" class="gn-btn gn-btn-learnmore button">Learn More</a>
   </div>
   </div>

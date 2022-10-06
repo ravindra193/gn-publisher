@@ -26,13 +26,30 @@ function gn_copy(id) {
     }
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
-    console.log(evt.currentTarget.className);
   }
   
   // Get the element with id="defaultOpen" and click on it
   document.getElementById("defaultOpen").click();
 
   jQuery(document).ready(function($) {
+
+    jQuery(".gn-service-card.first").on("click", function(evt) {
+      if(!$(evt.target).is('.gn-service-card-right.first a')) {
+        window.open('https://gnpublisher.com/services/google-news-setup-audit-service', '_blank');
+      }    
+    });
+    jQuery(".gn-service-card.second").on("click", function(evt) {     
+      if(!$(evt.target).is('.gn-service-card-right a')) {
+        window.open('https://gnpublisher.com/services/dedicated-developer-for-website-search-console-maintenance-service/', '_blank');
+      }  
+          
+    });
+    jQuery(".gn-service-card.third").on("click", function(evt) {  
+       
+      if(!$(evt.target).is('.gn-service-card-right a')) {
+        window.open('https://gnpublisher.com/services/search-console-maintenance-service/', '_blank');
+      }     
+    });
 
     //for active the pro tab on first time
     $('.gnpub-upgrade.welcome').trigger('click');
