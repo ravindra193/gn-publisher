@@ -123,10 +123,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<p><?php _e( 'Be sure to click that blue "Save" button in the upper right hand corner of the Publisher Center to save your changes (it\'s surprisingly easy to miss). After saving, wait ten minutes for Google to fetch your feed and render your articles. Then reload the entire page using your browser\'s reload/refresh button before checking to see if your articles appear in the Publisher Center.', 'gn-publisher' ); ?></p>
 
 	<p><?php _e( 'After the initial setup, GN Publisher will ping Google with an alert each time your feed is updated.', 'gn-publisher' ); ?></p>
-  <div class="info" style="background-color: #ffffcc;
-  border-left: 6px solid #ffeb3b;padding: 5px 12px;">
-  <p><strong>Content Stolen?</strong> Try Premium.</p>
+
+  <?php if(!defined('GNPUB_PRO_VERSION')){ ?>
+<div class="info content-stolen-badge">
+  <div class="badge-left"><a href="https://gnpublisher.com/" target="_blank"><img  class="gn-logo" src=<?php echo GNPUB_URL . '/assets/images/gn-logo-mini.png' ?> title="<?php _e( '<b>GN</b> Publisher', 'gn-publisher' ); ?>"/></a></div>
+  <div class="badge-right"><p>For feed content protection, upgrade to Premium.</p></div>
+  <div class="badge-right-btn"><a class="gn-publisher-pro-btn " target="_blank" href="https://gnpublisher.com/pricing/#pricing">Upgrade to Premium</a></div>
 </div>
+<?php } ?>
 </div>
 
 

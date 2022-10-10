@@ -120,8 +120,39 @@ div#gn-upgrade .button-gnp-ugrade {
   color: #e93557;
   background: white;
 }
+.content-stolen-badge{
+  background-color: #fff;
+  padding: 21px 12px;
+  margin-top: 14px;
+  display: inline-block;
+  border: 1px solid #d8d8e3;
+  width: 98%;
+  border-left: 4px solid #e8325f;
+}
+.badge-left {
+  float: left;
+}
+.badge-right {
+  float: left;
+}
+.badge-right p{
+  font-size: 16px;
+  color: #000;
+}
 
+.badge-right-btn {
+  float: right;
+  padding-top: 18px;
 
+}
+.badge-right-btn a{
+    padding: 12px 22px;
+
+}
+
+.badge-left img{
+  width: 50px;
+}
 .gn-menu ul {
   margin: 0;
   padding: 0;

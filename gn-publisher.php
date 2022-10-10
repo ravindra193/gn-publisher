@@ -52,11 +52,14 @@ function gnpub_feed_bootstrap() {
 	require_once GNPUB_PATH . 'controllers/class-gnpub-posts.php';
 	require_once GNPUB_PATH . 'controllers/class-gnpub-websub.php';
 	require_once GNPUB_PATH . 'class-gnpub-compat.php';
+	require_once GNPUB_PATH . 'class-gnpub-rss-url.php';
+
 
 	new GNPUB_Feed();
 	new GNPUB_Posts();
 	new GNPUB_Websub();
 	GNPUB_Compat::init();
+	Gnpub_Rss_Url::on_load();
 
 	if ( is_admin() ) {
 		require_once GNPUB_PATH . 'class-gnpub-installer.php';
