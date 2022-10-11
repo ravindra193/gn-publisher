@@ -30,6 +30,9 @@ function gn_copy(id) {
   
   // Get the element with id="defaultOpen" and click on it
   document.getElementById("defaultOpen").click();
+  jQuery('.gn-publisher-pro-btn').click(function(){
+    jQuery('.gn-tablinks.gn-license-btn').addClass('active');
+  });
 
   jQuery(document).ready(function($) {
 

@@ -36,6 +36,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</form>
 */ 
 ?>
+<?php 
+if ( defined('GNPUB_PRO_VERSION') ) { 
+  $license_info = get_option("gnpub_pro_upgrade_license"); 
+  $license_key_status = $license_key = '';
+    if(isset($license_info['pro']['license_key'])){
+      $license_key	= $license_info['pro']['license_key'];
+      $replace = ''; for ($i=0; $i < strlen($license_key)-4; $i++) { $replace .= '*'; }
+      $license_key = substr_replace($license_key, $replace, 0, strlen($license_key)-4);
+      $license_key_status = $license_info['pro']['license_key_status'];
+    } 
+  if($license_key_status != 'active'){
+    echo '<div class="gnpu-license-notice">Thank You For installing <a href="https://gnpublisher.com/" target="_blank">GN PUBLISHER PRO</a>, please activate the licnse key to receive regular updates.</div>
+    ';
+  } 
+} 
+?>
 	<div class="gn-tab">
   <button class="gn-tablinks" onclick="openTab(event, 'gn-intro')" id="defaultOpen">Dashboard</button>
   <button class="gn-tablinks" onclick="openTab(event, 'gn-google-feed')" id="gn-feed">Google News Feed Setup</button>
@@ -44,7 +60,7 @@ if ( ! defined( 'ABSPATH' ) ) {
   <button class="gn-tablinks" onclick="openTab(event, 'gn-help')">Help &amp; Support</button>
   <button class="gn-tablinks" onclick="openTab(event, 'gn-services')">Services</button>
   <?php if(defined('GNPUB_PRO_VERSION')){ ?>
-  <button class="gn-tablinks" onclick="openTab(event, 'gn-license')">License</button>
+  <button class="gn-tablinks gn-license-btn" onclick="openTab(event, 'gn-license')">License <span style="color: red;">!</span></button>
   <?php } else { ?>
     <button class="gn-tablinks gnpub-upgrade <?php echo isset($_GET['tab']) ? $_GET['tab'] : ''; ?>" onclick="openTab(event, 'gn-upgrade')">Upgrade to PRO</button>
     <!-- <button class="gn-tablinks gnpub-upgrade"><a target="_blank" href="https://gnpublisher.com/pricing/#pricing">Upgrade to PRO</a></button> -->
