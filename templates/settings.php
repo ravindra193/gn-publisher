@@ -141,10 +141,10 @@ if ( defined('GNPUB_PRO_VERSION') ) {
 	<p><?php _e( 'After the initial setup, GN Publisher will ping Google with an alert each time your feed is updated.', 'gn-publisher' ); ?></p>
 
   <?php if(!defined('GNPUB_PRO_VERSION')){ ?>
-<div class="info content-stolen-badge">
-  <div class="badge-left"><a href="https://gnpublisher.com/" target="_blank"><img  class="gn-logo" src=<?php echo GNPUB_URL . '/assets/images/gn-logo-mini.png' ?> title="<?php _e( '<b>GN</b> Publisher', 'gn-publisher' ); ?>"/></a></div>
-  <div class="badge-right"><p><?php echo esc_html__('For feed content protection, upgrade to Premium.', 'gn-publisher') ?></p></div>
-  <div class="badge-right-btn"><a class="gn-publisher-pro-btn " target="_blank" href="https://gnpublisher.com/pricing/#pricing"><?php echo esc_html__('Upgrade to Premium', 'gn-publisher') ?></a></div>
+<div class="info gnpub-content-stolen-badge">
+  <div class="gnpub-badge-left"><a href="https://gnpublisher.com/" target="_blank"><img  class="gn-logo" src=<?php echo GNPUB_URL . '/assets/images/gn-logo-mini.png' ?> title="<?php _e( '<b>GN</b> Publisher', 'gn-publisher' ); ?>"/></a></div>
+  <div class="gnpub-badge-right"><p><?php echo esc_html__('For feed content protection, upgrade to Premium.', 'gn-publisher') ?></p></div>
+  <div class="gnpub-badge-right-btn"><a class="gn-publisher-pro-btn " target="_blank" href="https://gnpublisher.com/pricing/#pricing"><?php echo esc_html__('Upgrade to Premium', 'gn-publisher') ?></a></div>
 </div>
 <?php } ?>
 </div>
@@ -387,8 +387,8 @@ if ( defined('GNPUB_PRO_VERSION') ) {
   </div>
   <div id="gn-upgrade" class="gn-tabcontent" style="text-align: center;">
 <?php if(!defined('GNPUB_PRO_VERSION')){ ?>
-  <p style="font-weight: bold;font-size: 30px;color: #000;"><?= _e( 'Thank YOU for using GNPublisher.', 'gn-publisher' ) ?></p>
-        <p style="font-size: 18px;padding: 0 10%;line-height: 1.7;color: #000;"><?= _e( 'We strive to create the best GNPublisher solution in WordPress. Our dedicated development team does continuous development and innovation to make sure we are able to meet your demand.', 'gn-publisher' ) ?></p>
+  <p style="font-weight: bold;font-size: 30px;color: #000;"><?= _e( 'Thank You for using GN Publisher.', 'gn-publisher' ) ?></p>
+        <p style="font-size: 18px;padding: 0 10%;line-height: 1.7;color: #000;"><?= _e( 'We strive to create the best GN Publisher solution in WordPress. Our dedicated development team does continuous development and innovation to make sure we are able to meet your demand.', 'gn-publisher' ) ?></p>
         <p style="font-size: 16px;font-weight: 600;color: #000;"><?= _e( 'Please support us by Upgrading to Premium version.', 'gn-publisher' ) ?></p>
         <a target="_blank" href="https://gnpublisher.com/pricing/#pricing/">
             <button class="button-gnp-ugrade" style="display: inline-block;font-size: 20px;">

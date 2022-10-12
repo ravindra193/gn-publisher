@@ -120,7 +120,7 @@ div#gn-upgrade .button-gnp-ugrade {
   color: #e93557;
   background: white;
 }
-.content-stolen-badge{
+.gnpub-content-stolen-badge{
   background-color: #fff;
   padding: 21px 12px;
   margin-top: 14px;
@@ -129,28 +129,28 @@ div#gn-upgrade .button-gnp-ugrade {
   width: 98%;
   border-left: 4px solid #e8325f;
 }
-.badge-left {
+.gnpub-badge-left {
   float: left;
 }
-.badge-right {
+.gnpub-badge-right {
   float: left;
 }
-.badge-right p{
+.gnpub-badge-right p{
   font-size: 16px;
   color: #000;
 }
 
-.badge-right-btn {
+.gnpub-badge-right-btn {
   float: right;
   padding-top: 18px;
 
 }
-.badge-right-btn a{
+.gnpub-badge-right-btn a{
     padding: 12px 22px;
 
 }
 
-.badge-left img{
+.gnpub-badge-left img{
   width: 50px;
 }
 .gn-menu ul {
