@@ -46,7 +46,8 @@ jQuery(document).ready(function ($) {
                 dataType: 'json',
                 data: {
                     action: 'gnpub_send_feedback',
-                    data: $('#gnpub-feedback-content form').serialize()
+                    data: $('#gnpub-feedback-content form').serialize(),
+                    gn_security_nonce:gn_pub_script_vars.nonce
                 },
                 complete: function (MLHttpRequest, textStatus, errorThrown) {
                     // deactivate the plugin and close the popup

@@ -101,6 +101,58 @@
   position: relative;
 }
 
+div#gn-upgrade .button-gnp-ugrade {
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 20px;
+  color: #fff;
+  border-radius: 4px;
+  background-color: #ec407a;
+  border: none;
+  padding: 20px;
+  transition: all 0.5s;
+  font-weight: 600;
+}
+
+.gn-tab button.gnpub-upgrade.active {
+  border-bottom: 2px solid #e93557;
+  color: #e93557;
+  background: white;
+}
+.gnpub-content-stolen-badge{
+  background-color: #fff;
+  padding: 21px 12px;
+  margin-top: 14px;
+  display: inline-block;
+  border: 1px solid #d8d8e3;
+  width: 98%;
+  border-left: 4px solid #e8325f;
+}
+.gnpub-badge-left {
+  float: left;
+}
+.gnpub-badge-right {
+  float: left;
+}
+.gnpub-badge-right p{
+  font-size: 16px;
+  color: #000;
+}
+
+.gnpub-badge-right-btn {
+  float: right;
+  padding-top: 18px;
+
+}
+.gnpub-badge-right-btn a{
+    padding: 12px 22px;
+
+}
+
+.gnpub-badge-left img{
+  width: 50px;
+}
 .gn-menu ul {
   margin: 0;
   padding: 0;
@@ -343,6 +395,17 @@
     margin: 0 auto 0 23px;
     text-decoration: none;
     font-weight: 500;
+}
+
+.gnpu-license-notice {
+  text-align: center;
+  background-color: yellow;
+  padding: 10px 0;
+  font-size: 15px;
+}
+.gnpu-license-notice a {
+  font-weight: 600;
+  text-decoration: underline;
 }
 
 .gn-tab .gnpub-upgrade {

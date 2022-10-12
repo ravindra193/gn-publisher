@@ -30,15 +30,42 @@ function gn_copy(id) {
   
   // Get the element with id="defaultOpen" and click on it
   document.getElementById("defaultOpen").click();
+  jQuery('.gn-publisher-pro-btn').click(function(){
+    jQuery('.gn-tablinks.gn-license-btn').addClass('active');
+  });
 
   jQuery(document).ready(function($) {
-  var btn_click=false;
-  $('.gn-service-card-left,.gn-service-heading,.gn-service-card-right p  ').click(function(){
-    var url=$(this).parent().parent().data('url');
-    if(url)
-    {
-        window.open(url, '_blank');
-    }
+
+    jQuery(".gn-service-card.first").on("click", function(evt) {
+      if(!$(evt.target).is('.gn-service-card-right.first a')) {
+        window.open('https://gnpublisher.com/services/google-news-setup-audit-service', '_blank');
+      }    
+    });
+    jQuery(".gn-service-card.second").on("click", function(evt) {     
+      if(!$(evt.target).is('.gn-service-card-right a')) {
+        window.open('https://gnpublisher.com/services/dedicated-developer-for-website-search-console-maintenance-service/', '_blank');
+      }  
+          
+    });
+    jQuery(".gn-service-card.third").on("click", function(evt) {  
+       
+      if(!$(evt.target).is('.gn-service-card-right a')) {
+        window.open('https://gnpublisher.com/services/search-console-maintenance-service/', '_blank');
+      }     
+    });
+
+    //for active the pro tab on first time
+    $('.gnpub-upgrade.welcome').trigger('click');
+    $('.gn-tablinks.gnpub-upgrade').addClass('active');
+
+
+    var btn_click=false;
+    $('.gn-service-card-left,.gn-service-heading,.gn-service-card-right p  ').click(function(){
+      var url=$(this).parent().parent().data('url');
+      if(url)
+      {
+          window.open(url, '_blank');
+      }
   });  
  
  

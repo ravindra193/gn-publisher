@@ -51,6 +51,14 @@ function gnpub_add_deactivation_feedback_modal() {
  */
 function gnpub_send_feedback() {
 
+    if ( ! isset( $_POST['gn_security_nonce'] ) ){
+        return; 
+    }
+    if ( !wp_verify_nonce( $_POST['gn_security_nonce'], 'gn-pub-nonce' ) ){
+    return;  
+    } 
+
+
     if( isset( $_POST['data'] ) ) {
         parse_str( $_POST['data'], $form );
     }
@@ -92,7 +100,7 @@ function gnpub_send_feedback() {
     die();
 }
 add_action( 'wp_ajax_gnpub_send_feedback', 'gnpub_send_feedback' );
-
+ 
 
 
 add_action( 'admin_enqueue_scripts', 'gnpub_enqueue_makebetter_email_js' );
@@ -106,6 +114,10 @@ function gnpub_enqueue_makebetter_email_js(){
     wp_enqueue_script( 'gnpub-make-better-js', GNPUB_URL . '/assets/js/make-better-admin.js', array( 'jquery' ), GNPUB_VERSION);
 
     wp_enqueue_style( 'gnpub-make-better-css', GNPUB_URL . '/assets/css/make-better-admin.css', false , GNPUB_VERSION);
+    wp_localize_script('gnpub-make-better-js', 'gn_pub_script_vars', array(
+        'nonce' => wp_create_nonce( 'gn-pub-nonce' ),
+    )
+    );
 }
 
 if( is_admin() && gnpub_is_plugins_page()) {

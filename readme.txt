@@ -4,7 +4,7 @@ Tags: google news, google, news, publisher center, rss, feed, feeds
 Requires at least: 3.5
 Tested up to: 6.0.1
 Requires PHP: 5.4
-Stable tag: 1.5.1
+Stable tag: 1.5.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -65,6 +65,15 @@ GN Publisher may also be downloaded to your computer and uploaded, installed, an
 * This plugin is compatible with all MySQL versions supported by WordPress
 
 == Changelog ==
+
+= 1.5.2 - 2022-10-12 =
+* Added: settings link on plugins page #13
+* Added: POP up for upgrade after activation like toc #14
+* Added: Show a cta if the content is being stolen below feed section #15
+* Added: Need to adding security nonce in deactivate form. #18
+* Fixed: Services some parts are not clickable #16
+* Fixed: Need Some Improvement with Pro #19
+* Fixed: Incompatible with RankMath SEO Plugin #20
 
 = 1.5.1 - 2022-09-22 =
 * Stopping people from Stealing content from publishers #4
