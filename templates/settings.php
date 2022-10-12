@@ -53,16 +53,16 @@ if ( defined('GNPUB_PRO_VERSION') ) {
 } 
 ?>
 	<div class="gn-tab">
-  <button class="gn-tablinks" onclick="openTab(event, 'gn-intro')" id="defaultOpen">Dashboard</button>
-  <button class="gn-tablinks" onclick="openTab(event, 'gn-google-feed')" id="gn-feed">Google News Feed Setup</button>
-  <button class="gn-tablinks" onclick="openTab(event, 'gn-features')">Features</button>
-  <button class="gn-tablinks" onclick="openTab(event, 'gn-troubleshooting')">Troubleshooting</button>
-  <button class="gn-tablinks" onclick="openTab(event, 'gn-help')">Help &amp; Support</button>
-  <button class="gn-tablinks" onclick="openTab(event, 'gn-services')">Services</button>
+  <button class="gn-tablinks" onclick="openTab(event, 'gn-intro')" id="defaultOpen"><?php echo esc_html__('Dashboard', 'gn-publisher') ?></button>
+  <button class="gn-tablinks" onclick="openTab(event, 'gn-google-feed')" id="gn-feed"><?php echo esc_html__('Google News Feed Setup', 'gn-publisher') ?></button>
+  <button class="gn-tablinks" onclick="openTab(event, 'gn-features')"><?php echo esc_html__('Features', 'gn-publisher') ?></button>
+  <button class="gn-tablinks" onclick="openTab(event, 'gn-troubleshooting')"><?php echo esc_html__('Troubleshooting', 'gn-publisher') ?></button>
+  <button class="gn-tablinks" onclick="openTab(event, 'gn-help')"><?php echo esc_html__('Help &amp; Support', 'gn-publisher') ?></button>
+  <button class="gn-tablinks" onclick="openTab(event, 'gn-services')"><?php echo esc_html__('Services', 'gn-publisher') ?></button>
   <?php if(defined('GNPUB_PRO_VERSION')){ ?>
-  <button class="gn-tablinks gn-license-btn" onclick="openTab(event, 'gn-license')">License <span style="color: red;">!</span></button>
+  <button class="gn-tablinks gn-license-btn" onclick="openTab(event, 'gn-license')"><?php echo esc_html__('License', 'gn-publisher') ?> <span style="color: red;">!</span></button>
   <?php } else { ?>
-    <button class="gn-tablinks gnpub-upgrade <?php echo isset($_GET['tab']) ? $_GET['tab'] : ''; ?>" onclick="openTab(event, 'gn-upgrade')">Upgrade to PRO</button>
+    <button class="gn-tablinks gnpub-upgrade <?php echo isset($_GET['tab']) ? $_GET['tab'] : ''; ?>" onclick="openTab(event, 'gn-upgrade')"><?php echo esc_html__('Upgrade to PRO', 'gn-publisher') ?></button>
     <!-- <button class="gn-tablinks gnpub-upgrade"><a target="_blank" href="https://gnpublisher.com/pricing/#pricing">Upgrade to PRO</a></button> -->
     <?php } ?>
   
@@ -143,8 +143,8 @@ if ( defined('GNPUB_PRO_VERSION') ) {
   <?php if(!defined('GNPUB_PRO_VERSION')){ ?>
 <div class="info content-stolen-badge">
   <div class="badge-left"><a href="https://gnpublisher.com/" target="_blank"><img  class="gn-logo" src=<?php echo GNPUB_URL . '/assets/images/gn-logo-mini.png' ?> title="<?php _e( '<b>GN</b> Publisher', 'gn-publisher' ); ?>"/></a></div>
-  <div class="badge-right"><p>For feed content protection, upgrade to Premium.</p></div>
-  <div class="badge-right-btn"><a class="gn-publisher-pro-btn " target="_blank" href="https://gnpublisher.com/pricing/#pricing">Upgrade to Premium</a></div>
+  <div class="badge-right"><p><?php echo esc_html__('For feed content protection, upgrade to Premium.', 'gn-publisher') ?></p></div>
+  <div class="badge-right-btn"><a class="gn-publisher-pro-btn " target="_blank" href="https://gnpublisher.com/pricing/#pricing"><?php echo esc_html__('Upgrade to Premium', 'gn-publisher') ?></a></div>
 </div>
 <?php } ?>
 </div>
@@ -156,7 +156,7 @@ if ( defined('GNPUB_PRO_VERSION') ) {
     <div class="gn-question">
       <input type="checkbox" id="type1" class="gn-accordion">
       <label for="type1">
-        There are no articles in this section
+      <?php echo esc_html__('There are no articles in this section', 'gn-publisher') ?>
         <div class="gn-icon">
           <span aria-hidden="true"></span>
         </div>
@@ -171,7 +171,7 @@ if ( defined('GNPUB_PRO_VERSION') ) {
     <div class="gn-question">
       <input type="checkbox" id="type2" class="gn-accordion">
       <label for="type2">
-        Refreshed the page but again the same result
+      <?php echo esc_html__('Refreshed the page but again the same result', 'gn-publisher') ?>
         <div class="gn-icon">
           <span aria-hidden="true"></span>
         </div>
@@ -186,7 +186,7 @@ if ( defined('GNPUB_PRO_VERSION') ) {
     <div class="gn-question">
       <input type="checkbox" id="type3" class="gn-accordion">
       <label for="type3">
-        If the url works then what to do
+      <?php echo esc_html__('If the url works then what to do', 'gn-publisher') ?>
         <div class="gn-icon">
           <span aria-hidden="true"></span>
         </div>
@@ -205,7 +205,7 @@ if ( defined('GNPUB_PRO_VERSION') ) {
     <div class="gn-question">
       <input type="checkbox" id="type4" class="gn-accordion">
       <label for="type4">
-        How to run RSS Feed Validator
+      <?php echo esc_html__('How to run RSS Feed Validator', 'gn-publisher') ?>
         <div class="gn-icon">
           <span aria-hidden="true"></span>
         </div>
@@ -222,7 +222,7 @@ if ( defined('GNPUB_PRO_VERSION') ) {
     <div class="gn-question">
       <input type="checkbox" id="type5" class="gn-accordion">
       <label for="type5">
-        Missing Images 
+      <?php echo esc_html__('Missing Images', 'gn-publisher') ?> 
         <div class="gn-icon">
           <span aria-hidden="true"></span>
         </div>
@@ -239,7 +239,7 @@ if ( defined('GNPUB_PRO_VERSION') ) {
     <div class="gn-question">
       <input type="checkbox" id="type6" class="gn-accordion">
       <label for="type6">
-        Missing Media
+      <?php echo esc_html__('Missing Media', 'gn-publisher') ?>
         <div class="gn-icon">
           <span aria-hidden="true"></span>
         </div>
@@ -254,7 +254,7 @@ if ( defined('GNPUB_PRO_VERSION') ) {
     <div class="gn-question">
       <input type="checkbox" id="type7" class="gn-accordion">
       <label for="type7">
-        General Info
+      <?php echo esc_html__('General Info', 'gn-publisher') ?>
         <div class="gn-icon">
           <span aria-hidden="true"></span>
         </div>
@@ -274,19 +274,19 @@ if ( defined('GNPUB_PRO_VERSION') ) {
     </div>
   </div>
 
-  <p>If the above information does not seems to help you can also contact us from  <a href="https://gnpublisher.com/contact-us/" target="_ blank">https://gnpublisher.com/contact-us</a></p>
+  <p><?php echo esc_html__('If the above information does not seems to help you can also contact us from', 'gn-publisher') ?>  <a href="https://gnpublisher.com/contact-us/" target="_ blank">https://gnpublisher.com/contact-us</a></p>
 </div>
 
 <div id="gn-help" class="gn-tabcontent">
 <div class="gn-flex-container">
 <div class="gn-left-side">
-<p>We are dedicated to provide Technical support &amp; Help to our users. Use the below form for sending your questions. </p>
-<p>You can also contact us from <a href="https://gnpublisher.com/contact-us/" target="_blank">https://gnpublisher.com/contact-us/</a>.</p>
+<p><?php echo esc_html__('We are dedicated to provide Technical support &amp; Help to our users. Use the below form for sending your questions. ', 'gn-publisher') ?></p>
+<p><?php echo esc_html__('You can also contact us from', 'gn-publisher') ?> <a href="https://gnpublisher.com/contact-us/" target="_blank">https://gnpublisher.com/contact-us/</a>.</p>
 
 <div class="gn_support_div_form" id="technical-form">
             <ul>
                 <li>
-                  <label class="gn-support-label">Email<span class="gn-star-mark">*</span></label>
+                  <label class="gn-support-label"><?php echo esc_html__('Email', 'gn-publisher') ?><span class="gn-star-mark">*</span></label>
                    <div class="support-input">
                    		
                    		<input type="text" id="gn_query_email" name="gn_query_email" size="47" placeholder="Enter your Email" required="">
@@ -294,7 +294,7 @@ if ( defined('GNPUB_PRO_VERSION') ) {
                 </li>
                 
                 <li>
-                    <label class="gn-support-label">Query<span class="gn-star-mark">*</span></label>                    
+                    <label class="gn-support-label"><?php echo esc_html__('Query', 'gn-publisher') ?><span class="gn-star-mark">*</span></label>                    
                    
                     <div class="support-input"><textarea rows="5" cols="50" id="gn_query_message" name="gn_query_message" placeholder="Write your query"></textarea>
                     </div>
@@ -302,21 +302,21 @@ if ( defined('GNPUB_PRO_VERSION') ) {
                   
                 </li>
                 
-                <li><button class="button button-primary gn-send-query">Send Support Request</button></li>
+                <li><button class="button button-primary gn-send-query"><?php echo esc_html__('Send Support Request', 'gn-publisher') ?></button></li>
             </ul>            
                 
              
             <div class="clear"> </div>
-                    <span class="gn-query-success gn-result gn-hide">Message sent successfully, Please wait we will get back to you shortly</span>
-                    <span class="gn-query-error gn-result gn-hide">Message not sent. please check your network connection</span>
+                    <span class="gn-query-success gn-result gn-hide"><?php echo esc_html__('Message sent successfully, Please wait we will get back to you shortly', 'gn-publisher') ?></span>
+                    <span class="gn-query-error gn-result gn-hide"><?php echo esc_html__('Message not sent. please check your network connection', 'gn-publisher') ?></span>
             </div>
 </div>
 
 <div class="gn-right-side">
 <div class="gn-bio-box" id="gn_Bio">
-                <h1>Vision &amp; Mission</h1>
-                <p class="gn-p">We strive to provide the Google News Publisher in the world.</p>
-              <p class="gn_boxdesk"> Delivering a good user experience means a lot to us, so we try our best to reply each and every question.</p>
+                <h1><?php echo esc_html__('Vision &amp; Mission', 'gn-publisher') ?></h1>
+                <p class="gn-p"><?php echo esc_html__('We strive to provide the Google News Publisher in the world.', 'gn-publisher') ?></p>
+              <p class="gn_boxdesk"> <?php echo esc_html__('Delivering a good user experience means a lot to us, so we try our best to reply each and every question.', 'gn-publisher') ?></p>
            </div>
 </div>
 
@@ -335,8 +335,8 @@ if ( defined('GNPUB_PRO_VERSION') ) {
       <img src="<?php echo GNPUB_URL . '/assets/images/google-news.png'?>" width="128px" height="128px">
     </div>
     <div class="gn-service-card-right">
-      <h3 class="gn-service-heading">Google News Setup & Audit</h3>
-    <p>You can get thousands of clicks to your site from Google News. We can set up Google news for your website and perform regular audits.</p>
+      <h3 class="gn-service-heading"><?php echo esc_html__('Google News Setup & Audit', 'gn-publisher') ?></h3>
+    <p><?php echo esc_html__('You can get thousands of clicks to your site from Google News. We can set up Google news for your website and perform regular audits.', 'gn-publisher') ?></p>
     <a target="_blank" href="https://gnpublisher.com/services/google-news-setup-audit-service/#pricing" class="gn-btn-primary button button-primary">View Pricing</a><a href="https://gnpublisher.com/services/google-news-setup-audit-service/" target="_blank" class="gn-btn gn-btn-learnmore button">Learn More</a>
     </div>
   </div>
@@ -345,9 +345,9 @@ if ( defined('GNPUB_PRO_VERSION') ) {
     <img src="<?php echo GNPUB_URL . '/assets/images/support.png'?>" width="128px" height="128px">  
   </div>
   <div class="gn-service-card-right">    
-  <h3 class="gn-service-heading">Dedicated Developer for Website</h3>
-  <p>Our dedicated developers will continuously monitor your website and make sure its up and running without any issue.</p>  
-  <a target="_blank" href="https://gnpublisher.com/services/dedicated-developer-for-website-search-console-maintenance-service/#pricing" class="gn-btn-primary button button-primary">View Pricing</a><a href="https://gnpublisher.com/services/dedicated-developer-for-website-search-console-maintenance-service/" target="_blank" class="gn-btn gn-btn-learnmore button">Learn More</a>
+  <h3 class="gn-service-heading"><?php echo esc_html__('Dedicated Developer for Website', 'gn-publisher') ?></h3>
+  <p><?php echo esc_html__('Our dedicated developers will continuously monitor your website and make sure its up and running without any issue.', 'gn-publisher') ?></p>  
+  <a target="_blank" href="https://gnpublisher.com/services/dedicated-developer-for-website-search-console-maintenance-service/#pricing" class="gn-btn-primary button button-primary"><?php echo esc_html__('View Pricing', 'gn-publisher') ?></a><a href="https://gnpublisher.com/services/dedicated-developer-for-website-search-console-maintenance-service/" target="_blank" class="gn-btn gn-btn-learnmore button"><?php echo esc_html__('Learn More', 'gn-publisher') ?></a>
   </div>
   </div>
   
@@ -356,9 +356,9 @@ if ( defined('GNPUB_PRO_VERSION') ) {
     <img src="<?php echo GNPUB_URL . '/assets/images/google.png'?>" width="128px" height="128px">
   </div>
   <div class="gn-service-card-right">
-    <h3 class="gn-service-heading">Search Console
+    <h3 class="gn-service-heading"><?php echo esc_html__('Search Console', 'gn-publisher') ?>
     Maintenance</h3>
-    <p>  We will manage your all Google Search Console problems because even after a webpage gets indexed, issues can happen.</p>
+    <p>  <?php echo esc_html__('We will manage your all Google Search Console problems because even after a webpage gets indexed, issues can happen.', 'gn-publisher') ?></p>
 <a target="_blank" href="https://gnpublisher.com/services/search-console-maintenance-service/#pricing" class="gn-btn-primary button button-primary">View Pricing</a><a href="https://gnpublisher.com/services/search-console-maintenance-service/" target="_blank" class="gn-btn gn-btn-learnmore button">Learn More</a>
   </div>
   </div>
@@ -374,7 +374,7 @@ if ( defined('GNPUB_PRO_VERSION') ) {
       <tr>
         <th><?php _e( 'Feed Content Protection', 'gn-publisher' ); ?></th>
         <td>
-        <a class="gn-publisher-pro-btn "  target="_blank" href="https://gnpublisher.com/pricing/#pricing">Upgrade to Premium</a>
+        <a class="gn-publisher-pro-btn "  target="_blank" href="https://gnpublisher.com/pricing/#pricing"><?php echo esc_html__('Upgrade to Premium', 'gn-publisher') ?></a>
         </td>
       </tr>
       </table>
