@@ -39,7 +39,7 @@ class gnpub_ads_newsletter {
 		        'name'    => $name,
 		        'email'   => $email,
 		        'website' => $website,
-		        'type'    => 'schema'
+		        'type'    => 'gnpub'
                     );
                     
 		    $response = wp_remote_post( $api_url, array( 'timeout' => 15, 'sslverify' => false, 'body' => $api_params ) );
