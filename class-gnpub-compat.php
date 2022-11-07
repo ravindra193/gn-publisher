@@ -5,10 +5,11 @@
  * 
  * @since 1.0.8
  */
+
 class GNPUB_Compat {
 
 	public static function init() {
-		add_action( 'plugins_loaded', array( 'GNPUB_Compat', 'yoast_seo_strip_category_base' ), 20 );
+		add_action( 'plugins_loaded', array( 'GNPUB_Compat', 'seo_plugins_strip_category_base' ), 20 );
 	}
 
 	/**
@@ -21,25 +22,77 @@ class GNPUB_Compat {
 	 * @see GNPUB_Compat::yoast_seo_gn_feed_fix
 	 * @see https://github.com/Yoast/wordpress-seo/issues/6750
 	 */
-	public static function yoast_seo_strip_category_base() {
-		// If Yoast SEO isn't found, return early.
-		if ( ! defined( 'WPSEO_VERSION' ) ) {
-			return;
+
+	//public static function yoast_seo_strip_category_base() {
+	//	// If Yoast SEO isn't found, return early.
+	//	if ( ! defined( 'WPSEO_VERSION' ) ) {
+	//		return;
+	//	}
+	//
+	//	// Next, check if the strip category base feature is enabled.
+	//	if ( is_callable( array( 'WPSEO_Options', 'get' ) ) && WPSEO_Options::get( 'stripcategorybase' ) !== true ) {
+	//		return;
+	//	}
+	//
+	//	// Documented in wp-includes/class-wp-rewrite.php -> WP_Rewrite::rewrite_rules()
+	//	add_filter( 'category_rewrite_rules', array( 'GNPUB_Compat', 'yoast_seo_gn_feed_fix' ), 20 );
+
+	//}
+
+
+	/**
+	 * Strip category base feature has a known issue where it
+	 * will only work for default WordPress feed types. This function solves
+	 * this issue.
+	 * 
+	 * Fix for Yoast SEO , Rank Math and AIOSEO
+	 * 
+	 * @since 1.5.2
+	 * 
+	 */
+
+	public static function seo_plugins_strip_category_base() {
+		
+		$add_rewrite=false;
+		// FIX for Yoast Plugin
+		if ( defined( 'WPSEO_VERSION' ) ) {
+			// Next, check if the strip category base feature is enabled.
+			if ( is_callable( array( 'WPSEO_Options', 'get' ) ) && WPSEO_Options::get( 'stripcategorybase' ) == true ) {
+				$add_rewrite=true;
+			}
 		}
 
-		// Next, check if the strip category base feature is enabled.
-		if ( is_callable( array( 'WPSEO_Options', 'get' ) ) && WPSEO_Options::get( 'stripcategorybase' ) !== true ) {
-			return;
+		//FIX for Rank Math
+		if (class_exists('RankMath') ) {
+			// Next, check if the strip category base feature is enabled.
+			if (class_exists('\RankMath\Helper') && \RankMath\Helper::get_settings( 'general.strip_category_base' ) ) {
+				$add_rewrite=true;
+			}
 		}
 
-		// Documented in wp-includes/class-wp-rewrite.php -> WP_Rewrite::rewrite_rules()
-		add_filter( 'category_rewrite_rules', array( 'GNPUB_Compat', 'yoast_seo_gn_feed_fix' ), 20 );
+		//FIX for Rank Math
+		if (class_exists('aioseo') ) {
+			// Next, check if the strip category base feature is enabled.
+			if (isset(aioseo()->options->searchAppearance->advanced->removeCatBase) && aioseo()->options->searchAppearance->advanced->removeCatBase == 'on') {
+				$add_rewrite=true;
+			}
+		}
+
+		if(get_option( 'category_base' )==".")
+		{
+			$add_rewrite=true;
+		}
+		
+		if($add_rewrite==true)
+		{
+			add_filter( 'category_rewrite_rules', array( 'GNPUB_Compat', 'seo_plugins_gn_feed_fix' ), 20 );
+		}
 
 	}
 
 	/**
 	 * Iterates through the categories and creates a new rewrite rule for the gn publisher feed
-	 * which is not created by Yoast SEO.
+	 * which is not created by SEO plguins .
 	 * 
 	 * @param array $category_rewrite_rules
 	 * 
@@ -49,7 +102,7 @@ class GNPUB_Compat {
 	 * 
 	 * @return array
 	 */
-	public static function yoast_seo_gn_feed_fix( $category_rewrite_rules ) {
+	public static function seo_plugins_gn_feed_fix( $category_rewrite_rules ) {
 		global $wp_rewrite;
 
 		$taxonomy = get_taxonomy( 'category' );
