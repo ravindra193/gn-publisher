@@ -132,7 +132,6 @@ if ( defined('GNPUB_PRO_VERSION') ) {
         */
         $permalink_structure=get_option('permalink_structure');
         if ( defined( 'WPSEO_VERSION' ) && is_callable( array( 'WPSEO_Options', 'get' ) ) && WPSEO_Options::get( 'stripcategorybase' ) == true && !empty($permalink_structure)) {
-          $permalink_structure=get_option('permalink_structure');
           $permalink_prepend = "";
           if(strlen($permalink_structure)>3)
           {
