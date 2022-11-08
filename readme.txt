@@ -8,7 +8,6 @@ Stable tag: 1.5.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-GN Publisher: The easy way to make Google News Publisher compatible RSS feeds.
 
 == Description ==
 
@@ -40,17 +39,35 @@ GN Publisher now displays the time of the most recent ping and feed fetch from G
 
 **New in 1.0.6**
 
-GN Publisher now pings Google when feeds are updated. This can help with faster updates in your Google News Publication. 
+GN Publisher now pings Google when feeds are updated. This can help with faster updates in your Google News Publication.
+
+
+### Support
+
+We try our best to provide support on [WordPress GN Publisher plugin support forum](https://wordpress.org/support/plugin/gn-publisher/) forums. However, We have a special [team support](https://gnpublisher.com/contact-us/) where you can ask us questions and get help. Delivering a good user experience means a lot to us and so we try our best to reply each and every question that gets asked.
+
+
+### Bug Reports
+
+Bug reports for GN Publisher: Google News Compatible RSS Feeds are [welcomed on GitHub](https://github.com/ahmedkaludi/gn-publisher/issues/). Please note GitHub is not a support forum, and issues that aren't properly qualified as bugs will be closed.
+
 
 == Frequently Asked Questions ==
 
-= How can I get help with this plugin? =
+= How to install and use this GnPublisher plugin? =
 
-If you need help with the plugin or anything related to the RSS feeds that are created, please ask on the official [WordPress GN Publisher plugin support forum](https://wordpress.org/support/plugin/gn-publisher/).
+After you Active this plugin, just go to Dashboard > Settings > GN Publisher, and after that, You can check feed url and all other settings there!  
 
-= Google News turned my site down, where can I get help with that? =
+= How do I report bugs and suggest new features? =
 
-If you need help because your site has been turned down by Google, or you need other help related to the [Google News Publisher Center](https://publishercenter.google.com/), please ask for help on the official [Google News Publisher Help Forum](https://support.google.com/news/publisher-center/threads?hl=en).
+You can report the bugs for this GN Pub plugin [here](https://github.com/ahmedkaludi/gn-publisher/issues/)
+
+= Will you include features to my request? =
+
+Yes, Absolutely! We would suggest you send your feature request by creating an issue in [Github](https://github.com/ahmedkaludi/gn-publisher/issues/new/) . It helps us organize the feedback easily.
+
+= How do I get in touch? =
+You can contact us from [here](https://gnpublisher.com/contact-us/)
 
 
 == Installation ==
@@ -64,9 +81,11 @@ GN Publisher may also be downloaded to your computer and uploaded, installed, an
 * PHP 5.4 or greater is required, PHP 7.2 or newer is recommended
 * This plugin is compatible with all MySQL versions supported by WordPress
 
+
 == Changelog ==
 
-= 1.5.2 - 2022-10-12 =
+= 1.5.2 - (12 October 2022) =
+
 * Added: settings link on plugins page #13
 * Added: POP up for upgrade after activation like toc #14
 * Added: Show a cta if the content is being stolen below feed section #15
@@ -75,70 +94,70 @@ GN Publisher may also be downloaded to your computer and uploaded, installed, an
 * Fixed: Need Some Improvement with Pro #19
 * Fixed: Incompatible with RankMath SEO Plugin #20
 
-= 1.5.1 - 2022-09-22 =
+= 1.5.1 - (22 September 2022) =
 * Stopping people from Stealing content from publishers #4
 
-= 1.5 - 2022-09-12 =
+= 1.5 - (12 September 2022) =
 * Fix for Feed URL contains subdirectory in path #7
 * Fix for Loading script on all admin dashboard pages #9
 
-= 1.4.2 - 2022-09-09 =
+= 1.4.2 - (9 September 2022) =
 * Fix for "Most Recent Update Ping Sent" always "None recorded"
 
-= 1.4.1 - 2022-09-09 =
+= 1.4.1 - (9 September 2022) =
 * Fix for fatal errors on php 8+ on setting page
 * Fix for tabs not working
 
-= 1.4 - 2022-09-09 =
+= 1.4 - (9 September 2022) =
 * UI Improvements
 * Added Help &amp; support form
 * Improved assets and readme
 
-= 1.3 - 2021-04-15 =
+= 1.3 - (15 April 2021) =
 * Removed Freemius
 * Reverted a redirect change
 
-= 1.2 - 2021-03-18 =
+= 1.2 - (18 March 2021) =
 * Optimize image replacement feature
 * Update for PHP 8 compatability
 
-= 1.1 - 2020-11-29 =
+= 1.1 - (29 November 2020) =
 * Fix for some doubled images not being caught
 * Fix for some permalink examples on info page
 * Added Freemius opt in
 
-= 1.0.9 - 2020-08-24 =
+= 1.0.9 - (24 August 2020) =
 * Added timestamp for most recent ping
 * Added timestamp for most recent fetch
 * Bug fix for pubdate timezone
 * Expanded troubleshooting section
 * Added refresh (cached) Pub Center articles upon activation
 
-= 1.0.8 - 2020-05-25 =
+= 1.0.8 - (25 May 2020) =
 * bug fix for pre 5.3 versions of WP
 * fix for Yoast compatiblity
 * fix for Monster Insight compatability
 * Bug fix for Instagram embeds
 * Removed time restriction on posts incld in feeds
 
-= 1.0.7 - 2020-04-23 =
+= 1.0.7 - (23 April 2020) =
 * Bug fixes affecting pre 5.3 versions of WP
 
-= 1.0.6 - 2020-04-23 =	
+= 1.0.6 - (23 April 2020) =	
 * Added google websub notification
 
-= 1.0.4 - 2020-04-06 =
+= 1.0.4 - (6 April 2020) =
 * Syncing up version info
 
-= 1.0.3 - 2020-04-06 =
+= 1.0.3 - (6 April 2020) =
 * Disabled select rss plugins from altering this feed
 
-= 1.0.2 - 2020-04-02 =
+= 1.0.2 - (2 April 2020) =
 * Adjustments to featured image handling
 * Added cache disabling
 * Added GN Publisher to generator tag
 * Removed default feed option in settings
 * Added explicit feed urls on settings page
 
-= 1.0.0 - 2020-03-10 =
+= 1.0.0 - (10 March 2020) =
 * This is the first release of GN Publisher
