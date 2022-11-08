@@ -130,7 +130,8 @@ if ( defined('GNPUB_PRO_VERSION') ) {
         /* Fix Feed Url when user have added custom text in custom permalink (Ex:'lifestyle/%postname%') 
            and Yoast SEO have removed category base 
         */
-        if ( defined( 'WPSEO_VERSION' ) && is_callable( array( 'WPSEO_Options', 'get' ) ) && WPSEO_Options::get( 'stripcategorybase' ) == true && $permalink_prepend) {
+        $permalink_structure=get_option('permalink_structure');
+        if ( defined( 'WPSEO_VERSION' ) && is_callable( array( 'WPSEO_Options', 'get' ) ) && WPSEO_Options::get( 'stripcategorybase' ) == true && !empty($permalink_structure)) {
           $permalink_structure=get_option('permalink_structure');
           $permalink_prepend = "";
           if(strlen($permalink_structure)>3)
