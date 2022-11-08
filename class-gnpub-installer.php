@@ -30,7 +30,7 @@ final class GNPUB_Installer {
 		$feed = new GNPUB_Feed();
 		$feed->add_google_news_feed();
 
-		GNPUB_Compat::yoast_seo_strip_category_base();
+		GNPUB_Compat::seo_plugins_strip_category_base();
 
 		// The rewrite rules need a soft-flush to register our custom /feed/gn route rule.
 		flush_rewrite_rules( false );

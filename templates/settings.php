@@ -120,10 +120,30 @@ if ( defined('GNPUB_PRO_VERSION') ) {
         Copy
         </button>
       </div></li>';
-			
 			$categories = get_categories(); 
 			foreach( $categories as $category ) {
 				$gn_category_link = get_category_link( $category->term_id );
+
+        //Fix for Feed Url link if category is hidden by adding (.) in category base in wordpress permalinks section
+        $gn_category_link = str_replace('/./','/',$gn_category_link); 
+
+        /* Fix Feed Url when user have added custom text in custom permalink (Ex:'lifestyle/%postname%') 
+           and Yoast SEO have removed category base 
+        */
+        if ( defined( 'WPSEO_VERSION' ) && is_callable( array( 'WPSEO_Options', 'get' ) ) && WPSEO_Options::get( 'stripcategorybase' ) == true && $permalink_prepend) {
+          $permalink_structure=get_option('permalink_structure');
+          $permalink_prepend = "";
+          if(strlen($permalink_structure)>3)
+          {
+            $permalink_array=explode('/%',$permalink_structure);
+            if($permalink_array && count($permalink_array)>1)
+            {
+              $permalink_prepend =trailingslashit($permalink_array[0]);
+            }
+          }
+          $gn_category_link = str_replace($permalink_prepend,'/',$gn_category_link);
+        }
+
 				$gn_category_link = $permalinks_enabled ? trailingslashit( $gn_category_link ) . 'feed/gn' : add_query_arg( 'feed', 'gn', $gn_category_link );
         echo '<li><input type="text" class="gn-input" value="'.esc_url( $gn_category_link ).'" id="gn-feed-'.$category->term_id.'" size="60" readonly>
       <div class="gn-tooltip">

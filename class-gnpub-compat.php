@@ -70,12 +70,14 @@ class GNPUB_Compat {
 			}
 		}
 
-		//FIX for Rank Math
-		if (class_exists('aioseo') ) {
+		//FIX for AIOSEO
+		if (function_exists('aioseo') ) {
 			// Next, check if the strip category base feature is enabled.
-			if (isset(aioseo()->options->searchAppearance->advanced->removeCatBase) && aioseo()->options->searchAppearance->advanced->removeCatBase == 'on') {
+			if (aioseo()->options->searchAppearance->advanced->removeCatBase) {
 				$add_rewrite=true;
+
 			}
+		
 		}
 
 		if(get_option( 'category_base' )==".")
@@ -83,7 +85,7 @@ class GNPUB_Compat {
 			$add_rewrite=true;
 		}
 		
-		if($add_rewrite==true)
+		if($add_rewrite)
 		{
 			add_filter( 'category_rewrite_rules', array( 'GNPUB_Compat', 'seo_plugins_gn_feed_fix' ), 20 );
 		}
@@ -107,12 +109,11 @@ class GNPUB_Compat {
 
 		$taxonomy = get_taxonomy( 'category' );
 		$permalink_structure = get_option( 'permalink_structure' );
-
+		update_option('cus_rewrite_update_time',time());
 		$blog_prefix = '';
 		if ( is_multisite() && ! is_subdomain_install() && is_main_site() && strpos( $permalink_structure, '/blog/' ) === 0 ) {
 			$blog_prefix = 'blog/';
-		}
-
+		}	
 		$categories = get_categories( [ 'hide_empty' => false ] );
 		if ( is_array( $categories ) && ! empty( $categories ) ) {
 			foreach ( $categories as $category ) {
@@ -148,7 +149,7 @@ class GNPUB_Compat {
 
 			unset( $categories, $category, $category_nicename, $category_nicename_filtered );
 		}
-
+		
 		return $category_rewrite_rules;
 	}
 
@@ -168,6 +169,9 @@ class GNPUB_Compat {
 		$rewrite_name = $blog_prefix . '(' . $category_name . ')';
 
 		$rewrites[ $rewrite_name . '/(?:feed/)?gn/?$' ] = 'index.php?category_name=$matches[1]&feed=gn';
+		if (function_exists('aioseo') && !empty(get_option('permalink_structure'))) {
+			$rewrites[  '(' . $category_name . ')/(?:feed/)?gn/?$' ] = 'index.php?category_name=$matches[1]&feed=gn';
+		}
 
 		return $rewrites;
 	}
