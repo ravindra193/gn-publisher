@@ -179,7 +179,7 @@ function gnpub_feed_channel_link() {
 			$tmp_arr=explode('/',$path_check[0]);
 			foreach($tmp_arr as $key=>$single)
 			{
-				$tmp_arr[$key]=urlencode($single);
+				$tmp_arr[$key]=urlencode(urldecode($single));
 			}
 			$host_url['path']=implode('/',$tmp_arr);	
 		
