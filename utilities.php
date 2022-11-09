@@ -179,7 +179,7 @@ function gnpub_feed_channel_link() {
 			$tmp_arr=explode('/',$path_check[0]);
 			foreach($tmp_arr as $key=>$single)
 			{
-				$tmp_arr[$key]=urlencode(urldecode($single));
+				$tmp_arr[$key]=strtolower(urlencode(urldecode($single)));
 			}
 			$host_url['path']=implode('/',$tmp_arr);	
 		
@@ -214,7 +214,7 @@ function gnpub_feed_post_link($post_url=null) {
 		$tmp_arr_query=explode('&',$tmp_url['query']);
 		foreach($tmp_arr_query as $key=>$single)
 		{
-			$tmp_arr_query[$key]=urlencode(urldecode($single));
+			$tmp_arr_query[$key]=strtolower(urlencode(urldecode($single)));
 		}
 		$tmp_url['query']=implode('&',$tmp_arr_query);	
 	}
@@ -224,7 +224,7 @@ function gnpub_feed_post_link($post_url=null) {
 		$tmp_arr=explode('/',$tmp_url['path']);
 		foreach($tmp_arr as $key=>$single)
 		{
-			$tmp_arr[$key]=urlencode(urldecode($single));
+			$tmp_arr[$key]=strtolower(urlencode(urldecode($single)));
 		}
 		$tmp_url['path']=implode('/',$tmp_arr);	
 
