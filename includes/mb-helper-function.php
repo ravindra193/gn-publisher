@@ -19,6 +19,21 @@ function gnpub_is_plugins_page() {
     return ( 'plugins.php' === $pagenow );
 }
 
+function gnpub_get_current_url(){
+ 
+    $link = "http"; 
+      
+    if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on'){
+        $link = "https"; 
+    } 
+  
+    $link .= "://"; 
+    $link .= $_SERVER['HTTP_HOST']; 
+    $link .= $_SERVER['REQUEST_URI']; 
+      
+    return $link;
+}
+
 /**
  * display deactivation logic on plugins page
  * 

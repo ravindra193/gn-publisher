@@ -153,3 +153,84 @@ function gnpub_current_feed_link() {
 	$host = @parse_url( home_url() );
 	return set_url_scheme( 'http://' . $host['host'] . stripslashes_deep( $_SERVER['REQUEST_URI'] ) );
 }
+
+/**
+ * Fix for feed page link with non-english language characters
+ * Issue : Feed Validation Fails For arabic language #29
+ * 
+ * @since 1.5.3
+ * 
+ * @return string
+ */
+function gnpub_feed_channel_link() {
+	$url = esc_url( apply_filters( 'self_link', get_self_link() ) );
+	$host_url = @parse_url($url);
+
+	if(isset($host_url['query']))
+	{
+		$host_url['query']="";
+	}
+
+	if(isset($host_url['path']))
+	{
+		$path_check=explode('/feed/',$host_url['path']);
+		
+
+			$tmp_arr=explode('/',$path_check[0]);
+			foreach($tmp_arr as $key=>$single)
+			{
+				$tmp_arr[$key]=strtolower(urlencode(urldecode($single)));
+			}
+			$host_url['path']=implode('/',$tmp_arr);	
+		
+
+	}
+
+	
+
+	echo set_url_scheme($host_url['scheme'].'://'.$host_url['host'].$host_url['path']);
+
+}
+
+
+/**
+ * Fix for single post link with non-english language characters 
+ * Issue : Feed Validation Fails For arabic language #29
+ * 
+ * @since 1.5.3
+ * 
+ * @return string
+ */
+function gnpub_feed_post_link($post_url=null) {
+	
+	if(!$post_url)
+	{
+		return '';
+	}
+	$tmp_url = @parse_url($post_url);
+
+	if(isset($tmp_url['query']))
+	{
+		$tmp_arr_query=explode('&',$tmp_url['query']);
+		foreach($tmp_arr_query as $key=>$single)
+		{
+			$tmp_arr_query[$key]=strtolower(urlencode(urldecode($single)));
+		}
+		$tmp_url['query']=implode('&',$tmp_arr_query);	
+	}
+
+	if(isset($tmp_url['path']))
+	{
+		$tmp_arr=explode('/',$tmp_url['path']);
+		foreach($tmp_arr as $key=>$single)
+		{
+			$tmp_arr[$key]=strtolower(urlencode(urldecode($single)));
+		}
+		$tmp_url['path']=implode('/',$tmp_arr);	
+
+	}
+
+
+	echo set_url_scheme($tmp_url['scheme'].'://'.$tmp_url['host'].$tmp_url['path'].((isset($tmp_url['query']) && !empty($tmp_url['query']))?'?'.$tmp_url['query']:''));
+
+}

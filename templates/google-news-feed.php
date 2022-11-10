@@ -56,7 +56,7 @@ do_action( 'rss_tag_pre', 'rss2' );
 	<channel>
 		<title><?php wp_title_rss(); ?></title>
 		<atom:link href="<?php self_link(); ?>" rel="self" type="application/rss+xml" />
-		<link><?php bloginfo_rss( 'url' ); ?></link>
+		<link><?php gnpub_feed_channel_link(); ?></link>
 		<description><?php bloginfo_rss( 'description' ); ?></description>
 		<lastBuildDate><?php
 			$date = get_lastpostmodified( 'GMT' );
@@ -93,7 +93,7 @@ do_action( 'rss_tag_pre', 'rss2' );
 
 		<item>
 			<title><?php the_title_rss(); ?></title>
-			<link><?php the_permalink(); ?></link>
+			<link><?php gnpub_feed_post_link(get_the_permalink()); ?></link>
 			<pubDate><?php echo $pub_date; ?></pubDate>
 			<dc:creator><![CDATA[<?php the_author(); ?>]]></dc:creator>
 			<guid isPermaLink="false"><?php the_guid(); ?></guid>

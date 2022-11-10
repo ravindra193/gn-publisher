@@ -67,6 +67,8 @@ function gnpub_feed_bootstrap() {
 		require_once GNPUB_PATH . 'controllers/admin/class-gnpub-menu.php';
 		require_once GNPUB_PATH . 'controllers/admin/class-gnpub-settings.php';
 		require_once GNPUB_PATH . 'includes/mb-helper-function.php';
+		require_once GNPUB_PATH . 'controllers/admin/newsletter.php';
+
 
 		register_activation_hook( __FILE__, array( 'GNPUB_Installer', 'install' ) );
 		register_deactivation_hook( __FILE__, array( 'GNPUB_Installer', 'uninstall' ) );
@@ -90,7 +92,11 @@ function gnpub_admin_style($hook_suffix ) {
 	if($hook_suffix=="settings_page_gn-publisher-settings")
 	{
 		wp_enqueue_style('gn-admin-styles', GNPUB_URL .'/assets/css/gn-admin.css', array(),GNPUB_VERSION);
+		wp_enqueue_script('thickbox');
+        wp_enqueue_style('thickbox');
+		
 		wp_enqueue_script('gn-admin-script', GNPUB_URL . '/assets/js/gn-admin.js', array('jquery'), GNPUB_VERSION, 'true' );
+		
 		wp_localize_script('gn-admin-script', 'gn_script_vars', array(
 			'nonce' => wp_create_nonce( 'gn-admin-nonce' ),
 		)
@@ -100,6 +106,42 @@ function gnpub_admin_style($hook_suffix ) {
 
 
 add_action('admin_enqueue_scripts', 'gnpub_admin_style');
+
+function gnpub_admin_newsletter_script($hook_suffix ) {
+	if($hook_suffix=="settings_page_gn-publisher-settings")
+	{
+		wp_enqueue_script('gn-admin-newsletter-script', GNPUB_URL . '/assets/js/gn-admin-newsletter.js', array('jquery'), GNPUB_VERSION, 'true' );
+		
+		$current_screen = get_current_screen(); 
+       
+        if(isset($current_screen->post_type)){                  
+            $post_type = $current_screen->post_type;                
+        }
+
+		$post_id = get_the_ID();
+        if(isset($_GET['tag_ID'])){
+                $post_id = intval($_GET['tag_ID']);
+        }
+
+		
+
+		$data = array(     
+			'current_url'                  => gnpub_get_current_url(), 
+			'post_id'                      => $post_id,
+			'ajax_url'                     => admin_url( 'admin-ajax.php' ),            
+			'post_type'                    => $post_type,   
+			'page_now'                     => $hook_suffix,
+			'gnpub_security_nonce'         => wp_create_nonce('gnpub_ajax_check_nonce'),
+		);
+						
+		$data = apply_filters('gnpub_localize_filter',$data,'gnpub_localize_data');		
+	
+		wp_localize_script( 'gn-admin-newsletter-script', 'gnpub_localize_data', $data );
+		
+	}	
+
+}
+add_action('admin_enqueue_scripts', 'gnpub_admin_newsletter_script');
 
 
 register_activation_hook(__FILE__, 'gnpub_activate');
