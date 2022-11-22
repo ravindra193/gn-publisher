@@ -4,8 +4,8 @@ Tags: google news, google, news, publisher center, rss, feed, feeds
 Requires at least: 3.5
 Tested up to: 6.0.1
 Requires PHP: 5.4
-Stable tag: 1.5.2
-License: GPLv3
+Stable tag: 1.5.3
+License: GPLv3 
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 
@@ -83,6 +83,16 @@ GN Publisher may also be downloaded to your computer and uploaded, installed, an
 
 
 == Changelog ==
+
+= 1.5.3 - (11 November 2022) =
+
+* Added: email in / out pop-up form on activation/deactivation #2
+* Added: Improve Readme.txt #21
+* Fixed: Created an option to choose feed url structure #23
+* Fixed: Removed Category base bug with All in One SEO plugin #24
+* Fixed: "!" is appearing even if the lenience is activated. #26
+* Fixed: Post content is not reflected in feed when category base removed #27
+* Fixed: Feed Validation Fails For arabic language #29
 
 = 1.5.2 - (12 October 2022) =
 
