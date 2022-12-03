@@ -2,9 +2,9 @@
 Contributors: gnpublisher
 Tags: google news, google, news, publisher center, rss, feed, feeds
 Requires at least: 3.5
-Tested up to: 6.0.1
+Tested up to: 6.1.1
 Requires PHP: 5.4
-Stable tag: 1.5.3
+Stable tag: 1.5.4
 License: GPLv3 
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -83,6 +83,10 @@ GN Publisher may also be downloaded to your computer and uploaded, installed, an
 
 
 == Changelog ==
+
+= 1.5.4 - (02 November 2022) =
+
+* Added: BFCM internal offer #36
 
 = 1.5.3 - (11 November 2022) =
 
