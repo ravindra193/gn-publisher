@@ -7,7 +7,7 @@
  * Plugin Name: GN Publisher
  * Plugin URI: https://gnpublisher.com/
  * Description: GN Publisher: The easy way to make Google News Publisher compatible RSS feeds.
- * Version: 1.5.3
+ * Version: 1.5.4
  * Author: Chris Andrews
  * Author URI: https://gnpublisher.com/
  * Text Domain: gn-publisher
@@ -40,7 +40,7 @@ function gnpub_feed_bootstrap() {
 		return;
 	}
  
-	define( 'GNPUB_VERSION', '1.5.3' );
+	define( 'GNPUB_VERSION', '1.5.4' );
 	define( 'GNPUB_PATH', plugin_dir_path( __FILE__ ) );
     define( 'GNPUB_URL', plugins_url( '', __FILE__) );
 	define( 'GNPUB_PLUGIN_FILE', __FILE__ );
@@ -94,6 +94,7 @@ function gnpub_admin_style($hook_suffix ) {
 		wp_enqueue_style('gn-admin-styles', GNPUB_URL .'/assets/css/gn-admin.css', array(),GNPUB_VERSION);
 		wp_enqueue_script('thickbox');
         wp_enqueue_style('thickbox');
+        wp_enqueue_style('gn-admin-promo-style', GNPUB_URL .'/assets/css/promotional-popup.css', array(),GNPUB_VERSION);
 		
 		wp_enqueue_script('gn-admin-script', GNPUB_URL . '/assets/js/gn-admin.js', array('jquery'), GNPUB_VERSION, 'true' );
 		
@@ -101,6 +102,7 @@ function gnpub_admin_style($hook_suffix ) {
 			'nonce' => wp_create_nonce( 'gn-admin-nonce' ),
 		)
 		);
+		wp_enqueue_script('gn-admin-promo-script', GNPUB_URL . '/assets/js/promotional-popup.js', array(), GNPUB_VERSION);
 	}
 }
 
