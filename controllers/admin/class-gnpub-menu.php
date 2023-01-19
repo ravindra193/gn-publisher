@@ -63,7 +63,7 @@ class GNPUB_Menu {
 		}
 
 		include GNPUB_PATH . 'templates/settings.php';
-		include GNPUB_PATH . 'templates/promotional-popup.php';
+		
 	}
 
 	/**
