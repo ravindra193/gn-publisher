@@ -123,7 +123,7 @@ class GNPUB_Compat {
 				} elseif ( $taxonomy->rewrite['hierarchical'] !== false && $category->parent !== 0 ) {
 					$parents = get_category_parents( $category->parent, false, '/' );
 					if ( ! is_wp_error( $parents ) ) {
-						$category_nicename = $parents . $category_nicename;
+						$category_nicename = strtolower($parents) . $category_nicename;
 					}
 
 					unset( $parents );
