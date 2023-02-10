@@ -121,9 +121,9 @@ class GNPUB_Compat {
 				if ( $category->parent === $category->cat_ID ) {
 					$category->parent = 0;
 				} elseif ( $taxonomy->rewrite['hierarchical'] !== false && $category->parent !== 0 ) {
-					$parents = get_category($category->parent);
+					$parents = get_category_parents( $category->parent, false, '/' ,true);
 					if ( ! is_wp_error( $parents ) ) {
-						$category_nicename = $parents->slug.'/'. $category_nicename;
+						$category_nicename = $parents . $category_nicename;
 					}
 
 					unset( $parents );
