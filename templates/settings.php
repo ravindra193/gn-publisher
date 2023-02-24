@@ -67,7 +67,7 @@ if ( defined('GNPUB_PRO_VERSION') ) {
     ?>
   </button>
   <?php } else { ?>
-    <button class="gn-tablinks gnpub-upgrade <?php echo isset($_GET['tab']) ? $_GET['tab'] : ''; ?>" onclick="openTab(event, 'gn-upgrade')"><?php echo esc_html__('Upgrade to PRO', 'gn-publisher') ?></button>
+    <button class="gn-tablinks gnpub-upgrade <?php echo isset($_GET['tab']) ? esc_attr($_GET['tab']) : ''; ?>" onclick="openTab(event, 'gn-upgrade')"><?php echo esc_html__('Upgrade to PRO', 'gn-publisher') ?></button>
     <!-- <button class="gn-tablinks gnpub-upgrade"><a target="_blank" href="https://gnpublisher.com/pricing/#pricing">Upgrade to PRO</a></button> -->
     <?php } ?>
   
