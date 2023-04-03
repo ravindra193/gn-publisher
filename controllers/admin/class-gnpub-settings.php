@@ -50,7 +50,8 @@ class GNPUB_Settings {
 
 			$gnpub_options=array('gnpub_enable_copy_protection'=>false,
 								 'gnpub_show_upto_value'=>1,
-								 'gnpub_show_upto_unit'=>'paragraph');
+								 'gnpub_show_upto_unit'=>'paragraph',
+								'gnpub_exclude_categories'=>[]);
 			$option_update=false;
 
 			if ( isset( $_POST['gnpub_enable_copy_protection'] ) ) {
@@ -59,6 +60,11 @@ class GNPUB_Settings {
 				$option_update=true;
 			} 
 
+			if ( isset( $_POST['gnpub_exclude_categories'] ) ) {
+
+				$gnpub_options['gnpub_exclude_categories']= $_POST['gnpub_exclude_categories'];
+				$option_update=true;
+			} 
 			if ( isset( $_POST['gnpub_show_upto_value'] ) ) {
 				$safe_value = intval( $_POST['gnpub_show_upto_value'] );
 				if ( ! $safe_value ) {
