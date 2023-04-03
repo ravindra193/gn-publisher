@@ -56,6 +56,7 @@ if ( defined('GNPUB_PRO_VERSION') ) {
   <button class="gn-tablinks" onclick="openTab(event, 'gn-intro')" id="defaultOpen"><?php echo esc_html__('Dashboard', 'gn-publisher') ?></button>
   <button class="gn-tablinks" onclick="openTab(event, 'gn-google-feed')" id="gn-feed"><?php echo esc_html__('Google News Feed Setup', 'gn-publisher') ?></button>
   <button class="gn-tablinks" onclick="openTab(event, 'gn-features')"><?php echo esc_html__('Features', 'gn-publisher') ?></button>
+  <button class="gn-tablinks" onclick="openTab(event, 'gn-compatibility')"><?php echo esc_html__('Compatibility', 'gn-publisher') ?></button>
   <button class="gn-tablinks" onclick="openTab(event, 'gn-troubleshooting')"><?php echo esc_html__('Troubleshooting', 'gn-publisher') ?></button>
   <button class="gn-tablinks" onclick="openTab(event, 'gn-services')"><?php echo esc_html__('Services', 'gn-publisher') ?></button>
   <?php if(defined('GNPUB_PRO_VERSION')){ ?>
@@ -411,6 +412,24 @@ if ( defined('GNPUB_PRO_VERSION') ) {
       </p> 
   <?php } else { 
      do_action('gnpub_pro_setup_form');
+    
+    } ?>
+
+  </div>
+  <div id="gn-compatibility" class="gn-tabcontent">
+<?php if(!defined('GNPUB_PRO_VERSION')){ ?>
+      <p>
+    <table class="form-table">
+      <tr>
+        <th><?php _e( 'PublishPress Authors', 'gn-publisher' ); ?></th>
+        <td>
+        <a class="gn-publisher-pro-btn "  target="_blank" href="https://gnpublisher.com/pricing/#pricing"><?php echo esc_html__('Upgrade to Premium', 'gn-publisher') ?></a>
+        </td>
+      </tr>
+      </table>
+      </p> 
+  <?php } else { 
+     do_action('gnpub_pro_compat_form');
     
     } ?>
 

@@ -48,42 +48,56 @@ class GNPUB_Settings {
 				update_option( 'gnpub_is_default_feed', false );
 			}
 
-			$gnpub_options=array('gnpub_enable_copy_protection'=>false,
-								 'gnpub_show_upto_value'=>1,
-								 'gnpub_show_upto_unit'=>'paragraph',
-								'gnpub_exclude_categories'=>[]);
+			 $gnpub_defaults = array('gnpub_enable_copy_protection'=>false,
+									'gnpub_show_upto_value'=>1,
+								 	'gnpub_show_upto_unit'=>'paragraph',
+								 	'gnpub_exclude_categories'=>[],
+								 	'gnpub_pp_authors_compat'=>false);
+			$gnpub_options= get_option( 'gnpub_new_options', $gnpub_defaults);
 			$option_update=false;
 
-			if ( isset( $_POST['gnpub_enable_copy_protection'] ) ) {
-
-				$gnpub_options['gnpub_enable_copy_protection']= true;
-				$option_update=true;
-			} 
-
-			if ( isset( $_POST['gnpub_exclude_categories'] ) ) {
-
-				$gnpub_options['gnpub_exclude_categories']= $_POST['gnpub_exclude_categories'];
-				$option_update=true;
-			} 
-			if ( isset( $_POST['gnpub_show_upto_value'] ) ) {
-				$safe_value = intval( $_POST['gnpub_show_upto_value'] );
-				if ( ! $safe_value ) {
-					$safe_value = 1;
+			if ( isset( $_POST['gnpub_form_tab'] ) && $_POST['gnpub_form_tab']=='feature') {
+				if ( isset( $_POST['gnpub_enable_copy_protection'] ) ) {
+					$gnpub_options['gnpub_enable_copy_protection']= true;
+					$option_update=true;
+				}else {
+					$gnpub_options['gnpub_enable_copy_protection']= false;
+					$option_update=true;
 				}
-				$gnpub_options['gnpub_show_upto_value']= $safe_value;
-				$option_update=true;
-			} 
 
-			if ( isset( $_POST['gnpub_show_upto_unit'] ) ) {
-				$allowed_values=array('paragraph','word','character');
-				$safe_value = $_POST['gnpub_show_upto_unit'];
-				if(!in_array($safe_value,$allowed_values))
-				{
-					$safe_value='paragraph';
+				if ( isset( $_POST['gnpub_show_upto_value'] ) ) {
+					$safe_value = intval( $_POST['gnpub_show_upto_value'] );
+					if ( ! $safe_value ) {
+						$safe_value = 1;
+					}
+					$gnpub_options['gnpub_show_upto_value']= $safe_value;
+					$option_update=true;
+				} 
+
+				if ( isset( $_POST['gnpub_show_upto_unit'] ) ) {
+					$allowed_values=array('paragraph','word','character');
+					$safe_value = $_POST['gnpub_show_upto_unit'];
+					if(!in_array($safe_value,$allowed_values))
+					{
+						$safe_value='paragraph';
+					}
+					$gnpub_options['gnpub_show_upto_unit']= $safe_value;
+					$option_update=true;
+				} 
+
+				if ( isset( $_POST['gnpub_exclude_categories'] ) ) {
+					$gnpub_options['gnpub_exclude_categories']= $_POST['gnpub_exclude_categories'];
+					$option_update=true;
 				}
-				$gnpub_options['gnpub_show_upto_unit']= $safe_value;
+			}
+
+			if ( isset( $_POST['gnpub_form_tab'] ) && $_POST['gnpub_form_tab']=='compat') {
+				$gnpub_options['gnpub_pp_authors_compat']= false;
+				if ( isset( $_POST['gnpub_pp_authors_compat'] )) {
+					$gnpub_options['gnpub_pp_authors_compat']= true;	
+				}
 				$option_update=true;
-			} 
+			}
 
 			if($option_update==true)
 			{
