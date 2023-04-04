@@ -85,8 +85,11 @@ class GNPUB_Settings {
 					$option_update=true;
 				} 
 
-				if ( isset( $_POST['gnpub_exclude_categories'] ) ) {
+				if ( !empty( $_POST['gnpub_exclude_categories'] )) {
 					$gnpub_options['gnpub_exclude_categories']= $_POST['gnpub_exclude_categories'];
+					$option_update=true;
+				}else {
+					$gnpub_options['gnpub_exclude_categories']=[];
 					$option_update=true;
 				}
 			}
