@@ -424,6 +424,9 @@ if ( defined('GNPUB_PRO_VERSION') ) {
         <th><?php _e( 'PublishPress Authors', 'gn-publisher' ); ?></th>
         <td>
         <a class="gn-publisher-pro-btn "  target="_blank" href="https://gnpublisher.com/pricing/#pricing"><?php echo esc_html__('Upgrade to Premium', 'gn-publisher') ?></a>
+        <br><br>
+        <?php echo esc_html__(' This option will only work if you have installed', 'gn-publisher') ?>
+        <a href="https://wordpress.org/plugins/publishpress-authors/" target="_blank">  <?php echo esc_html__('Co-Authors, Multiple Authors and Guest Authors in an Author Box with PublishPress Authors', 'gn-publisher') ?></a>
         </td>
       </tr>
       </table>

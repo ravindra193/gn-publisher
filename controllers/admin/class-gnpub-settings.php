@@ -76,7 +76,7 @@ class GNPUB_Settings {
 
 				if ( isset( $_POST['gnpub_show_upto_unit'] ) ) {
 					$allowed_values=array('paragraph','word','character');
-					$safe_value = $_POST['gnpub_show_upto_unit'];
+					$safe_value = sanitize_text_field($_POST['gnpub_show_upto_unit']);
 					if(!in_array($safe_value,$allowed_values))
 					{
 						$safe_value='paragraph';
@@ -86,7 +86,13 @@ class GNPUB_Settings {
 				} 
 
 				if ( !empty( $_POST['gnpub_exclude_categories'] )) {
-					$gnpub_options['gnpub_exclude_categories']= $_POST['gnpub_exclude_categories'];
+					// Sanitizing posted array 
+					$gnpub_exclude_keys = array_keys($_POST['gnpub_exclude_categories']);
+					$gnpub_exclude_keys = array_map('sanitize_key', $gnpub_exclude_keys);
+					$gnpub_exclude_values = array_values($_POST['gnpub_exclude_categories']);
+					$gnpub_exclude_values = array_map('sanitize_text_field', $gnpub_exclude_values);
+					$gnpub_exclude_categories = array_combine($gnpub_exclude_keys, $gnpub_exclude_values);
+					$gnpub_options['gnpub_exclude_categories']= $gnpub_exclude_categories;
 					$option_update=true;
 				}else {
 					$gnpub_options['gnpub_exclude_categories']=[];
