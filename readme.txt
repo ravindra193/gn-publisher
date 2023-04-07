@@ -2,9 +2,9 @@
 Contributors: gnpublisher
 Tags: google news, google, news, publisher center, rss, feed, feeds
 Requires at least: 3.5
-Tested up to: 6.1.1
+Tested up to: 6.1
 Requires PHP: 5.4
-Stable tag: 1.5.6
+Stable tag: 1.5.7
 License: GPLv3 
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -24,6 +24,12 @@ The plugin addresses common RSS compatiblity issues publishers experience when u
 -  Delayed crawling by Google
 
 After installing, click on the *'Dashboard'* under GN Publisher on your plugins page for additional information about applying and troubleshooting issues related to the Google News Publisher Center.
+
+**New in 1.5.7**
+
+Added new feature to exclude categories from main feed.
+
+Added compatibility with the plugin PublishPress Authors.
 
 **New in 1.5.1**
 
@@ -83,6 +89,11 @@ GN Publisher may also be downloaded to your computer and uploaded, installed, an
 
 
 == Changelog ==
+
+= 1.5.7 - (24 February 2023) =
+
+* Added: Option to exclude categories from main feed. #48
+* Added: Compatibility with the plugin PublishPress Authors #51
 
 = 1.5.6 - (24 February 2023) =
 
