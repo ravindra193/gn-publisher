@@ -47,7 +47,7 @@ if ( defined('GNPUB_PRO_VERSION') ) {
       $license_key_status = $license_info['pro']['license_key_status'];
     } 
   if($license_key_status != 'active'){
-    echo '<div class="gnpu-license-notice">Thank You For installing <a href="https://gnpublisher.com/" target="_blank">GN PUBLISHER PRO</a>, please activate the licnse key to receive regular updates.</div>
+    echo '<div class="gnpu-license-notice">Thank You For installing <a href="https://gnpublisher.com/" target="_blank">GN PUBLISHER PRO</a>, please activate the license key to receive regular updates.</div>
     ';
   } 
 } 
@@ -56,8 +56,8 @@ if ( defined('GNPUB_PRO_VERSION') ) {
   <button class="gn-tablinks" onclick="openTab(event, 'gn-intro')" id="defaultOpen"><?php echo esc_html__('Dashboard', 'gn-publisher') ?></button>
   <button class="gn-tablinks" onclick="openTab(event, 'gn-google-feed')" id="gn-feed"><?php echo esc_html__('Google News Feed Setup', 'gn-publisher') ?></button>
   <button class="gn-tablinks" onclick="openTab(event, 'gn-features')"><?php echo esc_html__('Features', 'gn-publisher') ?></button>
+  <button class="gn-tablinks" onclick="openTab(event, 'gn-compatibility')"><?php echo esc_html__('Compatibility', 'gn-publisher') ?></button>
   <button class="gn-tablinks" onclick="openTab(event, 'gn-troubleshooting')"><?php echo esc_html__('Troubleshooting', 'gn-publisher') ?></button>
-  <button class="gn-tablinks" onclick="openTab(event, 'gn-help')"><?php echo esc_html__('Help &amp; Support', 'gn-publisher') ?></button>
   <button class="gn-tablinks" onclick="openTab(event, 'gn-services')"><?php echo esc_html__('Services', 'gn-publisher') ?></button>
   <?php if(defined('GNPUB_PRO_VERSION')){ ?>
     <button class="gn-tablinks gn-license-btn" onclick="openTab(event, 'gn-license')"><?php echo esc_html__('License', 'gn-publisher') ?> <?php
@@ -70,7 +70,7 @@ if ( defined('GNPUB_PRO_VERSION') ) {
     <button class="gn-tablinks gnpub-upgrade <?php echo isset($_GET['tab']) ? esc_attr($_GET['tab']) : ''; ?>" onclick="openTab(event, 'gn-upgrade')"><?php echo esc_html__('Upgrade to PRO', 'gn-publisher') ?></button>
     <!-- <button class="gn-tablinks gnpub-upgrade"><a target="_blank" href="https://gnpublisher.com/pricing/#pricing">Upgrade to PRO</a></button> -->
     <?php } ?>
-  
+    <button class="gn-tablinks" onclick="openTab(event, 'gn-help')"><?php echo esc_html__('Help &amp; Support', 'gn-publisher') ?></button>
 </div>
 
 <div id="gn-intro" class="gn-tabcontent">
@@ -402,10 +402,37 @@ if ( defined('GNPUB_PRO_VERSION') ) {
         <a class="gn-publisher-pro-btn "  target="_blank" href="https://gnpublisher.com/pricing/#pricing"><?php echo esc_html__('Upgrade to Premium', 'gn-publisher') ?></a>
         </td>
       </tr>
+      <tr>
+        <th><?php _e( 'Exclude Categories From Main Feed', 'gn-publisher' ); ?></th>
+        <td>
+        <a class="gn-publisher-pro-btn "  target="_blank" href="https://gnpublisher.com/pricing/#pricing"><?php echo esc_html__('Upgrade to Premium', 'gn-publisher') ?></a>
+        </td>
+      </tr>
       </table>
       </p> 
   <?php } else { 
      do_action('gnpub_pro_setup_form');
+    
+    } ?>
+
+  </div>
+  <div id="gn-compatibility" class="gn-tabcontent">
+<?php if(!defined('GNPUB_PRO_VERSION')){ ?>
+      <p>
+    <table class="form-table">
+      <tr>
+        <th><?php _e( 'PublishPress Authors', 'gn-publisher' ); ?></th>
+        <td>
+        <a class="gn-publisher-pro-btn "  target="_blank" href="https://gnpublisher.com/pricing/#pricing"><?php echo esc_html__('Upgrade to Premium', 'gn-publisher') ?></a>
+        <br><br>
+        <?php echo esc_html__(' This option will only work if you have installed', 'gn-publisher') ?>
+        <a href="https://wordpress.org/plugins/publishpress-authors/" target="_blank">  <?php echo esc_html__('Co-Authors, Multiple Authors and Guest Authors in an Author Box with PublishPress Authors', 'gn-publisher') ?></a>
+        </td>
+      </tr>
+      </table>
+      </p> 
+  <?php } else { 
+     do_action('gnpub_pro_compat_form');
     
     } ?>
 
