@@ -2,7 +2,7 @@
 Contributors: gnpublisher
 Tags: google news, google, news, publisher center, rss, feed, feeds
 Requires at least: 3.5
-Tested up to: 6.1
+Tested up to: 6.2
 Requires PHP: 5.4
 Stable tag: 1.5.7
 License: GPLv3 
@@ -90,26 +90,21 @@ GN Publisher may also be downloaded to your computer and uploaded, installed, an
 
 == Changelog ==
 
-= 1.5.7 - (24 February 2023) =
-
+= 1.5.7 - (07 April 2023) =
 * Added: Option to exclude categories from main feed. #48
 * Added: Compatibility with the plugin PublishPress Authors #51
 
 = 1.5.6 - (24 February 2023) =
-
 * Fixed: Sanitization and output escaping missing in tab Upgrade to Pro #49
 * Fixed: Feed URL's are not showing content of sub category. #34
 
 = 1.5.5 - (19 January 2023) =
-
 * Remove Offer Banner #40
 
 = 1.5.4 - (02 November 2022) =
-
 * Added: BFCM internal offer #36
 
 = 1.5.3 - (11 November 2022) =
-
 * Added: email in / out pop-up form on activation/deactivation #2
 * Added: Improve Readme.txt #21
 * Fixed: Created an option to choose feed url structure #23
@@ -119,7 +114,6 @@ GN Publisher may also be downloaded to your computer and uploaded, installed, an
 * Fixed: Feed Validation Fails For arabic language #29
 
 = 1.5.2 - (12 October 2022) =
-
 * Added: settings link on plugins page #13
 * Added: POP up for upgrade after activation like toc #14
 * Added: Show a cta if the content is being stolen below feed section #15
