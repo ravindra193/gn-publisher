@@ -36,11 +36,11 @@ class GNPUB_Settings {
 				return;
 			}
 
-			if ( isset( $_POST['gnpub_include_featured_image'] ) ) {
-				update_option( 'gnpub_include_featured_image', true );
-			} else {
-				update_option( 'gnpub_include_featured_image', false );
-			}
+			// if ( isset( $_POST['gnpub_include_featured_image'] ) ) {
+			// 	update_option( 'gnpub_include_featured_image', true );
+			// } else {
+			// 	update_option( 'gnpub_include_featured_image', false );
+			// }
 			
 			if ( isset( $_POST['gnpub_is_default_feed'] ) ) {
 				update_option( 'gnpub_is_default_feed', true );
