@@ -54,10 +54,10 @@ do_action( 'rss_tag_pre', 'rss2' );
 	?> 
 
 	<channel>
-		<title><?php wp_title_rss(); ?></title>
+		<title><?php gnpub_wp_title_rss(); ?></title>
 		<atom:link href="<?php self_link(); ?>" rel="self" type="application/rss+xml" />
 		<link><?php gnpub_feed_channel_link(); ?></link>
-		<description><?php bloginfo_rss( 'description' ); ?></description>
+		<description><?php gnpub_bloginfo_rss( 'description' ); ?></description>
 		<lastBuildDate><?php
 			$date = get_lastpostmodified( 'GMT' );
 			echo $date ? mysql2date( 'D, d M Y H:i:s +0000', $date, false ) : gmdate( 'r' );
@@ -92,13 +92,16 @@ do_action( 'rss_tag_pre', 'rss2' );
 		?>
 
 		<item>
-			<title><?php the_title_rss(); ?></title>
+			<title><?php gnpub_the_title_rss(); ?></title>
 			<link><?php gnpub_feed_post_link(get_the_permalink()); ?></link>
 			<pubDate><?php echo $pub_date; ?></pubDate>
 			<?php $gnpub_authors = '<dc:creator><![CDATA['.get_the_author().']]></dc:creator>'; ?>
 			<?php echo apply_filters('gnpub_pp_authors_compat',$gnpub_authors );?>
 			<guid isPermaLink="false"><?php the_guid(); ?></guid>
-<?php $content = get_the_content_feed( GNPUB_Feed::FEED_ID ); 
+<?php 
+$content = get_the_content_feed( GNPUB_Feed::FEED_ID );
+if( function_exists( 'gnpub_pp_translate' ) )
+	$content = gnpub_pp_translate( $content );
  if ( $content && strlen( $content ) > 0 ) : 
 ?>
 			<description><![CDATA[<?php echo wp_trim_words($content,15,'...');?>]]></description>

@@ -309,3 +309,7 @@ msgid ""
 "verifying your domain, selecting an appropriate publication name, and "
 "setting up your logos correctly."
 msgstr ""
+#: templates/settings.php:433
+msgid "Translate Press"
+#: templates/settings.php:433
+msgstr "Translate Multilingual sites – TranslatePress"
