@@ -393,7 +393,8 @@ if ( defined('GNPUB_PRO_VERSION') ) {
 
 
 <div id="gn-features" class="gn-tabcontent">
-<?php if(!defined('GNPUB_PRO_VERSION')){ ?>
+<form action="" method="post">
+  <?php if(!defined('GNPUB_PRO_VERSION')){ ?>
       <p>
     <table class="form-table">
       <tr>
@@ -415,6 +416,30 @@ if ( defined('GNPUB_PRO_VERSION') ) {
     
     } ?>
 
+<?php 
+
+$default_options=array('gnpub_remove_potentially_dangerous_tags'=>false);
+$gnpub_options = get_option( 'gnpub_new_options', $default_options );
+$remove_potentially_dangerous_tags = $gnpub_options['gnpub_remove_potentially_dangerous_tags'];
+
+?>
+  <p>
+    <table class="form-table">   
+      <tr>
+        <th><?php _e( 'Remove Potentially Dangerous Tags', 'gn-publisher' ); ?></th>
+        <td>
+          <input type="checkbox" name="gnpub_remove_potentially_dangerous_tags" id="gnpub_remove_potentially_dangerous_tags" <?php checked( $remove_potentially_dangerous_tags, true ); ?> value="1" />
+            <label for="gnpub_remove_potentially_dangerous_tags"><?php _e( 'Some feed elements are potentially dangerous and could cause unwanted side effects in browser-based news aggregators. <a href="https://validator.w3.org/feed/docs/warning/SecurityRisk.html" target="_blank">Learn More.</a>', 'gn-publisher' ); ?></label>
+        </td>
+      </tr>
+    </table>
+  </p>
+  <p class="submit">
+    <input type="hidden" name="gnpub_form_tab" value="feature">
+    <?php wp_nonce_field( 'save_gnpub_settings', '_wpnonce' ); ?>
+    <input type="submit" name="save_gnpub_settings" id="submit" class="button button-primary" value="<?php _e( 'Save Changes', 'gn-publisher-pro' ); ?>" />
+  </p>
+</form>	 
   </div>
   <div id="gn-compatibility" class="gn-tabcontent">
 <?php if(!defined('GNPUB_PRO_VERSION')){ ?>

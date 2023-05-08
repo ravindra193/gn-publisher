@@ -52,7 +52,10 @@ class GNPUB_Settings {
 									'gnpub_show_upto_value'=>1,
 								 	'gnpub_show_upto_unit'=>'paragraph',
 								 	'gnpub_exclude_categories'=>[],
-								 	'gnpub_pp_authors_compat'=>false, 'gnpub_pp_translate_press' => false);
+								 	'gnpub_pp_authors_compat'=>false, 
+									'gnpub_pp_translate_press' => false,
+									'gnpub_remove_potentially_dangerous_tags' => false,
+								);
 			$gnpub_options= get_option( 'gnpub_new_options', $gnpub_defaults);
 			$option_update=false;
 
@@ -96,6 +99,14 @@ class GNPUB_Settings {
 					$option_update=true;
 				}else {
 					$gnpub_options['gnpub_exclude_categories']=[];
+					$option_update=true;
+				}
+
+				if ( isset( $_POST['gnpub_remove_potentially_dangerous_tags'] ) ) {
+					$gnpub_options['gnpub_remove_potentially_dangerous_tags']= true;
+					$option_update=true;
+				}else {
+					$gnpub_options['gnpub_remove_potentially_dangerous_tags']= false;
 					$option_update=true;
 				}
 			}

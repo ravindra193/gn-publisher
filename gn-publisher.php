@@ -248,3 +248,24 @@ function gnpub_the_title_rss()
 		echo $the_title_rss;
 }
 
+/**
+ * gnpub_remove_potentially_dangerous_tags function
+ *
+ * @since 1.5.8 
+ * 
+ * @param string|mixed $content
+ * @return string|mixed
+ */
+function gnpub_remove_potentially_dangerous_tags( $content ) {
+	$removeTags = array(
+		'iframe' => 'iframe',
+		'script' => 'script',
+	);
+
+	foreach ( $removeTags as $tag )	{
+		if( false !== strpos($content, "<$tag") )
+        	$content = preg_replace("/<$tag.*?\/$tag>/i",'', $content);
+	}
+
+	return $content;
+}
