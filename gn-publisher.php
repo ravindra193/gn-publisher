@@ -267,5 +267,29 @@ function gnpub_remove_potentially_dangerous_tags( $content ) {
         	$content = preg_replace("/<$tag.*?\/$tag>/i",'', $content);
 	}
 
+	$removeStyles = array(
+		'border-radius',
+		'box-shadow',
+		'max-width',
+		'min-width',
+		'flex-direction',
+		'align-items',
+		'flex-grow',
+		'justify-content',
+		'transform',
+		'text-overflow',
+		'max-height',
+	);
+	foreach ( $removeStyles as $style )	{
+		if( false !== stripos( $content, "$style" ) )
+			$content = preg_replace( "/(\s{0,1}$style:.*?;{1,1}\s{0,1})/i", '', $content );
+	}
+	
+	if( false !== strpos( $content, "width: calc(" ) || false !== strpos( $content, "width:calc(" ) )
+		$content = preg_replace("/(\s{0,1}width:\s{0,1}calc.*?;{1,1}\s{0,1})/i", '', $content);
+
+	if( false !== strpos( $content, "padding:12.5%" ) || false !== strpos( $content, "padding: 12.5%" ) )
+		$content = preg_replace("/(\s{0,1}padding:{1,1}\s12.5%.*?;{1,1}\s{0,1})/i", '', $content);
+
 	return $content;
 }
