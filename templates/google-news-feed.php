@@ -100,10 +100,8 @@ do_action( 'rss_tag_pre', 'rss2' );
 			<guid isPermaLink="false"><?php the_guid(); ?></guid>
 <?php 
 $content = get_the_content_feed( GNPUB_Feed::FEED_ID );
-$gnpub_options = get_option( 'gnpub_new_options' );
-if ( !empty($gnpub_options) && isset( $gnpub_options['gnpub_remove_potentially_dangerous_tags'] ) && true == $gnpub_options['gnpub_remove_potentially_dangerous_tags'] ) {
-	$content = gnpub_remove_potentially_dangerous_tags($content);
-}
+$content = gnpub_remove_potentially_dangerous_tags($content);
+
 if( function_exists( 'gnpub_pp_translate' ) )
 	$content = gnpub_pp_translate( $content );
  if ( $content && strlen( $content ) > 0 ) : 
