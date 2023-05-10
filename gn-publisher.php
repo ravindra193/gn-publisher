@@ -7,7 +7,7 @@
  * Plugin Name: GN Publisher
  * Plugin URI: https://gnpublisher.com/
  * Description: GN Publisher: The easy way to make Google News Publisher compatible RSS feeds.
- * Version: 1.5.7
+ * Version: 1.5.8
  * Author: Chris Andrews
  * Author URI: https://gnpublisher.com/
  * Text Domain: gn-publisher
@@ -40,7 +40,7 @@ function gnpub_feed_bootstrap() {
 		return;
 	}
  
-	define( 'GNPUB_VERSION', '1.5.7' );
+	define( 'GNPUB_VERSION', '1.5.8' );
 	define( 'GNPUB_PATH', plugin_dir_path( __FILE__ ) );
     define( 'GNPUB_URL', plugins_url( '', __FILE__) );
 	define( 'GNPUB_PLUGIN_FILE', __FILE__ );
@@ -164,3 +164,113 @@ function gnpub_redirect() {
     }
 }
 
+/**
+ * gnpub_htmlToPlainText function
+ *
+ * @since 1.5.8 
+ * 
+ * @param string|mixed $str
+ * @return string|mixed
+ */
+function gnpub_htmlToPlainText($str) 
+{
+	$resultStr = $str;
+	if( null !== $str && !empty( $str ) )
+	{
+		$resultStr = str_replace( '&nbsp;', ' ', $str );
+		$resultStr = html_entity_decode( $resultStr, ENT_QUOTES | ENT_COMPAT, 'UTF-8' );
+		$resultStr = html_entity_decode( $resultStr, ENT_HTML5, 'UTF-8' );
+		$resultStr = html_entity_decode( $resultStr );
+		$resultStr = htmlspecialchars_decode( $resultStr );
+		$resultStr = strip_tags( $resultStr );
+	}
+    return $resultStr;
+}
+
+/**
+ * gnpub_wp_title_rss function
+ *
+ * @since 1.5.8 
+ * 
+ * @return string|mixed
+ */
+function gnpub_wp_title_rss() 
+{
+	ob_start();
+	wp_title_rss();
+	$wp_title_rss = ob_get_contents();
+	ob_end_clean();
+
+	if( false !== strpos(gnpub_htmlToPlainText($wp_title_rss), '–') && function_exists( 'gnpub_pp_translate' ) ) {
+    	$wp_title_rss_explode = explode("–", gnpub_htmlToPlainText($wp_title_rss));
+		
+    	$wp_title_rss = gnpub_pp_translate( trim( $wp_title_rss_explode[0] ) ) . ' – ' . gnpub_pp_translate( trim( $wp_title_rss_explode[1] ) );
+	}
+	echo $wp_title_rss;
+}
+
+/**
+ * gnpub_bloginfo_rss function
+ *
+ * @since 1.5.8 
+ * 
+ * @param string|mixed $attr
+ * @return string|mixed
+ */
+function gnpub_bloginfo_rss( $attr )
+{
+	ob_start();
+	bloginfo_rss( $attr );
+	$bloginfo_rss = ob_get_contents();
+	ob_end_clean();
+	if( function_exists( 'gnpub_pp_translate' ) )
+		echo gnpub_pp_translate($bloginfo_rss);
+	else
+		echo $bloginfo_rss;
+}
+
+/**
+ * gnpub_the_title_rss function
+ *
+ * @since 1.5.8 
+ * 
+ * @return string|mixed
+ */
+function gnpub_the_title_rss()
+{
+	ob_start();
+	the_title_rss();
+	$the_title_rss = ob_get_contents();
+	ob_end_clean();
+	if( function_exists( 'gnpub_pp_translate' ) )
+		echo gnpub_pp_translate($the_title_rss);
+	else
+		echo $the_title_rss;
+}
+
+/**
+ * gnpub_remove_potentially_dangerous_tags function
+ *
+ * @since 1.5.8 
+ * 
+ * @param string|mixed $content
+ * @return string|mixed
+ */
+function gnpub_remove_potentially_dangerous_tags( $content ) {
+	$removeTags = array(
+		'iframe' => 'iframe',
+		'script' => 'script',
+	);
+
+	foreach ( $removeTags as $tag )	{
+		if( false !== strpos($content, "<$tag") )
+        	$content = preg_replace("/<$tag.*?\/$tag>/i",'', $content);
+	}
+	
+	if( false !== stripos( $content, "style='" ) )
+		$content = preg_replace("/style=\'.*?\'/i", '', $content);
+	if( false !== stripos( $content, 'style="' ) )
+		$content = preg_replace("/style=\".*?\"/i", '', $content);
+
+	return $content;
+}

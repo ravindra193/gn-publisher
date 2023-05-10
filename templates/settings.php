@@ -414,7 +414,6 @@ if ( defined('GNPUB_PRO_VERSION') ) {
      do_action('gnpub_pro_setup_form');
     
     } ?>
-
   </div>
   <div id="gn-compatibility" class="gn-tabcontent">
 <?php if(!defined('GNPUB_PRO_VERSION')){ ?>
@@ -427,6 +426,15 @@ if ( defined('GNPUB_PRO_VERSION') ) {
         <br><br>
         <?php echo esc_html__(' This option will only work if you have installed', 'gn-publisher') ?>
         <a href="https://wordpress.org/plugins/publishpress-authors/" target="_blank">  <?php echo esc_html__('Co-Authors, Multiple Authors and Guest Authors in an Author Box with PublishPress Authors', 'gn-publisher') ?></a>
+        </td>
+      </tr>
+      <tr>
+        <th><?php _e( 'Translate Press', 'gn-publisher' ); ?></th>
+        <td>
+        <a class="gn-publisher-pro-btn "  target="_blank" href="https://gnpublisher.com/pricing/#pricing"><?php echo esc_html__('Upgrade to Premium', 'gn-publisher') ?></a>
+        <br><br>
+        <?php echo esc_html__(' This option will only work if you have installed', 'gn-publisher') ?>
+        <a href="https://wordpress.org/plugins/translatepress-multilingual/" target="_blank">  <?php echo esc_html__('Translate Multilingual sites – TranslatePress', 'gn-publisher') ?></a>
         </td>
       </tr>
       </table>

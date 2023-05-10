@@ -36,11 +36,11 @@ class GNPUB_Settings {
 				return;
 			}
 
-			if ( isset( $_POST['gnpub_include_featured_image'] ) ) {
-				update_option( 'gnpub_include_featured_image', true );
-			} else {
-				update_option( 'gnpub_include_featured_image', false );
-			}
+			// if ( isset( $_POST['gnpub_include_featured_image'] ) ) {
+			// 	update_option( 'gnpub_include_featured_image', true );
+			// } else {
+			// 	update_option( 'gnpub_include_featured_image', false );
+			// }
 			
 			if ( isset( $_POST['gnpub_is_default_feed'] ) ) {
 				update_option( 'gnpub_is_default_feed', true );
@@ -52,7 +52,9 @@ class GNPUB_Settings {
 									'gnpub_show_upto_value'=>1,
 								 	'gnpub_show_upto_unit'=>'paragraph',
 								 	'gnpub_exclude_categories'=>[],
-								 	'gnpub_pp_authors_compat'=>false);
+								 	'gnpub_pp_authors_compat'=>false, 
+									'gnpub_pp_translate_press' => false,
+								);
 			$gnpub_options= get_option( 'gnpub_new_options', $gnpub_defaults);
 			$option_update=false;
 
@@ -98,12 +100,17 @@ class GNPUB_Settings {
 					$gnpub_options['gnpub_exclude_categories']=[];
 					$option_update=true;
 				}
+
 			}
 
 			if ( isset( $_POST['gnpub_form_tab'] ) && $_POST['gnpub_form_tab']=='compat') {
 				$gnpub_options['gnpub_pp_authors_compat']= false;
 				if ( isset( $_POST['gnpub_pp_authors_compat'] )) {
 					$gnpub_options['gnpub_pp_authors_compat']= true;	
+				}
+				$gnpub_options['gnpub_pp_translate_press']= false;
+				if ( isset( $_POST['gnpub_pp_translate_press'] )) {
+					$gnpub_options['gnpub_pp_translate_press']= true;	
 				}
 				$option_update=true;
 			}
