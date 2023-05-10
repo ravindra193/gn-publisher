@@ -27,6 +27,8 @@ After installing, click on the *'Dashboard'* under GN Publisher on your plugins 
 
 **New in 1.5.8**
 
+Added compatibility with No Category Base
+
 Added compatibility with Translate Press
 
 **New in 1.5.7**
@@ -95,10 +97,10 @@ GN Publisher may also be downloaded to your computer and uploaded, installed, an
 == Changelog ==
 
 = 1.5.8 - (10 May 2023) =
-* TWEAK : Added compatibility with No Category Base #54
+* Added : Added compatibility with No Category Base #54
 * Bug   : Featured image not diplaying in feed content #53
 * Tweak : Strip all unnecessary attributes and inline CSS #47
-* Added : Need to add compatibility with translate press #46
+* Added : Added compatibility with translate press #46
 
 = 1.5.7 - (07 April 2023) =
 * Added: Option to exclude categories from main feed. #48
