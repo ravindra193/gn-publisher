@@ -95,7 +95,7 @@ GN Publisher may also be downloaded to your computer and uploaded, installed, an
 == Changelog ==
 
 = 1.5.8 - (10 May 2023) =
-* TWEAK : Need to add compatibility with No Category Base #54
+* TWEAK : Added compatibility with No Category Base #54
 * Bug   : Featured image not diplaying in feed content #53
 * Tweak : Strip all unnecessary attributes and inline CSS #47
 * Added : Need to add compatibility with translate press #46
