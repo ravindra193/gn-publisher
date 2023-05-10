@@ -4,7 +4,7 @@ Tags: google news, google, news, publisher center, rss, feed, feeds
 Requires at least: 3.5
 Tested up to: 6.2
 Requires PHP: 5.4
-Stable tag: 1.5.7
+Stable tag: 1.5.8
 License: GPLv3 
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -24,6 +24,10 @@ The plugin addresses common RSS compatiblity issues publishers experience when u
 -  Delayed crawling by Google
 
 After installing, click on the *'Dashboard'* under GN Publisher on your plugins page for additional information about applying and troubleshooting issues related to the Google News Publisher Center.
+
+**New in 1.5.8**
+
+Added compatibility with Translate Press
 
 **New in 1.5.7**
 
@@ -89,6 +93,12 @@ GN Publisher may also be downloaded to your computer and uploaded, installed, an
 
 
 == Changelog ==
+
+= 1.5.8 - (10 May 2023) =
+* TWEAK : Need to add compatibility with No Category Base #54
+* Bug   : Featured image not diplaying in feed content #53
+* Tweak : Strip all unnecessary attributes and inline CSS #47
+* Added : Need to add compatibility with translate press #46
 
 = 1.5.7 - (07 April 2023) =
 * Added: Option to exclude categories from main feed. #48
