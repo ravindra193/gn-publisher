@@ -29,6 +29,7 @@ final class GNPUB_Installer {
 
 		$feed = new GNPUB_Feed();
 		$feed->add_google_news_feed();
+		$feed->add_flipboard_news_feed();
 
 		GNPUB_Compat::seo_plugins_strip_category_base();
 

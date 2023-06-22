@@ -437,6 +437,15 @@ if ( defined('GNPUB_PRO_VERSION') ) {
         <a href="https://wordpress.org/plugins/translatepress-multilingual/" target="_blank">  <?php echo esc_html__('Translate Multilingual sites – TranslatePress', 'gn-publisher') ?></a>
         </td>
       </tr>
+      <tr>
+        <th><?php _e( 'Flipboard.com', 'gn-publisher' ); ?></th>
+        <td>
+        <a class="gn-publisher-pro-btn "  target="_blank" href="https://gnpublisher.com/pricing/#pricing"><?php echo esc_html__('Upgrade to Premium', 'gn-publisher') ?></a>
+        <br><br>
+        <?php echo esc_html__(' This option will only work if you have', 'gn-publisher') ?>
+        <a href="flipboard.com" target="_blank">  <?php echo esc_html__('Flipboard.com sites', 'gn-publisher') ?></a>
+        </td>
+      </tr>
       </table>
       </p> 
   <?php } else { 

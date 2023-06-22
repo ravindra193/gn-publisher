@@ -26,7 +26,15 @@ class GNPUB_Feed {
 	const FEED_FETCHER_UA = "FeedFetcher-Google";
 
 	public function __construct() {
-		add_action( 'init', array( $this, 'add_google_news_feed' ) );
+		$default_options = array( 'gnpub_pp_authors_compat' => false, 'gnpub_pp_translate_press' => false, 'gnpub_pp_flipboard_com' => false );
+		$gnpub_options = get_option( 'gnpub_new_options', $default_options );
+		$gnpub_pp_flipboard_com = $gnpub_options['gnpub_pp_flipboard_com'];
+		if(!empty($gnpub_pp_flipboard_com) && $gnpub_pp_flipboard_com == 1){
+			add_action( 'init', array( $this, 'add_flipboard_news_feed' ) );
+		}else{
+			add_action( 'init', array( $this, 'add_google_news_feed' ) );
+		}
+		
 		add_action( 'wp', array( $this, 'remove_problematic_functions' ) );
 
 		// Documented in wp-includes/class-wp-query.php -> WP_Query::parse_query()
@@ -70,6 +78,29 @@ class GNPUB_Feed {
 	 */
 	public function do_google_news_feed( $for_comments ) {
 		load_template( GNPUB_PATH . 'templates/google-news-feed.php' );
+	}
+
+	/**
+	 * Adds the GN Publisher feed to WordPress. The add_feed function will add the feed
+	 * rewrite rule, but the rules need to be flushed for the rule to be included
+	 * 
+	 * @since 1.5.9
+	 * @uses add_feed
+	 */
+	public function add_flipboard_news_feed() {
+		add_feed( self::FEED_ID, array( $this, 'do_flipboard_news_feed' ) );
+	}
+
+	/**
+	 * Includes the flipboard news publisher feed template.
+	 * 
+	 * @since 1.5.9
+	 * @uses load_template
+	 * 
+	 * @param bool $for_comments Whether the feed request was for comments.
+	 */
+	public function do_flipboard_news_feed( $for_comments ) {
+		load_template( GNPUB_PATH . 'templates/flipboard-news-feed.php' );
 	}
 
 	/**

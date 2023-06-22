@@ -54,6 +54,7 @@ class GNPUB_Settings {
 								 	'gnpub_exclude_categories'=>[],
 								 	'gnpub_pp_authors_compat'=>false, 
 									'gnpub_pp_translate_press' => false,
+									'gnpub_pp_flipboard_com' => false,
 								);
 			$gnpub_options= get_option( 'gnpub_new_options', $gnpub_defaults);
 			$option_update=false;
@@ -111,6 +112,10 @@ class GNPUB_Settings {
 				$gnpub_options['gnpub_pp_translate_press']= false;
 				if ( isset( $_POST['gnpub_pp_translate_press'] )) {
 					$gnpub_options['gnpub_pp_translate_press']= true;	
+				}
+				$gnpub_options['gnpub_pp_flipboard_com']= false;
+				if ( isset( $_POST['gnpub_pp_flipboard_com'] )) {
+					$gnpub_options['gnpub_pp_flipboard_com']= true;	
 				}
 				$option_update=true;
 			}
